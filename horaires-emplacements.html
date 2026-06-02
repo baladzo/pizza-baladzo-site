@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Horaires et emplacements de Pizza Baladzo pour commander ou venir chercher votre pizza." />
+    <title>Horaires & emplacements | Pizza Baladzo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav container" aria-label="Navigation principale">
+        <a class="brand" href="index.html"><span class="brand-mark">PB</span><span>Pizza Baladzo</span></a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links"><span class="sr-only">Ouvrir le menu</span><span></span><span></span><span></span></button>
+        <div class="nav-links" id="nav-links">
+          <a href="index.html">Accueil</a>
+          <a href="menu.html">Menu</a>
+          <a href="horaires-emplacements.html" aria-current="page">Horaires & emplacements</a>
+          <a href="contact.html">Contact</a>
+          <a class="btn btn-small" href="contact.html#commande">Commander</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="page-main">
+      <section class="section page-hero">
+        <div class="container section-heading">
+          <p class="eyebrow">Où nous trouver</p>
+          <h1>Horaires et emplacements.</h1>
+          <p>Ajoutez ici vos adresses exactes, zones de livraison ou lieux de camion pizza.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container split align-start">
+          <div class="card schedule-card">
+            <h2>Horaires</h2>
+            <ul class="schedule-list">
+              <li><span>Lundi</span><strong>Fermé</strong></li>
+              <li><span>Mardi - jeudi</span><strong>17 h - 21 h</strong></li>
+              <li><span>Vendredi</span><strong>11 h - 22 h</strong></li>
+              <li><span>Samedi</span><strong>11 h - 23 h</strong></li>
+              <li><span>Dimanche</span><strong>17 h - 22 h</strong></li>
+            </ul>
+          </div>
+          <div class="location-grid">
+            <article class="card location-card">
+              <h2>Adresse principale</h2>
+              <p>123 Rue de la Pizza<br />Votre ville, QC A1A 1A1</p>
+              <a class="btn btn-outline" href="https://maps.google.com" target="_blank" rel="noreferrer">Ouvrir la carte</a>
+            </article>
+            <article class="card location-card">
+              <h2>Livraison & commande</h2>
+              <p>Commandes par téléphone, courriel ou formulaire. Remplacez ces informations par vos plateformes réelles.</p>
+              <a class="btn" href="contact.html#commande">Commander</a>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer"><div class="container footer-grid"><div><a class="brand" href="index.html"><span class="brand-mark">PB</span><span>Pizza Baladzo</span></a><p>Pizzas artisanales à emporter, sur place ou en commande.</p></div><div><strong>Navigation</strong><a href="index.html">Accueil</a><a href="menu.html">Menu</a><a href="contact.html">Contact</a></div><div><strong>Commande</strong><a href="tel:+10000000000">+1 000 000 0000</a><a href="mailto:commande@pizzabaladzo.com">commande@pizzabaladzo.com</a></div></div></footer>
+    <script src="script.js"></script>
+  </body>
+</html>
