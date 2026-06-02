@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Contactez Pizza Baladzo pour commander, réserver ou poser une question." />
+    <title>Contact | Pizza Baladzo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav container" aria-label="Navigation principale">
+        <a class="brand" href="index.html"><span class="brand-mark">PB</span><span>Pizza Baladzo</span></a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links"><span class="sr-only">Ouvrir le menu</span><span></span><span></span><span></span></button>
+        <div class="nav-links" id="nav-links">
+          <a href="index.html">Accueil</a>
+          <a href="menu.html">Menu</a>
+          <a href="horaires-emplacements.html">Horaires & emplacements</a>
+          <a href="contact.html" aria-current="page">Contact</a>
+          <a class="btn btn-small" href="#commande">Commander</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="page-main">
+      <section class="section page-hero">
+        <div class="container section-heading">
+          <p class="eyebrow">Contact</p>
+          <h1>Une question ou une envie de pizza ?</h1>
+          <p>Remplacez les coordonnées et connectez le formulaire à votre solution préférée quand vous serez prêt.</p>
+        </div>
+      </section>
+
+      <section class="section" id="commande">
+        <div class="container contact-grid">
+          <form class="card contact-form" action="mailto:commande@pizzabaladzo.com" method="post" enctype="text/plain">
+            <h2>Commander / écrire</h2>
+            <label for="name">Nom</label>
+            <input id="name" name="name" type="text" placeholder="Votre nom" required />
+            <label for="phone">Téléphone</label>
+            <input id="phone" name="phone" type="tel" placeholder="Votre numéro" required />
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Votre commande ou votre question" required></textarea>
+            <button class="btn" type="submit">Envoyer la demande</button>
+          </form>
+          <aside class="card contact-info">
+            <h2>Coordonnées</h2>
+            <p><strong>Téléphone</strong><br /><a href="tel:+10000000000">+1 000 000 0000</a></p>
+            <p><strong>Courriel</strong><br /><a href="mailto:commande@pizzabaladzo.com">commande@pizzabaladzo.com</a></p>
+            <p><strong>Adresse</strong><br />123 Rue de la Pizza, Votre ville</p>
+            <p class="note">Astuce : vous pouvez remplacer ce formulaire par un lien vers Uber Eats, DoorDash, Square ou une autre plateforme.</p>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer"><div class="container footer-grid"><div><a class="brand" href="index.html"><span class="brand-mark">PB</span><span>Pizza Baladzo</span></a><p>Pizzas artisanales à emporter, sur place ou en commande.</p></div><div><strong>Navigation</strong><a href="index.html">Accueil</a><a href="menu.html">Menu</a><a href="horaires-emplacements.html">Horaires & emplacements</a></div><div><strong>Commande</strong><a href="tel:+10000000000">+1 000 000 0000</a><a href="mailto:commande@pizzabaladzo.com">commande@pizzabaladzo.com</a></div></div></footer>
+    <script src="script.js"></script>
+  </body>
+</html>
