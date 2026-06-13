@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 520" role="img" aria-label="Boissons visibles en entier">
+  <rect width="720" height="520" rx="36" fill="#120b18"/>
+  <g transform="translate(176 110)">
+    <rect x="0" y="40" width="92" height="270" rx="28" fill="#ba2233"/>
+    <rect x="130" y="0" width="92" height="310" rx="28" fill="#f08a24"/>
+    <rect x="260" y="70" width="92" height="240" rx="28" fill="#2f8fdd"/>
+    <g fill="#fff" font-family="Arial" font-size="24" font-weight="900" text-anchor="middle">
+      <text x="46" y="184">COLA</text><text x="176" y="164">ORANGE</text><text x="306" y="196">EAU</text>
+    </g>
+  </g>
+</svg>

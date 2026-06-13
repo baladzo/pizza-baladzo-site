@@ -1,0 +1,572 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pizza Baladzo - Preview client V200000 corrigee</title>
+  <meta name="description" content="Preview client Pizza Baladzo : menu, commande simulee, evenements prives, contact, emplacements, votes et compte client.">
+  <meta name="theme-color" content="#8d3cff">
+  <link rel="icon" href="assets/logo-pizza-baladzo.svg" type="image/svg+xml">
+  <style>
+    :root{
+      --bg:#09070d;
+      --panel:#15101d;
+      --panel2:#21142f;
+      --ink:#fffaf5;
+      --muted:#cfc5d8;
+      --line:rgba(255,255,255,.14);
+      --violet:#8d3cff;
+      --violet2:#c79cff;
+      --orange:#ff9b3d;
+      --rose:#e85fa8;
+      --green:#22c55e;
+      --red:#ef4444;
+      --shadow:0 24px 70px rgba(0,0,0,.38);
+      --radius:8px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(circle at 14% 0%, rgba(141,60,255,.36), transparent 30rem),
+        radial-gradient(circle at 82% 5%, rgba(255,155,61,.24), transparent 26rem),
+        linear-gradient(180deg,#08050c 0%,#13091d 46%,#09070d 100%);
+      min-height:100vh;
+    }
+    a{color:inherit;text-decoration:none}
+    button,input,select,textarea{font:inherit}
+    button{cursor:pointer}
+    img{display:block;max-width:100%;height:auto;object-fit:contain}
+    .wrap{width:min(1180px,calc(100% - 32px));margin:0 auto}
+    .topbar{
+      position:sticky;top:0;z-index:50;
+      background:rgba(9,7,13,.88);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 0}
+    .brand{display:flex;align-items:center;gap:12px;min-width:205px}
+    .brand img{width:52px;height:52px;border-radius:50%;background:#09070d;box-shadow:0 0 30px rgba(141,60,255,.38)}
+    .brand strong{display:block;font-size:18px}.brand span{display:block;color:var(--violet2);font-size:12px}
+    .navlinks{display:flex;align-items:center;gap:4px;flex-wrap:wrap;justify-content:flex-end}
+    .navlinks a,.top-action,.hamburger{
+      border:1px solid transparent;border-radius:999px;padding:9px 12px;
+      background:transparent;color:var(--muted);white-space:nowrap;
+    }
+    .navlinks a:hover,.navlinks a.active,.top-action:hover{border-color:var(--line);background:rgba(255,255,255,.06);color:#fff}
+    .top-actions{display:flex;align-items:center;gap:6px}
+    .hamburger{display:none;border-color:var(--line);color:#fff;background:rgba(255,255,255,.06)}
+    .view{display:none;min-height:calc(100vh - 77px);padding:34px 0 54px}
+    .view.active{display:block}
+    .hero{
+      min-height:calc(100vh - 94px);
+      display:grid;grid-template-columns:1fr 1.04fr;gap:28px;align-items:center;
+      padding:28px 0 48px;
+    }
+    .eyebrow{display:inline-flex;gap:8px;align-items:center;color:var(--violet2);border:1px solid rgba(199,156,255,.35);background:rgba(141,60,255,.12);border-radius:999px;padding:8px 12px;font-weight:800;font-size:13px}
+    h1,h2,h3{margin:0;color:#fff;line-height:1.03;letter-spacing:0}
+    h1{font-size:clamp(42px,7vw,86px)}
+    h2{font-size:clamp(30px,4vw,52px)}
+    h3{font-size:22px}
+    p{color:var(--muted);line-height:1.62}
+    .hero p{font-size:18px;max-width:650px}
+    .hero-visual{border:1px solid var(--line);border-radius:var(--radius);background:#100817;box-shadow:var(--shadow);overflow:hidden}
+    .hero-visual img{width:100%;max-height:70vh;object-fit:contain;background:#120817}
+    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      min-height:42px;border:0;border-radius:999px;padding:11px 16px;
+      color:#fff;background:linear-gradient(135deg,var(--violet),#5b21b6);
+      box-shadow:0 14px 34px rgba(141,60,255,.24);font-weight:900;
+    }
+    .btn.secondary{background:rgba(255,255,255,.07);border:1px solid var(--line);box-shadow:none;color:#fff}
+    .btn.ghost{background:transparent;border:1px solid rgba(199,156,255,.45);box-shadow:none}
+    .btn.ok{background:linear-gradient(135deg,#22c55e,#166534)}
+    .btn.warn{background:linear-gradient(135deg,#f59e0b,#92400e)}
+    .section-head{display:flex;justify-content:space-between;gap:18px;align-items:end;margin-bottom:20px}
+    .section-head p{margin:.45rem 0 0;max-width:760px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .grid.two{grid-template-columns:repeat(2,1fr)}
+    .grid.four{grid-template-columns:repeat(4,1fr)}
+    .card{
+      border:1px solid var(--line);border-radius:var(--radius);
+      background:linear-gradient(180deg,rgba(255,255,255,.075),rgba(255,255,255,.025));
+      padding:18px;box-shadow:0 18px 45px rgba(0,0,0,.18);
+    }
+    .card.highlight{background:linear-gradient(135deg,rgba(141,60,255,.2),rgba(255,155,61,.07));border-color:rgba(199,156,255,.35)}
+    .media-card{padding:0;overflow:hidden}
+    .media-card .media{height:230px;display:grid;place-items:center;background:#0d0712;border-bottom:1px solid var(--line)}
+    .media-card .media img{width:100%;height:100%;object-fit:contain;padding:8px}
+    .media-card .body{padding:16px}
+    .price{font-size:26px;font-weight:950;color:#fff;margin:.45rem 0}
+    .tags{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0}
+    .tag{border:1px solid var(--line);border-radius:999px;padding:6px 9px;background:rgba(255,255,255,.05);color:var(--muted);font-size:13px}
+    .tabs{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}
+    .tab{border:1px solid var(--line);border-radius:999px;padding:10px 13px;background:rgba(255,255,255,.05);color:var(--muted)}
+    .tab.active{background:rgba(141,60,255,.2);border-color:rgba(199,156,255,.55);color:#fff}
+    .product-panel{display:none}.product-panel.active{display:block}
+    .field{display:grid;gap:7px;margin-bottom:12px}
+    label{color:#fff;font-weight:800;font-size:14px}
+    input,select,textarea{
+      width:100%;border:1px solid var(--line);border-radius:var(--radius);
+      background:rgba(0,0,0,.25);color:#fff;padding:12px;outline:none;
+    }
+    textarea{min-height:112px;resize:vertical}
+    .choice-row{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+    .choice{border:1px solid var(--line);border-radius:999px;padding:9px 12px;background:rgba(255,255,255,.055);color:var(--muted)}
+    .choice.active{border-color:var(--violet2);background:rgba(141,60,255,.24);color:#fff}
+    .cart-drawer{
+      position:fixed;inset:0 0 0 auto;width:min(480px,100%);
+      background:#110b18;border-left:1px solid var(--line);z-index:90;
+      transform:translateX(105%);transition:.22s ease;padding:18px;overflow:auto;box-shadow:var(--shadow);
+    }
+    .cart-drawer.open{transform:translateX(0)}
+    .overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.62);z-index:80}.overlay.open{display:block}
+    .cart-line{display:grid;grid-template-columns:1fr auto;gap:10px;padding:12px 0;border-bottom:1px solid var(--line)}
+    .cart-line small{color:var(--muted)}
+    .total{display:flex;justify-content:space-between;align-items:center;font-size:22px;font-weight:950;margin:18px 0}
+    .modal{display:none;position:fixed;inset:0;align-items:center;justify-content:center;background:rgba(0,0,0,.68);z-index:100;padding:18px}
+    .modal.open{display:flex}
+    .modal-card{width:min(620px,100%);max-height:92vh;overflow:auto;border:1px solid var(--line);border-radius:var(--radius);background:#120d1b;padding:20px;box-shadow:var(--shadow)}
+    .notice{border:1px solid rgba(245,158,11,.45);background:rgba(245,158,11,.12);color:#fde68a;border-radius:var(--radius);padding:12px;margin:14px 0}
+    .success{border-color:rgba(34,197,94,.45);background:rgba(34,197,94,.12);color:#bbf7d0}
+    .admin-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+    .admin-item{border:1px solid var(--line);border-radius:var(--radius);padding:13px;background:rgba(255,255,255,.045)}
+    .admin-item b{display:block;color:#fff;margin-bottom:5px}
+    .route-list{display:grid;gap:12px}
+    .route{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;border:1px solid var(--line);border-radius:var(--radius);padding:14px;background:rgba(255,255,255,.045)}
+    .pin{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--violet),var(--orange));font-weight:950}
+    .vote-card{display:grid;grid-template-columns:180px 1fr;gap:18px;align-items:center}
+    .vote-card img{width:180px;height:130px;object-fit:contain;background:#0e0714;border:1px solid var(--line);border-radius:var(--radius)}
+    .progress{height:10px;background:rgba(255,255,255,.1);border-radius:999px;overflow:hidden;margin-top:10px}
+    .progress span{display:block;height:100%;background:linear-gradient(90deg,var(--violet),var(--orange))}
+    footer{border-top:1px solid var(--line);padding:22px 0;color:var(--muted);background:rgba(0,0,0,.24)}
+    .hide{display:none!important}
+    @media (max-width:930px){
+      .hero{grid-template-columns:1fr;min-height:auto}
+      .grid,.grid.two,.grid.four,.admin-grid{grid-template-columns:1fr 1fr}
+      .section-head{display:block}
+      .nav{align-items:flex-start}.hamburger{display:inline-flex}.navlinks{display:none;width:100%;order:3}.navlinks.open{display:flex}.nav{flex-wrap:wrap}
+    }
+    @media (max-width:640px){
+      .wrap{width:min(100% - 22px,1180px)}
+      h1{font-size:42px}
+      .grid,.grid.two,.grid.four,.admin-grid{grid-template-columns:1fr}
+      .top-actions{width:100%;justify-content:space-between;order:2}
+      .brand{min-width:0}.brand strong{font-size:16px}
+      .hero p{font-size:16px}
+      .media-card .media{height:210px}
+      .vote-card{grid-template-columns:1fr}.vote-card img{width:100%;height:190px}
+      .route{grid-template-columns:auto 1fr}
+      .route .btn{grid-column:1 / -1}
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap nav">
+      <a class="brand" href="#accueil" data-nav="accueil">
+        <img src="assets/logo-pizza-baladzo.svg" alt="Logo Pizza Baladzo sans contour blanc">
+        <span><strong>Pizza Baladzo</strong><span>Remorque pizza premium</span></span>
+      </a>
+      <button class="hamburger" type="button" id="mobileMenu">Menu</button>
+      <nav class="navlinks" id="navlinks" aria-label="Navigation principale">
+        <a href="#accueil" data-nav="accueil" class="active">Accueil</a>
+        <a href="#apropos" data-nav="apropos">À propos</a>
+        <a href="#menu" data-nav="menu">Menu</a>
+        <a href="#evenements" data-nav="evenements">Événements</a>
+        <a href="#contact" data-nav="contact">Contact</a>
+        <a href="#trouver" data-nav="trouver">Où nous trouver</a>
+      </nav>
+      <div class="top-actions">
+        <button class="top-action" type="button" data-open-account>Mon compte</button>
+        <button class="top-action" type="button" data-open-cart>Panier <b id="cartCount">0</b></button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="view active" id="view-accueil">
+      <div class="wrap hero">
+        <div>
+          <span class="eyebrow">Preview client V200000 corrigee</span>
+          <h1>Pizza Baladzo</h1>
+          <p>Pizza artisanale en remorque, ambiance noir et violet premium, ciel rose orange et commande client entièrement simulée pour la preview.</p>
+          <div class="actions">
+            <button class="btn" type="button" data-nav="menu">Voir le menu</button>
+            <button class="btn secondary" type="button" data-open-cart>Ouvrir le panier</button>
+            <button class="btn ghost" type="button" data-nav="trouver">Où nous trouver</button>
+          </div>
+          <div class="notice success">Simulation uniquement : pas de vraie clé API, pas de Stripe réel, pas de SMS réel, aucun identifiant sensible.</div>
+        </div>
+        <div class="hero-visual">
+          <img src="assets/remorque-ciel.svg" alt="Remorque Pizza Baladzo avec ciel violet rose orange">
+        </div>
+      </div>
+    </section>
+
+    <section class="view" id="view-apropos">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2>À propos</h2>
+            <p>Une preview client propre : pages séparées, boutons cliquables, panier en simulation et photos rangées par catégorie.</p>
+          </div>
+          <button class="btn" type="button" data-nav="menu">Commander</button>
+        </div>
+        <div class="grid two">
+          <article class="card highlight"><h3>Le style conserve la base</h3><p>Noir profond, violet premium, cartes sombres, boutons violets, remorque et ciel coloré restent au coeur de la direction visuelle.</p></article>
+          <article class="card"><h3>Preview Hostinger</h3><p>Site statique prêt à déposer : `index.html`, assets, manifest, robots et sitemap. Tout fonctionne sans serveur ni identifiants.</p></article>
+          <article class="card"><h3>Photos entières</h3><p>Chaque visuel produit est une image unique affichée en entier. Les pizzas classiques ne mélangent pas plusieurs pizzas sur la même fiche.</p></article>
+          <article class="card"><h3>Parcours client</h3><p>Compte, contact, devis événement, votes, personnalisation, ajout panier et paiement fictif sont prévus pour démonstration.</p></article>
+        </div>
+        <div class="actions">
+          <button class="btn secondary" type="button" data-nav="avis">Avis & fidélité</button>
+          <button class="btn secondary" type="button" data-open-account>Mon compte</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="view" id="view-menu">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2>Menu</h2>
+            <p>Pizzas classiques, personnalisables, desserts, boissons, formules et Votes de la semaine.</p>
+          </div>
+          <button class="btn" type="button" data-open-cart>Voir le panier</button>
+        </div>
+        <div class="tabs" aria-label="Catégories du menu">
+          <button class="tab active" type="button" data-menu-tab="classiques">Pizzas classiques</button>
+          <button class="tab" type="button" data-menu-tab="personnalisables">Personnalisables</button>
+          <button class="tab" type="button" data-menu-tab="desserts">Desserts</button>
+          <button class="tab" type="button" data-menu-tab="boissons">Boissons</button>
+          <button class="tab" type="button" data-menu-tab="formules">Formules</button>
+          <button class="tab" type="button" data-menu-tab="votes">Votes de la semaine</button>
+        </div>
+
+        <div class="product-panel active" id="panel-classiques">
+          <div class="grid" id="classicGrid"></div>
+        </div>
+
+        <div class="product-panel" id="panel-personnalisables">
+          <div class="grid two">
+            <article class="card media-card">
+              <div class="media"><img src="assets/personnalisable.svg" alt="Pizza personnalisable complète"></div>
+              <div class="body">
+                <h3>Pizza personnalisable</h3>
+                <p>Choisissez taille, base, ingrédients, ajouts et retraits. Le prix se met à jour pour la preview.</p>
+              </div>
+            </article>
+            <article class="card">
+              <h3>Composer ma pizza</h3>
+              <div class="field"><label>Taille</label><div class="choice-row" id="sizeChoices"></div></div>
+              <div class="field"><label>Base</label><div class="choice-row" id="baseChoices"></div></div>
+              <div class="field"><label>Ingrédients</label><div class="choice-row" id="ingredientChoices"></div></div>
+              <div class="field"><label>Retrait</label><div class="choice-row" id="removeChoices"></div></div>
+              <div class="price" id="customPrice">12,00 EUR</div>
+              <button class="btn" type="button" id="addCustom">Ajouter au panier</button>
+            </article>
+          </div>
+        </div>
+
+        <div class="product-panel" id="panel-desserts">
+          <div class="grid" id="dessertGrid"></div>
+        </div>
+
+        <div class="product-panel" id="panel-boissons">
+          <div class="grid" id="drinkGrid"></div>
+        </div>
+
+        <div class="product-panel" id="panel-formules">
+          <div class="grid" id="formulaGrid"></div>
+        </div>
+
+        <div class="product-panel" id="panel-votes">
+          <div class="grid two" id="voteGrid"></div>
+          <div class="actions"><button class="btn secondary" type="button" data-nav="avis">Avis & fidélité</button></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="view" id="view-evenements">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2>Événements privés</h2>
+            <p>Page dédiée aux anniversaires, mariages, associations, entreprises et soirées privées. Aucun créneau de retrait ici.</p>
+          </div>
+          <button class="btn" type="button" data-scroll="#quoteForm">Demander un devis</button>
+        </div>
+        <div class="grid two">
+          <article class="card highlight"><h3>Prestation remorque</h3><p>Estimation des pizzas, desserts et boissons selon nombre d'invités, accès, durée et zone autour de Courniou / Saint-Pons-de-Thomières.</p></article>
+          <article class="card"><h3>Planning privé</h3><p>Le planning sert à visualiser les demandes événementielles privées. Les retraits commande restent uniquement dans le panier.</p><button class="btn secondary" type="button" data-open-planning>Voir planning</button></article>
+        </div>
+        <form class="card" id="quoteForm" style="margin-top:16px">
+          <h3>Demande de devis événement</h3>
+          <div class="grid two">
+            <div class="field"><label>Nom</label><input required name="name" placeholder="Votre nom"></div>
+            <div class="field"><label>Téléphone ou email</label><input required name="contact" placeholder="Contact pour réponse simulée"></div>
+            <div class="field"><label>Date souhaitée</label><input type="date" name="date"></div>
+            <div class="field"><label>Nombre d'invités</label><input type="number" min="1" name="guests" value="40"></div>
+          </div>
+          <div class="field"><label>Message</label><textarea name="message" placeholder="Lieu, accès remorque, horaires, besoin desserts / boissons..."></textarea></div>
+          <button class="btn" type="submit">Envoyer la demande fictive</button>
+          <div id="quoteResult"></div>
+        </form>
+      </div>
+    </section>
+
+    <section class="view" id="view-contact">
+      <div class="wrap">
+        <div class="section-head">
+          <div><h2>Contact</h2><p>Formulaire de contact simulé pour une preview client propre, sans envoi réel.</p></div>
+          <button class="btn secondary" type="button" data-nav="evenements">Demander un devis</button>
+        </div>
+        <form class="card" id="contactForm">
+          <div class="grid two">
+            <div class="field"><label>Nom</label><input required name="name" placeholder="Votre nom"></div>
+            <div class="field"><label>Email ou téléphone</label><input required name="contact" placeholder="Votre contact"></div>
+          </div>
+          <div class="field"><label>Sujet</label><select name="subject"><option>Commande</option><option>Événement privé</option><option>Question allergènes</option><option>Autre</option></select></div>
+          <div class="field"><label>Message</label><textarea required name="message" placeholder="Votre message"></textarea></div>
+          <button class="btn" type="submit">Envoyer le message fictif</button>
+          <div id="contactResult"></div>
+        </form>
+      </div>
+    </section>
+
+    <section class="view" id="view-trouver">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2>Où nous trouver</h2>
+            <p>Zone locale uniquement : Courniou, Saint-Pons-de-Thomières et environ 30 minutes autour.</p>
+          </div>
+          <button class="btn" type="button" data-nav="menu">Commander</button>
+        </div>
+        <div class="grid two">
+          <article class="card media-card">
+            <div class="media" style="height:320px"><img src="assets/ou-nous-trouver.svg" alt="Carte Courniou Saint-Pons-de-Thomières zone 30 minutes"></div>
+          </article>
+          <div class="route-list">
+            <article class="route"><span class="pin">1</span><div><h3>Courniou</h3><p>Point de présence principal selon planning.</p></div><button class="btn secondary" type="button" data-open-planning>Voir planning</button></article>
+            <article class="route"><span class="pin">2</span><div><h3>Saint-Pons-de-Thomières</h3><p>Passages et événements locaux en simulation.</p></div><button class="btn secondary" type="button" data-open-planning>Voir planning</button></article>
+            <article class="route"><span class="pin">3</span><div><h3>30 min autour</h3><p>Prestations privées possibles selon accès remorque.</p></div><button class="btn secondary" type="button" data-nav="evenements">Demander un devis</button></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="view" id="view-avis">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2>Avis & fidélité</h2>
+            <p>Pleine page dans l'esprit "Vos votes" : avis, points fictifs, dessert offert et votes clients.</p>
+          </div>
+          <button class="btn" type="button" data-menu-tab-jump="votes">Votes de la semaine</button>
+        </div>
+        <div class="grid two">
+          <article class="card highlight"><h3>Carte fidélité fictive</h3><p><b id="loyaltyPoints">5</b> points sur 8. Au 8e point, dessert non premium offert selon stock disponible.</p><div class="progress"><span style="width:62%"></span></div></article>
+          <article class="card"><h3>Avis client simulé</h3><p>"Accueil chaleureux, pizza bien garnie, commande simple. La remorque donne vraiment envie."</p><button class="btn secondary" type="button" id="addReview">Laisser un avis fictif</button></article>
+        </div>
+        <div class="grid two" id="voteGridFull" style="margin-top:16px"></div>
+      </div>
+    </section>
+  </main>
+
+  <div class="overlay" id="overlay"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Panier">
+    <div class="section-head"><div><h2>Panier</h2><p>Thème Pizza Baladzo, paiement fictif uniquement.</p></div><button class="btn secondary" type="button" data-close-cart>Fermer</button></div>
+    <div id="cartLines"></div>
+    <div class="total"><span>Total</span><span id="cartTotal">0,00 EUR</span></div>
+    <div class="field"><label>Créneau de retrait</label><select id="pickupSlot"><option>Ce soir - 18h30</option><option>Ce soir - 19h00</option><option>Ce soir - 19h30</option><option>Ce soir - 20h00</option></select></div>
+    <button class="btn ok" type="button" id="fakePayment">Paiement fictif</button>
+    <div id="paymentResult"></div>
+  </aside>
+
+  <div class="modal" id="accountModal" aria-hidden="true">
+    <div class="modal-card">
+      <div class="section-head"><div><h2>Mon compte</h2><p>Compte client simulé, sans identifiant réel.</p></div><button class="btn secondary" type="button" data-close-modal>Fermer</button></div>
+      <div class="grid two">
+        <form class="card" id="accountForm">
+          <h3>Connexion fictive</h3>
+          <div class="field"><label>Email</label><input value="client.demo@pizzabaladzo.local"></div>
+          <div class="field"><label>Nom affiché</label><input value="Client preview"></div>
+          <button class="btn" type="submit">Enregistrer la simulation</button>
+          <div id="accountResult"></div>
+        </form>
+        <article class="card highlight">
+          <h3>Admin prévu</h3>
+          <p>Modules conservés / prévus pour pilotage, démonstration et future connexion réelle.</p>
+          <button class="btn secondary" type="button" id="toggleAdmin">Afficher l'aperçu admin</button>
+        </article>
+      </div>
+      <div id="adminPreview" class="hide" style="margin-top:14px">
+        <div class="admin-grid" id="adminGrid"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="planningModal" aria-hidden="true">
+    <div class="modal-card">
+      <div class="section-head"><div><h2>Planning</h2><p>Planning public simulé des présences et événements privés.</p></div><button class="btn secondary" type="button" data-close-modal>Fermer</button></div>
+      <div class="route-list">
+        <article class="route"><span class="pin">L</span><div><h3>Vendredi</h3><p>Courniou - présence locale en soirée.</p></div></article>
+        <article class="route"><span class="pin">S</span><div><h3>Samedi</h3><p>Saint-Pons-de-Thomières - service selon autorisation.</p></div></article>
+        <article class="route"><span class="pin">P</span><div><h3>Événement privé</h3><p>Sur devis, autour de 30 minutes selon accès.</p></div></article>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="wrap">Pizza Baladzo - preview client corrigee V200000. Données fictives, paiements fictifs, aucun service externe connecté.</div>
+  </footer>
+
+  <script>
+    const euros = value => value.toLocaleString('fr-FR',{style:'currency',currency:'EUR'});
+    const products = [
+      {id:'margherita',cat:'classic',name:'Margherita',price:10,img:'assets/pizza-margherita.svg',desc:'Tomate, mozzarella, basilic.',tags:['Classique','Allergènes: gluten, lait']},
+      {id:'reine',cat:'classic',name:'Reine',price:12,img:'assets/pizza-reine.svg',desc:'Tomate, mozzarella, jambon, champignons.',tags:['Classique','Allergènes: gluten, lait']},
+      {id:'chevre',cat:'classic',name:'Chèvre miel',price:13,img:'assets/pizza-chevre.svg',desc:'Crème, mozzarella, chèvre, miel.',tags:['Classique','Allergènes: gluten, lait']},
+      {id:'orientale',cat:'classic',name:'Orientale',price:13.5,img:'assets/pizza-orientale.svg',desc:'Tomate, mozzarella, merguez, poivrons.',tags:['Classique','Allergènes: gluten, lait']},
+      {id:'tiramisu',cat:'dessert',name:'Tiramisu ramequin',price:4.5,img:'assets/desserts.svg',desc:'Dessert maison en portion individuelle.',tags:['Dessert','DLC simulée']},
+      {id:'panna',cat:'dessert',name:'Panna cotta',price:4,img:'assets/desserts.svg',desc:'Coulis selon arrivage.',tags:['Dessert','Stock fictif']},
+      {id:'cola',cat:'drink',name:'Cola',price:2.5,img:'assets/boissons.svg',desc:'Boisson fraîche 33 cl.',tags:['Boisson','Sans alcool']},
+      {id:'orange',cat:'drink',name:'Orange',price:2.5,img:'assets/boissons.svg',desc:'Boisson fruitée 33 cl.',tags:['Boisson','Sans alcool']},
+      {id:'solo',cat:'formula',name:'Formule solo',price:15,img:'assets/pizza-margherita.svg',desc:'Pizza classique + boisson.',tags:['Formule','Preview']},
+      {id:'gourmande',cat:'formula',name:'Formule gourmande',price:18,img:'assets/pizza-reine.svg',desc:'Pizza classique + boisson + dessert.',tags:['Formule','Preview']}
+    ];
+    const voteItems = [
+      {id:'vote1',name:'Montagne violette',img:'assets/pizza-chevre.svg',score:62,desc:'Crème, chèvre, oignons, miel.'},
+      {id:'vote2',name:'Sud express',img:'assets/pizza-orientale.svg',score:38,desc:'Tomate, poivrons, merguez, herbes.'}
+    ];
+    const adminItems = ['Produits','Ingrédients','Prix','Allergènes','Commandes','Stocks','Fournisseurs','Factures','Événements','Promotions','Marges','Rentabilité','Recettes','DLC','Hygiène','Comptabilité','Mode démo','Mode banque','Mode test','Mode réel'];
+    const cart = [];
+    const custom = {size:'L',base:'Tomate',ingredients:['Mozzarella','Jambon'],remove:[],price:12};
+
+    function showView(id){
+      document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+      const view = document.getElementById('view-' + id);
+      if(view){ view.classList.add('active'); window.scrollTo({top:0,behavior:'smooth'}); }
+      document.querySelectorAll('[data-nav]').forEach(a=>a.classList.toggle('active',a.dataset.nav===id));
+      document.getElementById('navlinks').classList.remove('open');
+      history.replaceState(null,'','#' + id);
+    }
+    function card(product){
+      return `<article class="card media-card">
+        <div class="media"><img src="${product.img}" alt="${product.name} visible en entier"></div>
+        <div class="body">
+          <h3>${product.name}</h3><p>${product.desc}</p>
+          <div class="tags">${product.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+          <div class="price">${euros(product.price)}</div>
+          <button class="btn" type="button" data-add="${product.id}">Ajouter au panier</button>
+        </div>
+      </article>`;
+    }
+    function renderProducts(){
+      document.getElementById('classicGrid').innerHTML = products.filter(p=>p.cat==='classic').map(card).join('');
+      document.getElementById('dessertGrid').innerHTML = products.filter(p=>p.cat==='dessert').map(card).join('');
+      document.getElementById('drinkGrid').innerHTML = products.filter(p=>p.cat==='drink').map(card).join('');
+      document.getElementById('formulaGrid').innerHTML = products.filter(p=>p.cat==='formula').map(card).join('');
+    }
+    function renderVotes(){
+      const html = voteItems.map(v=>`<article class="card vote-card">
+        <img src="${v.img}" alt="${v.name} visible en entier">
+        <div><h3>${v.name}</h3><p>${v.desc}</p><div class="progress"><span style="width:${v.score}%"></span></div><p>${v.score}% des votes fictifs</p><button class="btn secondary" type="button" data-vote="${v.id}">Voter</button></div>
+      </article>`).join('');
+      document.getElementById('voteGrid').innerHTML = html;
+      document.getElementById('voteGridFull').innerHTML = html;
+    }
+    function renderChoices(){
+      const sizes = [{n:'S',p:10},{n:'L',p:12},{n:'XL',p:15}];
+      const bases = ['Tomate','Crème','Barbecue'];
+      const ingredients = ['Mozzarella','Jambon','Champignons','Chèvre','Merguez','Poivrons','Olives','Oignons'];
+      const remove = ['Sans fromage','Sans viande','Sans champignons','Sans olives'];
+      document.getElementById('sizeChoices').innerHTML = sizes.map(s=>`<button class="choice ${custom.size===s.n?'active':''}" type="button" data-size="${s.n}" data-price="${s.p}">${s.n}</button>`).join('');
+      document.getElementById('baseChoices').innerHTML = bases.map(b=>`<button class="choice ${custom.base===b?'active':''}" type="button" data-base="${b}">${b}</button>`).join('');
+      document.getElementById('ingredientChoices').innerHTML = ingredients.map(i=>`<button class="choice ${custom.ingredients.includes(i)?'active':''}" type="button" data-ing="${i}">${i}</button>`).join('');
+      document.getElementById('removeChoices').innerHTML = remove.map(r=>`<button class="choice ${custom.remove.includes(r)?'active':''}" type="button" data-remove="${r}">${r}</button>`).join('');
+      const addPrice = Math.max(0,custom.ingredients.length-2) * 1.2;
+      custom.price = ({S:10,L:12,XL:15}[custom.size] || 12) + addPrice;
+      document.getElementById('customPrice').textContent = euros(custom.price);
+    }
+    function addToCart(item){
+      cart.push(item);
+      renderCart();
+      openCart();
+    }
+    function renderCart(){
+      document.getElementById('cartCount').textContent = cart.length;
+      document.getElementById('cartLines').innerHTML = cart.length ? cart.map((item,index)=>`<div class="cart-line"><div><b>${item.name}</b><br><small>${item.note||'Commande preview'}</small></div><div><b>${euros(item.price)}</b><br><button class="choice" type="button" data-remove-line="${index}">Retirer</button></div></div>`).join('') : '<div class="notice">Panier vide pour le moment.</div>';
+      document.getElementById('cartTotal').textContent = euros(cart.reduce((sum,item)=>sum+item.price,0));
+    }
+    function openCart(){document.getElementById('cartDrawer').classList.add('open');document.getElementById('overlay').classList.add('open')}
+    function closeAll(){document.getElementById('cartDrawer').classList.remove('open');document.getElementById('overlay').classList.remove('open');document.querySelectorAll('.modal').forEach(m=>m.classList.remove('open'))}
+    function openModal(id){document.getElementById(id).classList.add('open');document.getElementById('overlay').classList.add('open')}
+    function setResult(id,text,ok=true){document.getElementById(id).innerHTML = `<div class="notice ${ok?'success':''}">${text}</div>`}
+    function renderAdmin(){document.getElementById('adminGrid').innerHTML = adminItems.map(i=>`<div class="admin-item"><b>${i}</b><span class="tag">Prévu</span></div>`).join('')}
+
+    document.addEventListener('click', e=>{
+      const nav = e.target.closest('[data-nav]');
+      if(nav){ e.preventDefault(); showView(nav.dataset.nav); }
+      const tab = e.target.closest('[data-menu-tab]');
+      if(tab){
+        document.querySelectorAll('[data-menu-tab]').forEach(b=>b.classList.toggle('active',b===tab));
+        document.querySelectorAll('.product-panel').forEach(p=>p.classList.remove('active'));
+        document.getElementById('panel-' + tab.dataset.menuTab).classList.add('active');
+      }
+      const jump = e.target.closest('[data-menu-tab-jump]');
+      if(jump){ showView('menu'); document.querySelector(`[data-menu-tab="${jump.dataset.menuTabJump}"]`).click(); }
+      const add = e.target.closest('[data-add]');
+      if(add){ const p = products.find(x=>x.id===add.dataset.add); addToCart({name:p.name,price:p.price,note:p.desc}); }
+      const vote = e.target.closest('[data-vote]');
+      if(vote){ const item = voteItems.find(v=>v.id===vote.dataset.vote); item.score = Math.min(99,item.score + 4); renderVotes(); }
+      if(e.target.closest('[data-open-cart]')) openCart();
+      if(e.target.closest('[data-close-cart]')) closeAll();
+      if(e.target.closest('[data-open-account]')) openModal('accountModal');
+      if(e.target.closest('[data-open-planning]')) openModal('planningModal');
+      if(e.target.closest('[data-close-modal]')) closeAll();
+      if(e.target.id==='overlay') closeAll();
+      if(e.target.id==='mobileMenu') document.getElementById('navlinks').classList.toggle('open');
+      const size = e.target.closest('[data-size]');
+      if(size){ custom.size=size.dataset.size; renderChoices(); }
+      const base = e.target.closest('[data-base]');
+      if(base){ custom.base=base.dataset.base; renderChoices(); }
+      const ing = e.target.closest('[data-ing]');
+      if(ing){ custom.ingredients = custom.ingredients.includes(ing.dataset.ing) ? custom.ingredients.filter(x=>x!==ing.dataset.ing) : [...custom.ingredients,ing.dataset.ing]; renderChoices(); }
+      const rem = e.target.closest('[data-remove]');
+      if(rem){ custom.remove = custom.remove.includes(rem.dataset.remove) ? custom.remove.filter(x=>x!==rem.dataset.remove) : [...custom.remove,rem.dataset.remove]; renderChoices(); }
+      const removeLine = e.target.closest('[data-remove-line]');
+      if(removeLine){ cart.splice(Number(removeLine.dataset.removeLine),1); renderCart(); }
+      const scroll = e.target.closest('[data-scroll]');
+      if(scroll){ document.querySelector(scroll.dataset.scroll)?.scrollIntoView({behavior:'smooth'}); }
+    });
+
+    document.getElementById('addCustom').addEventListener('click',()=>{
+      addToCart({name:'Pizza personnalisable ' + custom.size,price:custom.price,note:`Base ${custom.base} - ${custom.ingredients.join(', ')}${custom.remove.length?' - '+custom.remove.join(', '):''}`});
+    });
+    document.getElementById('fakePayment').addEventListener('click',()=>{
+      if(!cart.length){ setResult('paymentResult','Ajoutez au moins un produit avant le paiement fictif.',false); return; }
+      setResult('paymentResult',`Paiement fictif validé. Créneau de retrait simulé : ${document.getElementById('pickupSlot').value}.`);
+    });
+    document.getElementById('contactForm').addEventListener('submit',e=>{e.preventDefault();setResult('contactResult','Message fictif enregistré pour la preview. Aucun email réel envoyé.');});
+    document.getElementById('quoteForm').addEventListener('submit',e=>{e.preventDefault();const guests = Number(new FormData(e.target).get('guests')||0);setResult('quoteResult',`Devis fictif généré : environ ${Math.ceil(guests*.85)} pizzas, ${Math.ceil(guests*.35)} desserts et ${Math.ceil(guests*.65)} boissons.`);});
+    document.getElementById('accountForm').addEventListener('submit',e=>{e.preventDefault();setResult('accountResult','Compte client fictif mis à jour.');});
+    document.getElementById('toggleAdmin').addEventListener('click',()=>document.getElementById('adminPreview').classList.toggle('hide'));
+    document.getElementById('addReview').addEventListener('click',()=>alert('Avis fictif ajouté à la preview client.'));
+
+    renderProducts();
+    renderVotes();
+    renderChoices();
+    renderCart();
+    renderAdmin();
+    const hash = location.hash.replace('#','');
+    if(hash && document.getElementById('view-' + hash)) showView(hash);
+  </script>
+</body>
+</html>

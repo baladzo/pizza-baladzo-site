@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 520" role="img" aria-label="Carte autour de Courniou et Saint-Pons-de-Thomières">
+  <rect width="720" height="520" rx="36" fill="#120b18"/>
+  <path d="M76 340 C182 236 252 296 348 210 C452 116 538 184 646 98" fill="none" stroke="#8d3cff" stroke-width="18" stroke-linecap="round" opacity=".75"/>
+  <path d="M110 420 C238 362 332 398 442 310 C536 236 594 248 646 220" fill="none" stroke="#ff9b3d" stroke-width="10" stroke-linecap="round" opacity=".72"/>
+  <g fill="#fffaf5" font-family="Arial" font-weight="900">
+    <circle cx="230" cy="280" r="20" fill="#c79cff"/><text x="260" y="286" font-size="24">Courniou</text>
+    <circle cx="430" cy="210" r="20" fill="#ff9b3d"/><text x="460" y="216" font-size="24">Saint-Pons</text>
+    <circle cx="354" cy="260" r="132" fill="none" stroke="#fffaf5" stroke-width="4" stroke-dasharray="12 12" opacity=".42"/>
+    <text x="286" y="410" font-size="22" fill="#cfc5d8">Zone 30 min autour</text>
+  </g>
+</svg>

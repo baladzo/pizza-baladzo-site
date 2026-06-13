@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 520" role="img" aria-label="Pizza Orientale entière">
+  <rect width="720" height="520" rx="36" fill="#120b18"/>
+  <circle cx="360" cy="260" r="184" fill="#d9903d"/>
+  <circle cx="360" cy="260" r="158" fill="#f5c86b"/>
+  <g fill="#a12c2c"><ellipse cx="292" cy="232" rx="38" ry="21" transform="rotate(-18 292 232)"/><ellipse cx="414" cy="218" rx="42" ry="21" transform="rotate(21 414 218)"/><ellipse cx="360" cy="318" rx="45" ry="22" transform="rotate(7 360 318)"/><ellipse cx="468" cy="314" rx="37" ry="20" transform="rotate(-26 468 314)"/></g>
+  <g fill="#ffe6a3"><circle cx="338" cy="252" r="22"/><circle cx="428" cy="284" r="24"/></g>
+  <g fill="#2f9b52"><path d="M246 306 l34 -20 l13 42 z"/><path d="M492 238 l32 -15 l6 38 z"/><path d="M341 176 l26 18 l-32 16 z"/></g>
+</svg>

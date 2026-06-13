@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 520" role="img" aria-label="Pizza Margherita entière">
+  <rect width="720" height="520" rx="36" fill="#120b18"/>
+  <circle cx="360" cy="260" r="184" fill="#d9903d"/>
+  <circle cx="360" cy="260" r="158" fill="#f5c86b"/>
+  <path d="M230 236 C290 154 404 152 490 230 C430 248 344 244 230 236 Z" fill="#cf342e" opacity=".88"/>
+  <path d="M236 292 C322 226 438 236 500 318 C408 350 312 350 236 292 Z" fill="#cf342e" opacity=".88"/>
+  <g fill="#fff2d0"><circle cx="310" cy="225" r="26"/><circle cx="405" cy="235" r="31"/><circle cx="352" cy="310" r="29"/><circle cx="458" cy="315" r="24"/></g>
+  <g fill="#3fa35b"><ellipse cx="288" cy="310" rx="14" ry="30" transform="rotate(-36 288 310)"/><ellipse cx="416" cy="285" rx="13" ry="28" transform="rotate(42 416 285)"/><ellipse cx="360" cy="197" rx="13" ry="26" transform="rotate(18 360 197)"/></g>
+</svg>

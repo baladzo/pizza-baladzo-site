@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 520" role="img" aria-label="Pizza personnalisable entière avec ingrédients">
+  <rect width="720" height="520" rx="36" fill="#120b18"/>
+  <circle cx="280" cy="264" r="150" fill="#d9903d"/>
+  <circle cx="280" cy="264" r="128" fill="#f6ca70"/>
+  <circle cx="246" cy="226" r="21" fill="#fff2d0"/><circle cx="316" cy="272" r="24" fill="#cf342e"/><circle cx="244" cy="318" r="24" fill="#fff2d0"/><ellipse cx="330" cy="213" rx="34" ry="17" fill="#a12c2c"/>
+  <g transform="translate(470 132)">
+    <rect x="0" y="0" width="130" height="48" rx="18" fill="#2b1840" stroke="#8d3cff"/>
+    <rect x="0" y="74" width="130" height="48" rx="18" fill="#2b1840" stroke="#8d3cff"/>
+    <rect x="0" y="148" width="130" height="48" rx="18" fill="#2b1840" stroke="#8d3cff"/>
+    <text x="65" y="31" text-anchor="middle" font-family="Arial" font-size="20" font-weight="900" fill="#fff">S</text>
+    <text x="65" y="105" text-anchor="middle" font-family="Arial" font-size="20" font-weight="900" fill="#fff">L</text>
+    <text x="65" y="179" text-anchor="middle" font-family="Arial" font-size="20" font-weight="900" fill="#fff">XL</text>
+  </g>
+</svg>

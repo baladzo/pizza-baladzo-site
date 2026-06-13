@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 520" role="img" aria-label="Pizza Reine entière">
+  <rect width="720" height="520" rx="36" fill="#120b18"/>
+  <circle cx="360" cy="260" r="184" fill="#d9903d"/>
+  <circle cx="360" cy="260" r="158" fill="#f5c86b"/>
+  <circle cx="284" cy="218" r="27" fill="#d9c2a2"/><circle cx="435" cy="218" r="30" fill="#d9c2a2"/><circle cx="380" cy="336" r="33" fill="#d9c2a2"/>
+  <g fill="#c74848"><rect x="260" y="274" width="76" height="38" rx="14" transform="rotate(-13 298 293)"/><rect x="394" y="272" width="78" height="38" rx="14" transform="rotate(18 433 291)"/><rect x="326" y="190" width="76" height="38" rx="14" transform="rotate(7 364 209)"/></g>
+  <g fill="#5d4a39"><circle cx="326" cy="302" r="13"/><circle cx="463" cy="252" r="12"/><circle cx="300" cy="188" r="11"/><circle cx="414" cy="360" r="12"/></g>
+  <g fill="#fff2d0" opacity=".85"><circle cx="355" cy="250" r="22"/><circle cx="414" cy="302" r="24"/></g>
+</svg>

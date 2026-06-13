@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="42%" r="62%">
+      <stop offset="0" stop-color="#15101d"/>
+      <stop offset="1" stop-color="#06040a"/>
+    </radialGradient>
+    <linearGradient id="violet" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#c79cff"/>
+      <stop offset="1" stop-color="#8d3cff"/>
+    </linearGradient>
+  </defs>
+  <circle cx="256" cy="256" r="246" fill="url(#bg)" stroke="url(#violet)" stroke-width="20"/>
+  <path d="M170 132c22-48 150-48 172 0 24-9 61 13 54 51-7 35-45 43-72 26H188c-27 17-65 9-72-26-7-38 30-60 54-51Z" fill="none" stroke="url(#violet)" stroke-width="18" stroke-linejoin="round"/>
+  <path d="M154 275c36-76 168-92 244 0" fill="none" stroke="url(#violet)" stroke-width="22" stroke-linecap="round"/>
+  <path d="M130 292h252" stroke="url(#violet)" stroke-width="14" stroke-linecap="round"/>
+  <circle cx="214" cy="248" r="14" fill="#8d3cff"/>
+  <circle cx="258" cy="236" r="14" fill="#8d3cff"/>
+  <circle cx="305" cy="248" r="14" fill="#8d3cff"/>
+  <text x="256" y="372" text-anchor="middle" font-family="Arial, sans-serif" font-size="86" font-weight="900" fill="#fffaf5">PIZZA</text>
+  <text x="256" y="430" text-anchor="middle" font-family="Arial, sans-serif" font-size="54" font-weight="900" fill="#8d3cff">BALADZO</text>
+</svg>

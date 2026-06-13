@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-label="Remorque Pizza Baladzo sous un ciel violet rose orange">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1b0a2b"/>
+      <stop offset=".42" stop-color="#7d2cff"/>
+      <stop offset=".72" stop-color="#e85fa8"/>
+      <stop offset="1" stop-color="#ff9b3d"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="72%" cy="20%" r="45%">
+      <stop offset="0" stop-color="#ffd2a1" stop-opacity=".92"/>
+      <stop offset=".42" stop-color="#e85fa8" stop-opacity=".42"/>
+      <stop offset="1" stop-color="#13051e" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="trailer" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#21112e"/>
+      <stop offset=".58" stop-color="#08060b"/>
+      <stop offset="1" stop-color="#2b1640"/>
+    </linearGradient>
+    <linearGradient id="violet" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#c79cff"/>
+      <stop offset="1" stop-color="#8d3cff"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="720" fill="url(#sky)"/>
+  <rect width="1200" height="720" fill="url(#glow)"/>
+  <path d="M0 526 C210 470 360 526 560 486 C765 445 930 500 1200 456 L1200 720 L0 720 Z" fill="#08050c" opacity=".88"/>
+  <path d="M95 560 H1018" stroke="#ffb66d" stroke-width="8" stroke-linecap="round" opacity=".48"/>
+  <g transform="translate(185 215)">
+    <rect x="45" y="134" width="650" height="236" rx="28" fill="url(#trailer)" stroke="url(#violet)" stroke-width="8"/>
+    <path d="M110 134 L176 52 H548 L648 134 Z" fill="#13091d" stroke="#8d3cff" stroke-width="8" stroke-linejoin="round"/>
+    <rect x="140" y="175" width="300" height="116" rx="18" fill="#fff7e8" opacity=".96"/>
+    <path d="M470 176 h145 v118 h-145 z" fill="#1d0f29" stroke="#c79cff" stroke-width="5"/>
+    <text x="290" y="224" text-anchor="middle" font-family="Arial, sans-serif" font-size="38" font-weight="900" fill="#15101d">PIZZA</text>
+    <text x="290" y="264" text-anchor="middle" font-family="Arial, sans-serif" font-size="34" font-weight="900" fill="#8d3cff">BALADZO</text>
+    <circle cx="183" cy="382" r="48" fill="#07060a" stroke="#2f2935" stroke-width="16"/>
+    <circle cx="565" cy="382" r="48" fill="#07060a" stroke="#2f2935" stroke-width="16"/>
+    <path d="M695 300 L840 360" stroke="#c79cff" stroke-width="10" stroke-linecap="round"/>
+    <circle cx="860" cy="369" r="18" fill="#c79cff"/>
+    <path d="M575 88 C590 49 634 58 634 100 C665 83 697 113 673 145 C651 174 600 161 580 133 C561 155 529 145 526 118 C523 93 552 81 575 88 Z" fill="#ffb347"/>
+    <path d="M603 111 C606 92 627 90 628 114 C644 105 657 121 644 136 C631 151 604 143 596 129 C588 141 573 134 575 120 C577 108 590 105 603 111 Z" fill="#fff3cf"/>
+  </g>
+</svg>

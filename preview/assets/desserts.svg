@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 520" role="img" aria-label="Desserts en ramequins visibles en entier">
+  <rect width="720" height="520" rx="36" fill="#120b18"/>
+  <g transform="translate(120 120)">
+    <rect x="0" y="80" width="150" height="180" rx="34" fill="#2a1838" stroke="#c79cff" stroke-width="6"/>
+    <ellipse cx="75" cy="82" rx="72" ry="30" fill="#6d3f9b"/>
+    <ellipse cx="75" cy="72" rx="58" ry="22" fill="#f3d5b5"/>
+    <rect x="190" y="80" width="150" height="180" rx="34" fill="#2a1838" stroke="#c79cff" stroke-width="6"/>
+    <ellipse cx="265" cy="82" rx="72" ry="30" fill="#6d3f9b"/>
+    <ellipse cx="265" cy="72" rx="58" ry="22" fill="#5b2d1f"/>
+    <rect x="380" y="80" width="150" height="180" rx="34" fill="#2a1838" stroke="#c79cff" stroke-width="6"/>
+    <ellipse cx="455" cy="82" rx="72" ry="30" fill="#6d3f9b"/>
+    <ellipse cx="455" cy="72" rx="58" ry="22" fill="#fff2d0"/>
+  </g>
+</svg>
