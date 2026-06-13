@@ -3,570 +3,2348 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Pizza Baladzo - Preview client V200000 corrigee</title>
-  <meta name="description" content="Preview client Pizza Baladzo : menu, commande simulee, evenements prives, contact, emplacements, votes et compte client.">
-  <meta name="theme-color" content="#8d3cff">
+  <title>Pizza Baladzo - Preview client</title>
+  <meta name="description" content="Preview client Pizza Baladzo en maquettes exactes cliquables.">
+  <meta name="theme-color" content="#050208">
   <link rel="icon" href="assets/logo-pizza-baladzo.svg" type="image/svg+xml">
   <style>
     :root{
-      --bg:#09070d;
-      --panel:#15101d;
-      --panel2:#21142f;
-      --ink:#fffaf5;
-      --muted:#cfc5d8;
-      --line:rgba(255,255,255,.14);
-      --violet:#8d3cff;
-      --violet2:#c79cff;
-      --orange:#ff9b3d;
-      --rose:#e85fa8;
-      --green:#22c55e;
-      --red:#ef4444;
-      --shadow:0 24px 70px rgba(0,0,0,.38);
-      --radius:8px;
+      --bg:#050208;
+      --violet:#b63cff;
+      --violet-2:#e069ff;
+      --panel:rgba(8,5,13,.93);
+      --line:rgba(205,69,255,.72);
+      --text:#fff;
+      --muted:#d8c8e6;
     }
     *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      font-family:Inter,Segoe UI,Roboto,Arial,sans-serif;
-      color:var(--ink);
-      background:
-        radial-gradient(circle at 14% 0%, rgba(141,60,255,.36), transparent 30rem),
-        radial-gradient(circle at 82% 5%, rgba(255,155,61,.24), transparent 26rem),
-        linear-gradient(180deg,#08050c 0%,#13091d 46%,#09070d 100%);
-      min-height:100vh;
-    }
-    a{color:inherit;text-decoration:none}
-    button,input,select,textarea{font:inherit}
+    html,body{margin:0;min-height:100%;background:#050208;color:var(--text);font-family:Inter,Segoe UI,Arial,sans-serif}
+    body{overflow-x:hidden}
+    button,input,textarea,select{font:inherit}
     button{cursor:pointer}
-    img{display:block;max-width:100%;height:auto;object-fit:contain}
-    .wrap{width:min(1180px,calc(100% - 32px));margin:0 auto}
-    .topbar{
-      position:sticky;top:0;z-index:50;
-      background:rgba(9,7,13,.88);
-      backdrop-filter:blur(14px);
-      border-bottom:1px solid var(--line);
+    .app{
+      min-height:100vh;
+      display:flex;
+      align-items:flex-start;
+      justify-content:center;
+      background:
+        radial-gradient(circle at 77% 8%,rgba(188,54,255,.18),transparent 30rem),
+        radial-gradient(circle at 21% 95%,rgba(255,112,28,.11),transparent 26rem),
+        #050208;
     }
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 0}
-    .brand{display:flex;align-items:center;gap:12px;min-width:205px}
-    .brand img{width:52px;height:52px;border-radius:50%;background:#09070d;box-shadow:0 0 30px rgba(141,60,255,.38)}
-    .brand strong{display:block;font-size:18px}.brand span{display:block;color:var(--violet2);font-size:12px}
-    .navlinks{display:flex;align-items:center;gap:4px;flex-wrap:wrap;justify-content:flex-end}
-    .navlinks a,.top-action,.hamburger{
-      border:1px solid transparent;border-radius:999px;padding:9px 12px;
-      background:transparent;color:var(--muted);white-space:nowrap;
+    .mockup{
+      position:relative;
+      width:min(100vw,var(--page-width));
+      margin:0 auto;
+      background:#050208;
+      box-shadow:0 0 46px rgba(183,60,255,.22);
     }
-    .navlinks a:hover,.navlinks a.active,.top-action:hover{border-color:var(--line);background:rgba(255,255,255,.06);color:#fff}
-    .top-actions{display:flex;align-items:center;gap:6px}
-    .hamburger{display:none;border-color:var(--line);color:#fff;background:rgba(255,255,255,.06)}
-    .view{display:none;min-height:calc(100vh - 77px);padding:34px 0 54px}
-    .view.active{display:block}
-    .hero{
-      min-height:calc(100vh - 94px);
-      display:grid;grid-template-columns:1fr 1.04fr;gap:28px;align-items:center;
-      padding:28px 0 48px;
+    .mockup img{
+      display:block;
+      width:100%;
+      height:auto;
+      user-select:none;
+      -webkit-user-drag:none;
     }
-    .eyebrow{display:inline-flex;gap:8px;align-items:center;color:var(--violet2);border:1px solid rgba(199,156,255,.35);background:rgba(141,60,255,.12);border-radius:999px;padding:8px 12px;font-weight:800;font-size:13px}
-    h1,h2,h3{margin:0;color:#fff;line-height:1.03;letter-spacing:0}
-    h1{font-size:clamp(42px,7vw,86px)}
-    h2{font-size:clamp(30px,4vw,52px)}
-    h3{font-size:22px}
-    p{color:var(--muted);line-height:1.62}
-    .hero p{font-size:18px;max-width:650px}
-    .hero-visual{border:1px solid var(--line);border-radius:var(--radius);background:#100817;box-shadow:var(--shadow);overflow:hidden}
-    .hero-visual img{width:100%;max-height:70vh;object-fit:contain;background:#120817}
-    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
-    .btn{
-      display:inline-flex;align-items:center;justify-content:center;gap:8px;
-      min-height:42px;border:0;border-radius:999px;padding:11px 16px;
-      color:#fff;background:linear-gradient(135deg,var(--violet),#5b21b6);
-      box-shadow:0 14px 34px rgba(141,60,255,.24);font-weight:900;
+    .site-nav-overlay{
+      position:absolute;
+      left:24%;
+      right:13%;
+      top:2.2%;
+      z-index:12;
+      min-height:7.2%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:clamp(10px,1.6vw,34px);
+      padding:10px 14px;
+      border-bottom:1px solid rgba(184,60,255,.32);
+      background:linear-gradient(180deg,rgba(5,2,8,.92),rgba(5,2,8,.72) 78%,rgba(5,2,8,0));
+      backdrop-filter:blur(3px);
     }
-    .btn.secondary{background:rgba(255,255,255,.07);border:1px solid var(--line);box-shadow:none;color:#fff}
-    .btn.ghost{background:transparent;border:1px solid rgba(199,156,255,.45);box-shadow:none}
-    .btn.ok{background:linear-gradient(135deg,#22c55e,#166534)}
-    .btn.warn{background:linear-gradient(135deg,#f59e0b,#92400e)}
-    .section-head{display:flex;justify-content:space-between;gap:18px;align-items:end;margin-bottom:20px}
-    .section-head p{margin:.45rem 0 0;max-width:760px}
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    .grid.two{grid-template-columns:repeat(2,1fr)}
-    .grid.four{grid-template-columns:repeat(4,1fr)}
-    .card{
-      border:1px solid var(--line);border-radius:var(--radius);
-      background:linear-gradient(180deg,rgba(255,255,255,.075),rgba(255,255,255,.025));
-      padding:18px;box-shadow:0 18px 45px rgba(0,0,0,.18);
+    .nav-button{
+      border:0;
+      border-radius:0;
+      background:transparent;
+      color:#fff;
+      padding:8px 4px;
+      font-size:clamp(9px,1vw,18px);
+      font-weight:900;
+      line-height:1;
+      text-transform:uppercase;
+      white-space:nowrap;
+      letter-spacing:0;
+      text-shadow:0 0 8px rgba(0,0,0,.75);
     }
-    .card.highlight{background:linear-gradient(135deg,rgba(141,60,255,.2),rgba(255,155,61,.07));border-color:rgba(199,156,255,.35)}
-    .media-card{padding:0;overflow:hidden}
-    .media-card .media{height:230px;display:grid;place-items:center;background:#0d0712;border-bottom:1px solid var(--line)}
-    .media-card .media img{width:100%;height:100%;object-fit:contain;padding:8px}
-    .media-card .body{padding:16px}
-    .price{font-size:26px;font-weight:950;color:#fff;margin:.45rem 0}
-    .tags{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0}
-    .tag{border:1px solid var(--line);border-radius:999px;padding:6px 9px;background:rgba(255,255,255,.05);color:var(--muted);font-size:13px}
-    .tabs{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}
-    .tab{border:1px solid var(--line);border-radius:999px;padding:10px 13px;background:rgba(255,255,255,.05);color:var(--muted)}
-    .tab.active{background:rgba(141,60,255,.2);border-color:rgba(199,156,255,.55);color:#fff}
-    .product-panel{display:none}.product-panel.active{display:block}
-    .field{display:grid;gap:7px;margin-bottom:12px}
-    label{color:#fff;font-weight:800;font-size:14px}
-    input,select,textarea{
-      width:100%;border:1px solid var(--line);border-radius:var(--radius);
-      background:rgba(0,0,0,.25);color:#fff;padding:12px;outline:none;
+    .nav-button.active{
+      color:var(--violet-2);
+      box-shadow:0 2px 0 var(--violet-2);
     }
-    textarea{min-height:112px;resize:vertical}
-    .choice-row{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
-    .choice{border:1px solid var(--line);border-radius:999px;padding:9px 12px;background:rgba(255,255,255,.055);color:var(--muted)}
-    .choice.active{border-color:var(--violet2);background:rgba(141,60,255,.24);color:#fff}
-    .cart-drawer{
-      position:fixed;inset:0 0 0 auto;width:min(480px,100%);
-      background:#110b18;border-left:1px solid var(--line);z-index:90;
-      transform:translateX(105%);transition:.22s ease;padding:18px;overflow:auto;box-shadow:var(--shadow);
+    .quick-actions-overlay{
+      position:absolute;
+      z-index:22;
+      right:3.2%;
+      top:2.3%;
+      display:flex;
+      align-items:center;
+      gap:8px;
     }
-    .cart-drawer.open{transform:translateX(0)}
-    .overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.62);z-index:80}.overlay.open{display:block}
-    .cart-line{display:grid;grid-template-columns:1fr auto;gap:10px;padding:12px 0;border-bottom:1px solid var(--line)}
-    .cart-line small{color:var(--muted)}
-    .total{display:flex;justify-content:space-between;align-items:center;font-size:22px;font-weight:950;margin:18px 0}
-    .modal{display:none;position:fixed;inset:0;align-items:center;justify-content:center;background:rgba(0,0,0,.68);z-index:100;padding:18px}
-    .modal.open{display:flex}
-    .modal-card{width:min(620px,100%);max-height:92vh;overflow:auto;border:1px solid var(--line);border-radius:var(--radius);background:#120d1b;padding:20px;box-shadow:var(--shadow)}
-    .notice{border:1px solid rgba(245,158,11,.45);background:rgba(245,158,11,.12);color:#fde68a;border-radius:var(--radius);padding:12px;margin:14px 0}
-    .success{border-color:rgba(34,197,94,.45);background:rgba(34,197,94,.12);color:#bbf7d0}
-    .admin-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-    .admin-item{border:1px solid var(--line);border-radius:var(--radius);padding:13px;background:rgba(255,255,255,.045)}
-    .admin-item b{display:block;color:#fff;margin-bottom:5px}
-    .route-list{display:grid;gap:12px}
-    .route{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;border:1px solid var(--line);border-radius:var(--radius);padding:14px;background:rgba(255,255,255,.045)}
-    .pin{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--violet),var(--orange));font-weight:950}
-    .vote-card{display:grid;grid-template-columns:180px 1fr;gap:18px;align-items:center}
-    .vote-card img{width:180px;height:130px;object-fit:contain;background:#0e0714;border:1px solid var(--line);border-radius:var(--radius)}
-    .progress{height:10px;background:rgba(255,255,255,.1);border-radius:999px;overflow:hidden;margin-top:10px}
-    .progress span{display:block;height:100%;background:linear-gradient(90deg,var(--violet),var(--orange))}
-    footer{border-top:1px solid var(--line);padding:22px 0;color:var(--muted);background:rgba(0,0,0,.24)}
-    .hide{display:none!important}
-    @media (max-width:930px){
-      .hero{grid-template-columns:1fr;min-height:auto}
-      .grid,.grid.two,.grid.four,.admin-grid{grid-template-columns:1fr 1fr}
-      .section-head{display:block}
-      .nav{align-items:flex-start}.hamburger{display:inline-flex}.navlinks{display:none;width:100%;order:3}.navlinks.open{display:flex}.nav{flex-wrap:wrap}
+    .quick-actions-overlay button{
+      border:1px solid rgba(218,97,255,.45);
+      border-radius:8px;
+      background:rgba(0,0,0,.24);
+      color:white;
+      min-height:36px;
+      padding:0 12px;
+      font-size:clamp(10px,.82vw,14px);
+      font-weight:900;
+      text-transform:uppercase;
+      cursor:pointer;
+      box-shadow:0 0 12px rgba(0,0,0,.25);
     }
-    @media (max-width:640px){
-      .wrap{width:min(100% - 22px,1180px)}
-      h1{font-size:42px}
-      .grid,.grid.two,.grid.four,.admin-grid{grid-template-columns:1fr}
-      .top-actions{width:100%;justify-content:space-between;order:2}
-      .brand{min-width:0}.brand strong{font-size:16px}
-      .hero p{font-size:16px}
-      .media-card .media{height:210px}
-      .vote-card{grid-template-columns:1fr}.vote-card img{width:100%;height:190px}
-      .route{grid-template-columns:auto 1fr}
-      .route .btn{grid-column:1 / -1}
+    .quick-actions-overlay button:hover,
+    .quick-actions-overlay button.active{
+      color:var(--violet-2);
+      border-color:rgba(218,97,255,.85);
+      box-shadow:0 0 16px rgba(183,60,255,.38);
+    }
+    .hotspot{
+      position:absolute;
+      left:calc(var(--x)*1%);
+      top:calc(var(--y)*1% - .9%);
+      width:calc(var(--w)*1%);
+      height:calc(var(--h)*1% + 1.8%);
+      border:0;
+      padding:0;
+      border-radius:8px;
+      color:transparent;
+      background:transparent;
+      opacity:0;
+      cursor:pointer;
+    }
+    .hotspot:hover{
+      opacity:0;
+    }
+    .hotspot:focus-visible{
+      opacity:1;
+      outline:2px solid rgba(230,105,255,.55);
+      outline-offset:2px;
+      background:rgba(183,60,255,.08);
+    }
+    .selection-marker{
+      position:absolute;
+      left:calc(var(--x)*1%);
+      top:calc(var(--y)*1%);
+      width:calc(var(--w)*1%);
+      height:calc(var(--h)*1%);
+      pointer-events:none;
+      border:2px solid rgba(245,188,255,.95);
+      border-radius:8px;
+      background:linear-gradient(180deg,rgba(224,105,255,.62),rgba(142,38,219,.58));
+      box-shadow:0 0 20px rgba(210,78,255,.62),inset 0 0 18px rgba(255,255,255,.12);
+      mix-blend-mode:screen;
+    }
+    .toast{
+      position:fixed;
+      left:50%;
+      bottom:20px;
+      z-index:40;
+      transform:translate(-50%,120%);
+      width:min(520px,calc(100% - 28px));
+      padding:14px 18px;
+      border:1px solid var(--line);
+      border-radius:8px;
+      background:linear-gradient(180deg,rgba(24,9,33,.97),rgba(8,5,13,.97));
+      box-shadow:0 0 26px rgba(183,60,255,.35);
+      text-align:center;
+      font-weight:800;
+      letter-spacing:.02em;
+      transition:transform .22s ease;
+    }
+    .toast.show{transform:translate(-50%,0)}
+    .modal-backdrop{
+      position:fixed;
+      inset:0;
+      z-index:60;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:18px;
+      background:rgba(0,0,0,.76);
+      backdrop-filter:blur(7px);
+    }
+    .modal-backdrop.open{display:flex}
+    .modal{
+      width:min(760px,100%);
+      max-height:min(860px,92vh);
+      overflow:auto;
+      border:1px solid var(--line);
+      border-radius:8px;
+      background:
+        linear-gradient(180deg,rgba(28,10,39,.94),rgba(7,4,12,.98)),
+        url('assets/hero-accueil.png') center/cover;
+      box-shadow:0 0 36px rgba(183,60,255,.44),0 26px 90px rgba(0,0,0,.72);
+    }
+    .modal-inner{padding:24px}
+    .modal-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px}
+    .modal h2,.modal h3{margin:0;text-transform:uppercase;letter-spacing:.04em}
+    .modal h2 span,.price,.violet{color:var(--violet-2)}
+    .close{
+      width:42px;height:42px;border:1px solid var(--line);border-radius:8px;
+      background:rgba(0,0,0,.45);color:white;font-size:24px;line-height:1
+    }
+    .grid{display:grid;gap:12px}
+    .grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .field{display:grid;gap:6px;color:var(--muted);font-size:14px}
+    .field input,.field textarea,.field select{
+      width:100%;
+      border:1px solid rgba(218,97,255,.55);
+      border-radius:8px;
+      background:rgba(0,0,0,.44);
+      color:white;
+      padding:12px 13px;
+      outline:none;
+    }
+    .field textarea{min-height:96px;resize:vertical}
+    .choice-row{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0 16px}
+    .choice{
+      border:1px solid rgba(218,97,255,.55);
+      border-radius:8px;
+      background:rgba(0,0,0,.38);
+      color:white;
+      padding:10px 13px;
+      font-weight:800;
+    }
+    .choice.active{background:linear-gradient(180deg,#d463ff,#8e26db);border-color:#f0b8ff}
+    .primary{
+      border:0;
+      border-radius:8px;
+      background:linear-gradient(180deg,#d463ff,#8e26db);
+      color:white;
+      padding:13px 18px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.03em;
+      box-shadow:0 0 18px rgba(183,60,255,.34);
+    }
+    .secondary{
+      border:1px solid rgba(218,97,255,.7);
+      border-radius:8px;
+      background:rgba(0,0,0,.4);
+      color:white;
+      padding:12px 16px;
+      font-weight:800;
+    }
+    .list{display:grid;gap:10px}
+    .line{
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:12px;
+      align-items:center;
+      border:1px solid rgba(218,97,255,.36);
+      border-radius:8px;
+      background:rgba(0,0,0,.34);
+      padding:12px;
+    }
+    .line strong{display:block}
+    .line small{display:block;color:var(--muted);margin-top:3px}
+    .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+    .notice{
+      border:1px solid rgba(218,97,255,.38);
+      border-radius:8px;
+      background:rgba(0,0,0,.36);
+      padding:13px;
+      color:var(--muted);
+      margin:12px 0;
+    }
+    .prelaunch-banner{
+      position:absolute;
+      z-index:21;
+      left:50%;
+      bottom:2.2%;
+      transform:translateX(-50%);
+      width:min(760px,88%);
+      border:1px solid rgba(245,188,255,.62);
+      border-radius:8px;
+      background:linear-gradient(180deg,rgba(48,12,70,.86),rgba(11,4,16,.92));
+      box-shadow:0 0 22px rgba(183,60,255,.34);
+      padding:10px 14px;
+      text-align:center;
+      color:white;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.03em;
+      pointer-events:none;
+    }
+    .prelaunch-banner span{color:var(--violet-2)}
+    .account-tabs{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:8px;
+      margin:14px 0;
+    }
+    .account-tabs button{
+      border:1px solid rgba(218,97,255,.45);
+      border-radius:8px;
+      background:rgba(0,0,0,.38);
+      color:white;
+      padding:10px;
+      font-weight:800;
+      text-align:left;
+    }
+    .account-card{
+      border:1px solid rgba(218,97,255,.34);
+      border-radius:8px;
+      background:rgba(0,0,0,.34);
+      padding:12px;
+    }
+    .account-card strong{display:block;text-transform:uppercase}
+    .account-card small{display:block;color:var(--muted);margin-top:4px;line-height:1.35}
+    .vote-detail{
+      position:absolute;
+      left:6%;
+      right:6%;
+      top:15%;
+      z-index:4;
+      border:1px solid rgba(218,97,255,.72);
+      border-radius:8px;
+      background:linear-gradient(180deg,rgba(9,5,15,.94),rgba(5,3,8,.96));
+      box-shadow:0 0 30px rgba(183,60,255,.38);
+      padding:22px;
+    }
+    .vote-detail h1{
+      margin:0;
+      font-size:clamp(24px,4vw,58px);
+      line-height:1;
+      text-transform:uppercase;
+      letter-spacing:.04em;
+    }
+    .vote-detail h1 span{color:var(--violet-2)}
+    .vote-detail p{margin:8px 0 18px;color:var(--muted);font-weight:700}
+    .vote-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:12px;
+    }
+    .vote-card{
+      border:1px solid rgba(218,97,255,.48);
+      border-radius:8px;
+      background:rgba(0,0,0,.48);
+      padding:10px;
+      min-height:220px;
+      display:grid;
+      gap:8px;
+      align-content:space-between;
+      overflow:hidden;
+    }
+    .vote-card img{
+      width:100%;
+      aspect-ratio:16/10;
+      object-fit:cover;
+      border-radius:6px;
+      border:1px solid rgba(218,97,255,.35);
+      box-shadow:0 0 14px rgba(183,60,255,.22);
+    }
+    .vote-card strong{
+      display:block;
+      text-transform:uppercase;
+      letter-spacing:.03em;
+      font-size:18px;
+    }
+    .vote-card small{display:block;color:var(--muted);line-height:1.35}
+    .vote-button{
+      border:0;
+      border-radius:8px;
+      padding:10px 12px;
+      color:white;
+      background:linear-gradient(180deg,#d463ff,#8e26db);
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.03em;
+    }
+    .vote-button.active{
+      background:linear-gradient(180deg,#f0b4ff,#a527f0);
+      box-shadow:0 0 18px rgba(224,105,255,.64);
+    }
+    .vote-back{
+      margin-bottom:14px;
+      border:1px solid rgba(218,97,255,.7);
+      border-radius:8px;
+      background:rgba(0,0,0,.42);
+      color:white;
+      padding:10px 14px;
+      font-weight:800;
+    }
+    .loyalty-detail{
+      position:absolute;
+      left:6%;
+      right:6%;
+      top:14%;
+      z-index:4;
+      border:1px solid rgba(218,97,255,.72);
+      border-radius:8px;
+      background:linear-gradient(180deg,rgba(9,5,15,.95),rgba(5,3,8,.97));
+      box-shadow:0 0 30px rgba(183,60,255,.38);
+      padding:22px;
+    }
+    .loyalty-detail h1{
+      margin:0;
+      font-size:clamp(28px,4.3vw,64px);
+      line-height:1;
+      text-transform:uppercase;
+      letter-spacing:.04em;
+    }
+    .loyalty-detail h1 span{color:var(--violet-2)}
+    .loyalty-lead{color:var(--muted);font-weight:800;margin:8px 0 18px}
+    .loyalty-grid{
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:14px;
+    }
+    .loyalty-cards{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:12px;
+    }
+    .loyalty-card{
+      border:1px solid rgba(218,97,255,.42);
+      border-radius:8px;
+      background:rgba(0,0,0,.42);
+      padding:13px;
+    }
+    .loyalty-card strong{
+      display:block;
+      text-transform:uppercase;
+      letter-spacing:.03em;
+      margin-bottom:6px;
+    }
+    .loyalty-card small{display:block;color:var(--muted);line-height:1.35}
+    .loyalty-card .big{
+      color:var(--violet-2);
+      font-size:34px;
+      font-weight:900;
+      line-height:1;
+      margin:8px 0;
+    }
+    .loyalty-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+    .votes-overview{
+      position:absolute;
+      left:5.8%;
+      right:5.8%;
+      top:15%;
+      z-index:4;
+      border:1px solid rgba(218,97,255,.72);
+      border-radius:8px;
+      background:linear-gradient(180deg,rgba(9,5,15,.94),rgba(5,3,8,.96));
+      box-shadow:0 0 30px rgba(183,60,255,.38);
+      padding:22px;
+    }
+    .votes-overview h1{
+      margin:0;
+      font-size:clamp(28px,4.2vw,64px);
+      line-height:1;
+      text-transform:uppercase;
+      letter-spacing:.04em;
+    }
+    .votes-overview h1 span{color:var(--violet-2)}
+    .votes-overview p{color:var(--muted);font-weight:800;margin:8px 0 18px}
+    .votes-overview-grid{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:12px;
+    }
+    .votes-overview-card{
+      border:1px solid rgba(218,97,255,.48);
+      border-radius:8px;
+      background:rgba(0,0,0,.48);
+      padding:10px;
+      display:grid;
+      gap:8px;
+      align-content:space-between;
+      min-height:280px;
+    }
+    .votes-overview-card img{
+      width:100%;
+      aspect-ratio:16/10;
+      object-fit:cover;
+      border-radius:6px;
+      border:1px solid rgba(218,97,255,.35);
+    }
+    .votes-overview-card strong{
+      text-transform:uppercase;
+      letter-spacing:.03em;
+      font-size:18px;
+    }
+    .votes-overview-card small{color:var(--muted);line-height:1.35}
+    .contact-detail{
+      position:absolute;
+      left:7%;
+      right:7%;
+      top:16%;
+      z-index:4;
+      display:grid;
+      grid-template-columns:1fr 1.15fr;
+      gap:18px;
+      border:1px solid rgba(218,97,255,.72);
+      border-radius:8px;
+      background:linear-gradient(180deg,rgba(9,5,15,.95),rgba(5,3,8,.97));
+      box-shadow:0 0 30px rgba(183,60,255,.38);
+      padding:22px;
+    }
+    .contact-detail h1{
+      margin:0;
+      font-size:clamp(28px,4.2vw,62px);
+      line-height:1;
+      text-transform:uppercase;
+      letter-spacing:.04em;
+    }
+    .contact-detail h1 span{color:var(--violet-2)}
+    .contact-detail p{color:var(--muted);font-weight:700;line-height:1.45}
+    .contact-panel{
+      border:1px solid rgba(218,97,255,.4);
+      border-radius:8px;
+      background:rgba(0,0,0,.36);
+      padding:14px;
+    }
+    .event-detail,.location-detail{
+      position:absolute;
+      left:6%;
+      right:6%;
+      top:14%;
+      z-index:4;
+      border:1px solid rgba(218,97,255,.72);
+      border-radius:8px;
+      background:linear-gradient(180deg,rgba(9,5,15,.95),rgba(5,3,8,.97));
+      box-shadow:0 0 30px rgba(183,60,255,.38);
+      padding:22px;
+    }
+    .event-detail h1,.location-detail h1{
+      margin:0;
+      font-size:clamp(28px,4.2vw,62px);
+      line-height:1;
+      text-transform:uppercase;
+      letter-spacing:.04em;
+    }
+    .event-detail h1 span,.location-detail h1 span{color:var(--violet-2)}
+    .event-detail p,.location-detail p{color:var(--muted);font-weight:700;line-height:1.45}
+    .event-grid,.location-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+      margin-top:16px;
+    }
+    .mini-map{
+      min-height:260px;
+      border:1px solid rgba(218,97,255,.42);
+      border-radius:8px;
+      background:
+        radial-gradient(circle at 62% 47%,rgba(218,97,255,.38) 0 4%,transparent 5%),
+        linear-gradient(32deg,transparent 0 45%,rgba(255,255,255,.09) 45% 47%,transparent 47% 100%),
+        linear-gradient(122deg,transparent 0 42%,rgba(255,255,255,.07) 42% 44%,transparent 44% 100%),
+        rgba(0,0,0,.38);
+      display:grid;
+      place-items:center;
+      text-align:center;
+      color:var(--muted);
+      padding:14px;
+    }
+    .status-pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      border:1px solid rgba(218,97,255,.55);
+      border-radius:8px;
+      padding:8px 10px;
+      background:rgba(0,0,0,.38);
+      color:white;
+      font-weight:900;
+      text-transform:uppercase;
+    }
+    .alert-red{
+      border-color:rgba(255,79,120,.75);
+      color:#ffb7c8;
+      box-shadow:0 0 14px rgba(255,79,120,.22);
+    }
+    .floating-action{
+      position:absolute;
+      z-index:13;
+      left:calc(var(--x)*1%);
+      top:calc(var(--y)*1%);
+      width:calc(var(--w)*1%);
+      min-height:calc(var(--h)*1%);
+      border:1px solid rgba(245,188,255,.82);
+      border-radius:8px;
+      background:linear-gradient(180deg,#d463ff,#8e26db);
+      color:#fff;
+      font-size:clamp(10px,1.05vw,17px);
+      font-weight:900;
+      text-transform:uppercase;
+      box-shadow:0 0 18px rgba(183,60,255,.42);
+    }
+    .menu-votes-fix{
+      position:absolute;
+      z-index:13;
+      left:41.7%;
+      top:33.3%;
+      width:16%;
+      min-height:10%;
+      display:grid;
+      place-items:center;
+      text-align:left;
+      padding:6px 12px;
+      background:linear-gradient(90deg,rgba(8,4,12,.96),rgba(8,4,12,.82) 78%,rgba(8,4,12,0));
+      color:#fff;
+      font-size:clamp(14px,1.7vw,31px);
+      font-weight:900;
+      line-height:1.05;
+      text-transform:uppercase;
+      text-shadow:0 0 10px rgba(0,0,0,.86);
+    }
+    .menu-votes-fix span{color:var(--violet-2)}
+    .custom-live-panel{
+      position:absolute;
+      z-index:14;
+      left:47.8%;
+      right:4.5%;
+      bottom:1.2%;
+      border:1px solid rgba(218,97,255,.68);
+      border-radius:8px;
+      background:linear-gradient(180deg,rgba(10,5,16,.94),rgba(5,3,8,.97));
+      box-shadow:0 0 22px rgba(183,60,255,.34);
+      padding:10px;
+      display:grid;
+      gap:8px;
+    }
+    .custom-live-panel h3{
+      margin:0;
+      font-size:clamp(12px,1.2vw,20px);
+      text-transform:uppercase;
+      color:var(--violet-2);
+    }
+    .custom-live-panel p{
+      margin:0;
+      color:var(--muted);
+      font-size:clamp(10px,.82vw,14px);
+      line-height:1.25;
+    }
+    .custom-chip-row{display:flex;flex-wrap:wrap;gap:5px}
+    .custom-chip{
+      border:1px solid rgba(218,97,255,.55);
+      border-radius:8px;
+      background:rgba(0,0,0,.38);
+      color:white;
+      padding:5px 7px;
+      font-size:clamp(9px,.72vw,12px);
+      font-weight:800;
+    }
+    .custom-chip.active{
+      background:linear-gradient(180deg,#d463ff,#8e26db);
+      box-shadow:0 0 12px rgba(183,60,255,.38);
+    }
+    .custom-live-footer{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+    }
+    .cart-live-panel{
+      position:absolute;
+      z-index:14;
+      left:5.5%;
+      right:5.5%;
+      top:16%;
+      border:1px solid rgba(218,97,255,.72);
+      border-radius:8px;
+      background:linear-gradient(180deg,rgba(9,5,15,.95),rgba(5,3,8,.98));
+      box-shadow:0 0 30px rgba(183,60,255,.38);
+      padding:16px;
+      display:grid;
+      grid-template-columns:1.25fr .9fr;
+      gap:14px;
+      max-height:78%;
+      overflow:auto;
+    }
+    .cart-live-panel h3{
+      margin:0 0 8px;
+      color:var(--violet-2);
+      text-transform:uppercase;
+      letter-spacing:.04em;
+    }
+    .cart-row{
+      display:grid;
+      grid-template-columns:1fr auto auto;
+      gap:10px;
+      align-items:center;
+      border:1px solid rgba(218,97,255,.34);
+      border-radius:8px;
+      background:rgba(0,0,0,.36);
+      padding:10px;
+      margin-bottom:8px;
+    }
+    .cart-row strong,.cart-row small{display:block}
+    .cart-row small{color:var(--muted);line-height:1.3}
+    .qty-controls{display:flex;align-items:center;gap:6px}
+    .icon-btn{
+      width:30px;
+      height:30px;
+      border:1px solid rgba(218,97,255,.6);
+      border-radius:8px;
+      background:rgba(0,0,0,.45);
+      color:white;
+      font-weight:900;
+    }
+    .pay-options{display:grid;gap:8px}
+    .pay-options button{
+      border:1px solid rgba(218,97,255,.5);
+      border-radius:8px;
+      background:rgba(0,0,0,.36);
+      color:white;
+      padding:10px;
+      text-align:left;
+      font-weight:800;
+    }
+    .pay-options button.active{
+      background:linear-gradient(180deg,#d463ff,#8e26db);
+      box-shadow:0 0 16px rgba(183,60,255,.42);
+    }
+    .cart-section{
+      border:1px solid rgba(218,97,255,.32);
+      border-radius:8px;
+      background:rgba(0,0,0,.30);
+      padding:12px;
+      margin-bottom:10px;
+    }
+    .cart-empty{
+      border:1px solid rgba(218,97,255,.42);
+      border-radius:8px;
+      padding:14px;
+      color:var(--muted);
+      background:rgba(0,0,0,.34);
+    }
+    .cart-price{
+      color:var(--violet-2);
+      font-weight:900;
+      white-space:nowrap;
+    }
+    .slot-options{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:8px;
+    }
+    .slot-options button{
+      min-height:46px;
+      border:1px solid rgba(218,97,255,.52);
+      border-radius:8px;
+      background:rgba(0,0,0,.42);
+      color:white;
+      font-weight:900;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap:2px;
+      line-height:1.1;
+    }
+    .slot-options button.active{
+      background:linear-gradient(180deg,#d463ff,#8e26db);
+      box-shadow:0 0 16px rgba(183,60,255,.45);
+    }
+    .cart-total-line{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:8px 0;
+      border-bottom:1px solid rgba(255,255,255,.12);
+    }
+    .cart-total-line:last-child{border-bottom:0}
+    .cart-total-line strong{font-size:18px}
+    .cart-textarea{
+      width:100%;
+      min-height:72px;
+      resize:vertical;
+      border:1px solid rgba(255,255,255,.28);
+      border-radius:8px;
+      background:rgba(255,255,255,.06);
+      color:white;
+      padding:10px;
+      font:inherit;
+    }
+    .allergen-check{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      color:white;
+      font-size:13px;
+      line-height:1.35;
+      margin:10px 0;
+    }
+    .allergen-check input{
+      width:18px;
+      height:18px;
+      accent-color:#b736ff;
+      margin-top:1px;
+    }
+    @media (max-width:740px){
+      .app{align-items:flex-start}
+      .mockup{width:100vw}
+      .modal-inner{padding:18px}
+      .grid.two{grid-template-columns:1fr}
+      .modal{max-height:94vh}
+      .vote-detail{left:4%;right:4%;top:12%;padding:14px}
+      .vote-grid{grid-template-columns:1fr}
+      .vote-card{min-height:auto}
+      .votes-overview,.loyalty-detail{left:4%;right:4%;top:12%;padding:14px;position:relative;margin:10px 8px 14px}
+      .votes-overview-grid,.loyalty-grid,.loyalty-cards{grid-template-columns:1fr}
+      .votes-overview-card{min-height:auto}
+      .contact-detail{left:4%;right:4%;top:12%;grid-template-columns:1fr;padding:14px}
+      .event-detail,.location-detail{left:4%;right:4%;top:12%;position:relative;margin:10px 8px 14px;padding:14px}
+      .event-grid,.location-grid{grid-template-columns:1fr}
+      .site-nav-overlay{
+        left:2%;
+        right:23%;
+        top:1%;
+        gap:6px;
+        padding:8px;
+        overflow-x:auto;
+        justify-content:flex-start;
+      }
+      .nav-button{font-size:10px;flex:0 0 auto}
+      .quick-actions-overlay{
+        right:2%;
+        top:1%;
+        gap:4px;
+      }
+      .quick-actions-overlay button{
+        min-height:32px;
+        padding:0 8px;
+        font-size:9px;
+      }
+      .floating-action{font-size:10px;min-height:34px}
+      .menu-votes-fix{left:39%;top:32%;width:22%;font-size:12px}
+      .custom-live-panel{
+        position:relative;
+        left:auto;
+        right:auto;
+        bottom:auto;
+        margin:10px 8px 14px;
+      }
+      .cart-live-panel{
+        position:relative;
+        left:auto;
+        right:auto;
+        top:auto;
+        grid-template-columns:1fr;
+        margin:10px 8px 14px;
+        max-height:none;
+      }
+      .cart-row{grid-template-columns:1fr}
+      .slot-options{grid-template-columns:repeat(2,1fr)}
+      .account-tabs{grid-template-columns:1fr}
+      .prelaunch-banner{position:relative;left:auto;bottom:auto;transform:none;margin:10px auto;width:calc(100% - 18px)}
+      .hotspot{
+        min-width:34px;
+        min-height:28px;
+      }
     }
   </style>
 </head>
 <body>
-  <header class="topbar">
-    <div class="wrap nav">
-      <a class="brand" href="#accueil" data-nav="accueil">
-        <img src="assets/logo-pizza-baladzo.svg" alt="Logo Pizza Baladzo sans contour blanc">
-        <span><strong>Pizza Baladzo</strong><span>Remorque pizza premium</span></span>
-      </a>
-      <button class="hamburger" type="button" id="mobileMenu">Menu</button>
-      <nav class="navlinks" id="navlinks" aria-label="Navigation principale">
-        <a href="#accueil" data-nav="accueil" class="active">Accueil</a>
-        <a href="#apropos" data-nav="apropos">À propos</a>
-        <a href="#menu" data-nav="menu">Menu</a>
-        <a href="#evenements" data-nav="evenements">Événements</a>
-        <a href="#contact" data-nav="contact">Contact</a>
-        <a href="#trouver" data-nav="trouver">Où nous trouver</a>
-      </nav>
-      <div class="top-actions">
-        <button class="top-action" type="button" data-open-account>Mon compte</button>
-        <button class="top-action" type="button" data-open-cart>Panier <b id="cartCount">0</b></button>
-      </div>
-    </div>
-  </header>
+  <main class="app" id="app" aria-live="polite"></main>
+  <div class="toast" id="toast"></div>
 
-  <main>
-    <section class="view active" id="view-accueil">
-      <div class="wrap hero">
-        <div>
-          <span class="eyebrow">Preview client V200000 corrigee</span>
-          <h1>Pizza Baladzo</h1>
-          <p>Pizza artisanale en remorque, ambiance noir et violet premium, ciel rose orange et commande client entièrement simulée pour la preview.</p>
-          <div class="actions">
-            <button class="btn" type="button" data-nav="menu">Voir le menu</button>
-            <button class="btn secondary" type="button" data-open-cart>Ouvrir le panier</button>
-            <button class="btn ghost" type="button" data-nav="trouver">Où nous trouver</button>
-          </div>
-          <div class="notice success">Simulation uniquement : pas de vraie clé API, pas de Stripe réel, pas de SMS réel, aucun identifiant sensible.</div>
+  <div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <section class="modal">
+      <div class="modal-inner">
+        <div class="modal-head">
+          <h2 id="modalTitle">Pizza <span>Baladzo</span></h2>
+          <button class="close" type="button" onclick="closeModal()" aria-label="Fermer">x</button>
         </div>
-        <div class="hero-visual">
-          <img src="assets/remorque-ciel.svg" alt="Remorque Pizza Baladzo avec ciel violet rose orange">
-        </div>
+        <div id="modalBody"></div>
       </div>
     </section>
-
-    <section class="view" id="view-apropos">
-      <div class="wrap">
-        <div class="section-head">
-          <div>
-            <h2>À propos</h2>
-            <p>Une preview client propre : pages séparées, boutons cliquables, panier en simulation et photos rangées par catégorie.</p>
-          </div>
-          <button class="btn" type="button" data-nav="menu">Commander</button>
-        </div>
-        <div class="grid two">
-          <article class="card highlight"><h3>Le style conserve la base</h3><p>Noir profond, violet premium, cartes sombres, boutons violets, remorque et ciel coloré restent au coeur de la direction visuelle.</p></article>
-          <article class="card"><h3>Preview Hostinger</h3><p>Site statique prêt à déposer : `index.html`, assets, manifest, robots et sitemap. Tout fonctionne sans serveur ni identifiants.</p></article>
-          <article class="card"><h3>Photos entières</h3><p>Chaque visuel produit est une image unique affichée en entier. Les pizzas classiques ne mélangent pas plusieurs pizzas sur la même fiche.</p></article>
-          <article class="card"><h3>Parcours client</h3><p>Compte, contact, devis événement, votes, personnalisation, ajout panier et paiement fictif sont prévus pour démonstration.</p></article>
-        </div>
-        <div class="actions">
-          <button class="btn secondary" type="button" data-nav="avis">Avis & fidélité</button>
-          <button class="btn secondary" type="button" data-open-account>Mon compte</button>
-        </div>
-      </div>
-    </section>
-
-    <section class="view" id="view-menu">
-      <div class="wrap">
-        <div class="section-head">
-          <div>
-            <h2>Menu</h2>
-            <p>Pizzas classiques, personnalisables, desserts, boissons, formules et Votes de la semaine.</p>
-          </div>
-          <button class="btn" type="button" data-open-cart>Voir le panier</button>
-        </div>
-        <div class="tabs" aria-label="Catégories du menu">
-          <button class="tab active" type="button" data-menu-tab="classiques">Pizzas classiques</button>
-          <button class="tab" type="button" data-menu-tab="personnalisables">Personnalisables</button>
-          <button class="tab" type="button" data-menu-tab="desserts">Desserts</button>
-          <button class="tab" type="button" data-menu-tab="boissons">Boissons</button>
-          <button class="tab" type="button" data-menu-tab="formules">Formules</button>
-          <button class="tab" type="button" data-menu-tab="votes">Votes de la semaine</button>
-        </div>
-
-        <div class="product-panel active" id="panel-classiques">
-          <div class="grid" id="classicGrid"></div>
-        </div>
-
-        <div class="product-panel" id="panel-personnalisables">
-          <div class="grid two">
-            <article class="card media-card">
-              <div class="media"><img src="assets/personnalisable.svg" alt="Pizza personnalisable complète"></div>
-              <div class="body">
-                <h3>Pizza personnalisable</h3>
-                <p>Choisissez taille, base, ingrédients, ajouts et retraits. Le prix se met à jour pour la preview.</p>
-              </div>
-            </article>
-            <article class="card">
-              <h3>Composer ma pizza</h3>
-              <div class="field"><label>Taille</label><div class="choice-row" id="sizeChoices"></div></div>
-              <div class="field"><label>Base</label><div class="choice-row" id="baseChoices"></div></div>
-              <div class="field"><label>Ingrédients</label><div class="choice-row" id="ingredientChoices"></div></div>
-              <div class="field"><label>Retrait</label><div class="choice-row" id="removeChoices"></div></div>
-              <div class="price" id="customPrice">12,00 EUR</div>
-              <button class="btn" type="button" id="addCustom">Ajouter au panier</button>
-            </article>
-          </div>
-        </div>
-
-        <div class="product-panel" id="panel-desserts">
-          <div class="grid" id="dessertGrid"></div>
-        </div>
-
-        <div class="product-panel" id="panel-boissons">
-          <div class="grid" id="drinkGrid"></div>
-        </div>
-
-        <div class="product-panel" id="panel-formules">
-          <div class="grid" id="formulaGrid"></div>
-        </div>
-
-        <div class="product-panel" id="panel-votes">
-          <div class="grid two" id="voteGrid"></div>
-          <div class="actions"><button class="btn secondary" type="button" data-nav="avis">Avis & fidélité</button></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="view" id="view-evenements">
-      <div class="wrap">
-        <div class="section-head">
-          <div>
-            <h2>Événements privés</h2>
-            <p>Page dédiée aux anniversaires, mariages, associations, entreprises et soirées privées. Aucun créneau de retrait ici.</p>
-          </div>
-          <button class="btn" type="button" data-scroll="#quoteForm">Demander un devis</button>
-        </div>
-        <div class="grid two">
-          <article class="card highlight"><h3>Prestation remorque</h3><p>Estimation des pizzas, desserts et boissons selon nombre d'invités, accès, durée et zone autour de Courniou / Saint-Pons-de-Thomières.</p></article>
-          <article class="card"><h3>Planning privé</h3><p>Le planning sert à visualiser les demandes événementielles privées. Les retraits commande restent uniquement dans le panier.</p><button class="btn secondary" type="button" data-open-planning>Voir planning</button></article>
-        </div>
-        <form class="card" id="quoteForm" style="margin-top:16px">
-          <h3>Demande de devis événement</h3>
-          <div class="grid two">
-            <div class="field"><label>Nom</label><input required name="name" placeholder="Votre nom"></div>
-            <div class="field"><label>Téléphone ou email</label><input required name="contact" placeholder="Contact pour réponse simulée"></div>
-            <div class="field"><label>Date souhaitée</label><input type="date" name="date"></div>
-            <div class="field"><label>Nombre d'invités</label><input type="number" min="1" name="guests" value="40"></div>
-          </div>
-          <div class="field"><label>Message</label><textarea name="message" placeholder="Lieu, accès remorque, horaires, besoin desserts / boissons..."></textarea></div>
-          <button class="btn" type="submit">Envoyer la demande fictive</button>
-          <div id="quoteResult"></div>
-        </form>
-      </div>
-    </section>
-
-    <section class="view" id="view-contact">
-      <div class="wrap">
-        <div class="section-head">
-          <div><h2>Contact</h2><p>Formulaire de contact simulé pour une preview client propre, sans envoi réel.</p></div>
-          <button class="btn secondary" type="button" data-nav="evenements">Demander un devis</button>
-        </div>
-        <form class="card" id="contactForm">
-          <div class="grid two">
-            <div class="field"><label>Nom</label><input required name="name" placeholder="Votre nom"></div>
-            <div class="field"><label>Email ou téléphone</label><input required name="contact" placeholder="Votre contact"></div>
-          </div>
-          <div class="field"><label>Sujet</label><select name="subject"><option>Commande</option><option>Événement privé</option><option>Question allergènes</option><option>Autre</option></select></div>
-          <div class="field"><label>Message</label><textarea required name="message" placeholder="Votre message"></textarea></div>
-          <button class="btn" type="submit">Envoyer le message fictif</button>
-          <div id="contactResult"></div>
-        </form>
-      </div>
-    </section>
-
-    <section class="view" id="view-trouver">
-      <div class="wrap">
-        <div class="section-head">
-          <div>
-            <h2>Où nous trouver</h2>
-            <p>Zone locale uniquement : Courniou, Saint-Pons-de-Thomières et environ 30 minutes autour.</p>
-          </div>
-          <button class="btn" type="button" data-nav="menu">Commander</button>
-        </div>
-        <div class="grid two">
-          <article class="card media-card">
-            <div class="media" style="height:320px"><img src="assets/ou-nous-trouver.svg" alt="Carte Courniou Saint-Pons-de-Thomières zone 30 minutes"></div>
-          </article>
-          <div class="route-list">
-            <article class="route"><span class="pin">1</span><div><h3>Courniou</h3><p>Point de présence principal selon planning.</p></div><button class="btn secondary" type="button" data-open-planning>Voir planning</button></article>
-            <article class="route"><span class="pin">2</span><div><h3>Saint-Pons-de-Thomières</h3><p>Passages et événements locaux en simulation.</p></div><button class="btn secondary" type="button" data-open-planning>Voir planning</button></article>
-            <article class="route"><span class="pin">3</span><div><h3>30 min autour</h3><p>Prestations privées possibles selon accès remorque.</p></div><button class="btn secondary" type="button" data-nav="evenements">Demander un devis</button></article>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="view" id="view-avis">
-      <div class="wrap">
-        <div class="section-head">
-          <div>
-            <h2>Avis & fidélité</h2>
-            <p>Pleine page dans l'esprit "Vos votes" : avis, points fictifs, dessert offert et votes clients.</p>
-          </div>
-          <button class="btn" type="button" data-menu-tab-jump="votes">Votes de la semaine</button>
-        </div>
-        <div class="grid two">
-          <article class="card highlight"><h3>Carte fidélité fictive</h3><p><b id="loyaltyPoints">5</b> points sur 8. Au 8e point, dessert non premium offert selon stock disponible.</p><div class="progress"><span style="width:62%"></span></div></article>
-          <article class="card"><h3>Avis client simulé</h3><p>"Accueil chaleureux, pizza bien garnie, commande simple. La remorque donne vraiment envie."</p><button class="btn secondary" type="button" id="addReview">Laisser un avis fictif</button></article>
-        </div>
-        <div class="grid two" id="voteGridFull" style="margin-top:16px"></div>
-      </div>
-    </section>
-  </main>
-
-  <div class="overlay" id="overlay"></div>
-  <aside class="cart-drawer" id="cartDrawer" aria-label="Panier">
-    <div class="section-head"><div><h2>Panier</h2><p>Thème Pizza Baladzo, paiement fictif uniquement.</p></div><button class="btn secondary" type="button" data-close-cart>Fermer</button></div>
-    <div id="cartLines"></div>
-    <div class="total"><span>Total</span><span id="cartTotal">0,00 EUR</span></div>
-    <div class="field"><label>Créneau de retrait</label><select id="pickupSlot"><option>Ce soir - 18h30</option><option>Ce soir - 19h00</option><option>Ce soir - 19h30</option><option>Ce soir - 20h00</option></select></div>
-    <button class="btn ok" type="button" id="fakePayment">Paiement fictif</button>
-    <div id="paymentResult"></div>
-  </aside>
-
-  <div class="modal" id="accountModal" aria-hidden="true">
-    <div class="modal-card">
-      <div class="section-head"><div><h2>Mon compte</h2><p>Compte client simulé, sans identifiant réel.</p></div><button class="btn secondary" type="button" data-close-modal>Fermer</button></div>
-      <div class="grid two">
-        <form class="card" id="accountForm">
-          <h3>Connexion fictive</h3>
-          <div class="field"><label>Email</label><input value="client.demo@pizzabaladzo.local"></div>
-          <div class="field"><label>Nom affiché</label><input value="Client preview"></div>
-          <button class="btn" type="submit">Enregistrer la simulation</button>
-          <div id="accountResult"></div>
-        </form>
-        <article class="card highlight">
-          <h3>Admin prévu</h3>
-          <p>Modules conservés / prévus pour pilotage, démonstration et future connexion réelle.</p>
-          <button class="btn secondary" type="button" id="toggleAdmin">Afficher l'aperçu admin</button>
-        </article>
-      </div>
-      <div id="adminPreview" class="hide" style="margin-top:14px">
-        <div class="admin-grid" id="adminGrid"></div>
-      </div>
-    </div>
   </div>
-
-  <div class="modal" id="planningModal" aria-hidden="true">
-    <div class="modal-card">
-      <div class="section-head"><div><h2>Planning</h2><p>Planning public simulé des présences et événements privés.</p></div><button class="btn secondary" type="button" data-close-modal>Fermer</button></div>
-      <div class="route-list">
-        <article class="route"><span class="pin">L</span><div><h3>Vendredi</h3><p>Courniou - présence locale en soirée.</p></div></article>
-        <article class="route"><span class="pin">S</span><div><h3>Samedi</h3><p>Saint-Pons-de-Thomières - service selon autorisation.</p></div></article>
-        <article class="route"><span class="pin">P</span><div><h3>Événement privé</h3><p>Sur devis, autour de 30 minutes selon accès.</p></div></article>
-      </div>
-    </div>
-  </div>
-
-  <footer>
-    <div class="wrap">Pizza Baladzo - preview client corrigee V200000. Données fictives, paiements fictifs, aucun service externe connecté.</div>
-  </footer>
 
   <script>
-    const euros = value => value.toLocaleString('fr-FR',{style:'currency',currency:'EUR'});
-    const products = [
-      {id:'margherita',cat:'classic',name:'Margherita',price:10,img:'assets/pizza-margherita.svg',desc:'Tomate, mozzarella, basilic.',tags:['Classique','Allergènes: gluten, lait']},
-      {id:'reine',cat:'classic',name:'Reine',price:12,img:'assets/pizza-reine.svg',desc:'Tomate, mozzarella, jambon, champignons.',tags:['Classique','Allergènes: gluten, lait']},
-      {id:'chevre',cat:'classic',name:'Chèvre miel',price:13,img:'assets/pizza-chevre.svg',desc:'Crème, mozzarella, chèvre, miel.',tags:['Classique','Allergènes: gluten, lait']},
-      {id:'orientale',cat:'classic',name:'Orientale',price:13.5,img:'assets/pizza-orientale.svg',desc:'Tomate, mozzarella, merguez, poivrons.',tags:['Classique','Allergènes: gluten, lait']},
-      {id:'tiramisu',cat:'dessert',name:'Tiramisu ramequin',price:4.5,img:'assets/desserts.svg',desc:'Dessert maison en portion individuelle.',tags:['Dessert','DLC simulée']},
-      {id:'panna',cat:'dessert',name:'Panna cotta',price:4,img:'assets/desserts.svg',desc:'Coulis selon arrivage.',tags:['Dessert','Stock fictif']},
-      {id:'cola',cat:'drink',name:'Cola',price:2.5,img:'assets/boissons.svg',desc:'Boisson fraîche 33 cl.',tags:['Boisson','Sans alcool']},
-      {id:'orange',cat:'drink',name:'Orange',price:2.5,img:'assets/boissons.svg',desc:'Boisson fruitée 33 cl.',tags:['Boisson','Sans alcool']},
-      {id:'solo',cat:'formula',name:'Formule solo',price:15,img:'assets/pizza-margherita.svg',desc:'Pizza classique + boisson.',tags:['Formule','Preview']},
-      {id:'gourmande',cat:'formula',name:'Formule gourmande',price:18,img:'assets/pizza-reine.svg',desc:'Pizza classique + boisson + dessert.',tags:['Formule','Preview']}
-    ];
-    const voteItems = [
-      {id:'vote1',name:'Montagne violette',img:'assets/pizza-chevre.svg',score:62,desc:'Crème, chèvre, oignons, miel.'},
-      {id:'vote2',name:'Sud express',img:'assets/pizza-orientale.svg',score:38,desc:'Tomate, poivrons, merguez, herbes.'}
-    ];
-    const adminItems = ['Produits','Ingrédients','Prix','Allergènes','Commandes','Stocks','Fournisseurs','Factures','Événements','Promotions','Marges','Rentabilité','Recettes','DLC','Hygiène','Comptabilité','Mode démo','Mode banque','Mode test','Mode réel'];
-    const cart = [];
-    const custom = {size:'L',base:'Tomate',ingredients:['Mozzarella','Jambon'],remove:[],price:12};
+    const PRELAUNCH_MODE = true;
+    const OPENING_DATE = '';
 
-    function showView(id){
-      document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
-      const view = document.getElementById('view-' + id);
-      if(view){ view.classList.add('active'); window.scrollTo({top:0,behavior:'smooth'}); }
-      document.querySelectorAll('[data-nav]').forEach(a=>a.classList.toggle('active',a.dataset.nav===id));
-      document.getElementById('navlinks').classList.remove('open');
-      history.replaceState(null,'','#' + id);
-    }
-    function card(product){
-      return `<article class="card media-card">
-        <div class="media"><img src="${product.img}" alt="${product.name} visible en entier"></div>
-        <div class="body">
-          <h3>${product.name}</h3><p>${product.desc}</p>
-          <div class="tags">${product.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
-          <div class="price">${euros(product.price)}</div>
-          <button class="btn" type="button" data-add="${product.id}">Ajouter au panier</button>
-        </div>
-      </article>`;
-    }
-    function renderProducts(){
-      document.getElementById('classicGrid').innerHTML = products.filter(p=>p.cat==='classic').map(card).join('');
-      document.getElementById('dessertGrid').innerHTML = products.filter(p=>p.cat==='dessert').map(card).join('');
-      document.getElementById('drinkGrid').innerHTML = products.filter(p=>p.cat==='drink').map(card).join('');
-      document.getElementById('formulaGrid').innerHTML = products.filter(p=>p.cat==='formula').map(card).join('');
-    }
-    function renderVotes(){
-      const html = voteItems.map(v=>`<article class="card vote-card">
-        <img src="${v.img}" alt="${v.name} visible en entier">
-        <div><h3>${v.name}</h3><p>${v.desc}</p><div class="progress"><span style="width:${v.score}%"></span></div><p>${v.score}% des votes fictifs</p><button class="btn secondary" type="button" data-vote="${v.id}">Voter</button></div>
-      </article>`).join('');
-      document.getElementById('voteGrid').innerHTML = html;
-      document.getElementById('voteGridFull').innerHTML = html;
-    }
-    function renderChoices(){
-      const sizes = [{n:'S',p:10},{n:'L',p:12},{n:'XL',p:15}];
-      const bases = ['Tomate','Crème','Barbecue'];
-      const ingredients = ['Mozzarella','Jambon','Champignons','Chèvre','Merguez','Poivrons','Olives','Oignons'];
-      const remove = ['Sans fromage','Sans viande','Sans champignons','Sans olives'];
-      document.getElementById('sizeChoices').innerHTML = sizes.map(s=>`<button class="choice ${custom.size===s.n?'active':''}" type="button" data-size="${s.n}" data-price="${s.p}">${s.n}</button>`).join('');
-      document.getElementById('baseChoices').innerHTML = bases.map(b=>`<button class="choice ${custom.base===b?'active':''}" type="button" data-base="${b}">${b}</button>`).join('');
-      document.getElementById('ingredientChoices').innerHTML = ingredients.map(i=>`<button class="choice ${custom.ingredients.includes(i)?'active':''}" type="button" data-ing="${i}">${i}</button>`).join('');
-      document.getElementById('removeChoices').innerHTML = remove.map(r=>`<button class="choice ${custom.remove.includes(r)?'active':''}" type="button" data-remove="${r}">${r}</button>`).join('');
-      const addPrice = Math.max(0,custom.ingredients.length-2) * 1.2;
-      custom.price = ({S:10,L:12,XL:15}[custom.size] || 12) + addPrice;
-      document.getElementById('customPrice').textContent = euros(custom.price);
-    }
-    function addToCart(item){
-      cart.push(item);
-      renderCart();
-      openCart();
-    }
-    function renderCart(){
-      document.getElementById('cartCount').textContent = cart.length;
-      document.getElementById('cartLines').innerHTML = cart.length ? cart.map((item,index)=>`<div class="cart-line"><div><b>${item.name}</b><br><small>${item.note||'Commande preview'}</small></div><div><b>${euros(item.price)}</b><br><button class="choice" type="button" data-remove-line="${index}">Retirer</button></div></div>`).join('') : '<div class="notice">Panier vide pour le moment.</div>';
-      document.getElementById('cartTotal').textContent = euros(cart.reduce((sum,item)=>sum+item.price,0));
-    }
-    function openCart(){document.getElementById('cartDrawer').classList.add('open');document.getElementById('overlay').classList.add('open')}
-    function closeAll(){document.getElementById('cartDrawer').classList.remove('open');document.getElementById('overlay').classList.remove('open');document.querySelectorAll('.modal').forEach(m=>m.classList.remove('open'))}
-    function openModal(id){document.getElementById(id).classList.add('open');document.getElementById('overlay').classList.add('open')}
-    function setResult(id,text,ok=true){document.getElementById(id).innerHTML = `<div class="notice ${ok?'success':''}">${text}</div>`}
-    function renderAdmin(){document.getElementById('adminGrid').innerHTML = adminItems.map(i=>`<div class="admin-item"><b>${i}</b><span class="tag">Prévu</span></div>`).join('')}
+    const products = {
+      margherita:{name:'Margherita',price:12.90,desc:'Sauce tomate San Marzano, mozzarella, basilic frais.',img:'assets/vote-margherita.jpg'},
+      reine:{name:'Reine',price:14.50,desc:'Tomate, mozzarella, jambon blanc, champignons.',img:'assets/vote-reine.jpg'},
+      fromages:{name:'4 Fromages',price:15.50,desc:'Creme fraiche, mozzarella, gorgonzola, chevre, emmental.',img:'assets/vote-4-fromages.jpg'},
+      pepperoni:{name:'Pepperoni',price:14.50,desc:'Tomate, mozzarella, pepperoni, origan.',img:'assets/vote-vegetarienne.jpg'},
+      chevre:{name:'Chevre miel',price:15.50,desc:'Creme fraiche, chevre, miel, noix, roquette.',img:'assets/vote-chevre-miel.jpg'},
+      moment:{name:'Pizza du moment',price:15.50,desc:'Recette artisanale de la semaine, selon inspiration et produits disponibles.',img:'assets/vote-calzone.jpg'},
+      tiramisu:{name:'Tiramisu',price:5.50,desc:'Creme mascarpone, cafe et cacao amer.',img:'assets/vote-tiramisu.jpg'},
+      mousse:{name:'Mousse au chocolat',price:5.50,desc:'Mousse au chocolat noir intense.',img:'assets/vote-mousse.jpg'},
+      panna:{name:'Panna cotta fruits rouges',price:5.50,desc:'Panna cotta vanillee, coulis de fruits rouges.',img:'assets/vote-panna.jpg'},
+      crumble:{name:'Crumble froid',price:6.00,desc:'Dessert froid en verrine avec fruits et crumble croustillant.',img:'assets/vote-fondant.jpg'},
+      dessertMoment:{name:'Dessert du moment',price:6.00,desc:'Creation maison servie en verrine ou ramequin avec couvercle.',img:'assets/vote-tarte-citron.jpg'},
+      coca:{name:'Coca-Cola',price:2.50,desc:'33cl',img:'assets/vote-coca.jpg'},
+      sprite:{name:'Sprite',price:2.50,desc:'33cl',img:'assets/vote-sprite.jpg'},
+      fanta:{name:'Fanta Orange',price:2.50,desc:'33cl',img:'assets/vote-fanta.jpg'},
+      orangina:{name:'Orangina',price:2.50,desc:'33cl',img:'assets/vote-orangina.jpg'},
+      seven:{name:'7Up',price:2.50,desc:'33cl',img:'assets/vote-7up.jpg'},
+      iceTea:{name:'Ice Tea peche',price:2.50,desc:'33cl',img:'assets/vote-ice-tea.jpg'},
+      oasis:{name:'Oasis tropical',price:2.50,desc:'33cl',img:'assets/vote-oasis.jpg'},
+      oasisCassis:{name:'Oasis cassis',price:2.50,desc:'33cl',img:'assets/vote-oasis-cassis.jpg'},
+      oasisFramboise:{name:'Oasis framboise',price:2.50,desc:'33cl',img:'assets/vote-oasis-framboise.jpg'},
+      oasisOrange:{name:'Oasis orange',price:2.50,desc:'33cl',img:'assets/vote-oasis-orange.jpg'},
+      formuleSolo:{name:'Pizza + boisson',price:14.90,desc:'1 pizza artisanale + 1 boisson. Economie estimee : 0,50 euro.'},
+      formuleGourmande:{name:'Pizza + dessert',price:16.90,desc:'1 pizza artisanale + 1 dessert maison. Economie estimee : 1 euro.'},
+      formuleDuo:{name:'Pizza + dessert + boisson',price:18.90,desc:'1 pizza artisanale + 1 dessert + 1 boisson. Economie estimee : 1,50 euro.'},
+      formuleFamille:{name:'Offre du moment',price:49.90,desc:'Offre evolutive selon la semaine. Contenu et economie affiches en preview.'}
+    };
 
-    document.addEventListener('click', e=>{
-      const nav = e.target.closest('[data-nav]');
-      if(nav){ e.preventDefault(); showView(nav.dataset.nav); }
-      const tab = e.target.closest('[data-menu-tab]');
-      if(tab){
-        document.querySelectorAll('[data-menu-tab]').forEach(b=>b.classList.toggle('active',b===tab));
-        document.querySelectorAll('.product-panel').forEach(p=>p.classList.remove('active'));
-        document.getElementById('panel-' + tab.dataset.menuTab).classList.add('active');
+    const state = {
+      page:'accueil',
+      cart:[],
+      custom:{base:'Sauce tomate',size:'L',ingredients:['Mozzarella','Jambon','Champignons','Oignons','Olives']},
+      slot:'19:00',
+      payment:'online',
+      specialRequest:'',
+      allergensAccepted:false,
+      loggedIn:false,
+      votes:{pizza:null,dessert:null,boisson:null},
+      loyaltyPoints:7,
+      hasOrdered:false,
+      formulaFlow:null
+    };
+
+    const formulaPlans = {
+      formuleSolo:{label:'Pizza + boisson',price:14.90,steps:{pizza:1,boisson:1,dessert:0}},
+      formuleGourmande:{label:'Pizza + dessert',price:16.90,steps:{pizza:1,boisson:0,dessert:1}},
+      formuleDuo:{label:'Pizza + dessert + boisson',price:18.90,steps:{pizza:1,boisson:1,dessert:1}},
+      formuleFamille:{label:'Offre du moment',price:49.90,steps:{pizza:2,boisson:4,dessert:2}}
+    };
+
+    const productCategories = {
+      margherita:'pizza', reine:'pizza', fromages:'pizza', pepperoni:'pizza', chevre:'pizza', moment:'pizza',
+      tiramisu:'dessert', mousse:'dessert', panna:'dessert', crumble:'dessert', dessertMoment:'dessert',
+      coca:'boisson', sprite:'boisson', fanta:'boisson', orangina:'boisson', seven:'boisson', iceTea:'boisson', oasis:'boisson', oasisCassis:'boisson', oasisFramboise:'boisson', oasisOrange:'boisson'
+    };
+
+    const voteCatalog = {
+      pizza:[
+        products.margherita,
+        products.reine,
+        products.fromages,
+        products.pepperoni,
+        products.chevre,
+        products.moment
+      ],
+      dessert:[
+        products.tiramisu,
+        products.mousse,
+        products.panna,
+        products.crumble,
+        products.dessertMoment
+      ],
+      boisson:[
+        products.coca,
+        products.sprite,
+        products.fanta,
+        products.orangina,
+        products.seven,
+        products.iceTea,
+        products.oasis,
+        products.oasisCassis,
+        products.oasisFramboise,
+        products.oasisOrange
+      ]
+    };
+
+    const pizzaDetails = {
+      margherita:{ingredients:'Sauce tomate San Marzano, mozzarella fior di latte, basilic frais, huile d olive vierge extra.',allergens:'Gluten, lait.',reviews:0,rating:null},
+      reine:{ingredients:'Sauce tomate San Marzano, mozzarella, jambon blanc, champignons frais, origan.',allergens:'Gluten, lait.',reviews:0,rating:null},
+      fromages:{ingredients:'Creme fraiche, mozzarella, gorgonzola, chevre, emmental, origan.',allergens:'Gluten, lait.',reviews:0,rating:null},
+      pepperoni:{ingredients:'Sauce tomate, mozzarella, pepperoni, origan, filet d huile pimentee sur demande.',allergens:'Gluten, lait.',reviews:0,rating:null},
+      chevre:{ingredients:'Creme fraiche, mozzarella, chevre, miel, noix, roquette.',allergens:'Gluten, lait, fruits a coque.',reviews:0,rating:null},
+      moment:{ingredients:'Recette evolutive selon la saison et les envies clients.',allergens:'Gluten, lait. Autres allergenes selon recette.',reviews:0,rating:null}
+    };
+
+    const productDetails = {
+      ...pizzaDetails,
+      tiramisu:{ingredients:'Verrine tiramisu avec mascarpone, cafe, biscuit et cacao.',allergens:'Lait, oeufs, gluten.',format:'Verrine avec couvercle.'},
+      mousse:{ingredients:'Mousse chocolat maison en gobelet ferme.',allergens:'Lait, oeufs possibles.',format:'Gobelet avec couvercle.'},
+      panna:{ingredients:'Panna cotta vanillee et coulis fruits rouges.',allergens:'Lait.',format:'Verrine avec couvercle.'},
+      crumble:{ingredients:'Fruits, creme legere et crumble croustillant servi froid.',allergens:'Gluten, lait, fruits a coque possibles.',format:'Ramequin ou verrine avec couvercle.'},
+      dessertMoment:{ingredients:'Recette maison selon la semaine.',allergens:'Selon recette. Demandez la liste complete.',format:'Verrine, ramequin ou gobelet avec couvercle.'}
+    };
+
+    const customIngredients = ['Mozzarella','Jambon','Champignons','Chevre','Miel','Comte','Olives','Oignons','Poivrons','Chorizo','Pepperoni','Basilic','Roquette'];
+    const customBasePrices = {S:11.90,L:12.90,XL:15.90};
+    const customSizeRatios = {S:'Garniture legere',L:'Quantite standard',XL:'Garniture genereuse'};
+    const customAllergens = {
+      Mozzarella:'lait',
+      Chevre:'lait',
+      Comte:'lait',
+      Jambon:'aucun allergene majeur indique',
+      Champignons:'aucun allergene majeur indique',
+      Miel:'aucun allergene majeur indique',
+      Olives:'aucun allergene majeur indique',
+      Oignons:'aucun allergene majeur indique',
+      Poivrons:'aucun allergene majeur indique',
+      Chorizo:'peut contenir sulfites',
+      Pepperoni:'peut contenir sulfites',
+      Basilic:'aucun allergene majeur indique',
+      Roquette:'aucun allergene majeur indique'
+    };
+
+    const navHotspots = [
+      hs(26.8,5.0,7.4,4.2,'Accueil','go:accueil'),
+      hs(35.3,5.0,9.5,4.2,'A propos','go:apropos'),
+      hs(44.9,5.0,7.2,4.2,'Menu','go:menu'),
+      hs(52.0,5.0,11.4,4.2,'Evenements','go:evenements'),
+      hs(63.0,5.0,10.0,4.2,'Ou nous trouver','go:trouver'),
+      hs(72.6,5.0,9.2,4.2,'Contact','go:contact'),
+      hs(87.8,2.6,4.4,6.2,'Zone mon compte','modal:account'),
+      hs(93.2,2.6,5.0,6.2,'Zone panier','go:panier')
+    ];
+
+    const pageData = {
+      accueil:{
+        image:'assets/hero-accueil.png',
+        w:1536,
+        h:1024,
+        hotspots:[
+          ...navHotspots,
+          hs(3.6,63.8,20.5,4.9,'Voir le menu','go:menu'),
+          hs(3.6,70.2,20.5,4.9,'Reserver','go:evenements'),
+          hs(3.6,76.2,20.5,4.9,'Nous contacter','go:contact'),
+          hs(11.7,94.1,14.4,4.0,'Vote pizza','go:votes'),
+          hs(44.2,94.1,14.4,4.0,'Vote dessert','go:votes'),
+          hs(69.6,91.0,25.5,8.0,'Vote boisson','go:votes')
+        ]
+      },
+      apropos:{
+        image:'assets/concept-evenements.png',
+        w:1672,
+        h:941,
+        hotspots:[
+          ...navHotspots,
+          hs(25.0,36.2,16.0,5.2,'Reserver maintenant','go:evenements'),
+          hs(32.5,69.0,18.0,8.0,'Lire notre histoire','modal:story'),
+          hs(71.0,91.2,16.0,4.6,'Demander un devis','modal:quote')
+        ]
+      },
+      menu:{
+        image:'assets/categories-menu.png',
+        w:1672,
+        h:941,
+        menuVotesFix:true,
+        hotspots:[
+          ...navHotspots,
+          hs(8.0,50.0,10.0,5.2,'Voir pizzas classiques','go:classiques'),
+          hs(38.0,50.0,10.0,5.2,'Votes de la semaine','go:votes'),
+          hs(66.2,50.0,12.0,5.2,'Creer ma pizza','go:personnalisables'),
+          hs(8.0,78.0,10.0,5.2,'Voir desserts','go:desserts'),
+          hs(35.8,75.6,15.0,8.2,'Voir boissons','go:boissons'),
+          hs(66.0,78.0,10.0,5.2,'Commander formules','go:formules')
+        ]
+      },
+      classiques:{
+        image:'assets/pizzas-classiques.jpg',
+        w:1600,
+        h:900,
+        hotspots:[
+          ...navHotspots,
+          hs(23.0,53.0,12.0,4.3,'Ajouter Margherita','add:margherita'),
+          hs(55.0,53.0,12.0,4.3,'Ajouter Reine','add:reine'),
+          hs(87.0,53.0,12.0,4.3,'Ajouter 4 Fromages','add:fromages'),
+          hs(23.0,82.5,12.0,4.3,'Ajouter Pepperoni','add:pepperoni'),
+          hs(55.0,82.5,12.0,4.3,'Ajouter Chevre miel','add:chevre'),
+          hs(87.0,82.5,12.0,4.3,'Ajouter Pizza du moment','add:moment'),
+          hs(31.0,46.5,4.0,5.0,'Detail Margherita','detail:margherita'),
+          hs(63.0,46.5,4.0,5.0,'Detail Reine','detail:reine'),
+          hs(94.0,46.5,4.0,5.0,'Detail 4 Fromages','detail:fromages'),
+          hs(31.0,76.0,4.0,5.0,'Detail Pepperoni','detail:pepperoni'),
+          hs(63.0,76.0,4.0,5.0,'Detail Chevre miel','detail:chevre'),
+          hs(94.0,76.0,4.0,5.0,'Detail Pizza du moment','detail:moment')
+        ]
+      },
+      personnalisables:{
+        image:'assets/personnalisables.png',
+        w:1672,
+        h:941,
+        customPanel:true,
+        hotspots:[
+          ...navHotspots,
+          hs(49.0,30.5,14.0,14.5,'Base tomate','base:Sauce tomate'),
+          hs(64.5,30.5,14.0,14.5,'Base creme fraiche','base:Creme fraiche'),
+          hs(79.6,30.5,14.0,14.5,'Base sauce blanche','base:Sauce blanche'),
+          hs(6.0,80.5,12.0,10.5,'Taille S','size:S'),
+          hs(18.9,80.5,12.0,10.5,'Taille L','size:L'),
+          hs(32.4,80.5,12.0,10.5,'Taille XL','size:XL'),
+          hs(49.2,50.6,8.1,8.2,'Mozzarella','ingredient:Mozzarella'),
+          hs(58.2,50.6,8.1,8.2,'Chevre','ingredient:Chevre'),
+          hs(67.3,50.6,8.1,8.2,'Jambon','ingredient:Jambon'),
+          hs(76.3,50.6,8.1,8.2,'Chorizo','ingredient:Chorizo'),
+          hs(85.2,50.6,8.1,8.2,'Lardons','ingredient:Lardons'),
+          hs(49.2,60.0,8.1,8.2,'Champignons','ingredient:Champignons'),
+          hs(58.2,60.0,8.1,8.2,'Oignons','ingredient:Oignons'),
+          hs(67.3,60.0,8.1,8.2,'Poivrons','ingredient:Poivrons'),
+          hs(76.3,60.0,8.1,8.2,'Tomates cerises','ingredient:Tomates cerises'),
+          hs(85.2,60.0,8.1,8.2,'Olives','ingredient:Olives'),
+          hs(49.2,68.6,8.1,8.2,'Roquette','ingredient:Roquette'),
+          hs(78.6,80.5,15.7,5.6,'Ajouter pizza personnalisee','custom:add'),
+          hs(79.0,89.3,14.0,4.0,'Ajouter aux favoris','toast:Favori ajoute en simulation')
+        ]
+      },
+      desserts:{
+        image:'assets/desserts.png',
+        w:1672,
+        h:941,
+        hotspots:[
+          ...navHotspots,
+          hs(5.0,84.0,14.0,4.7,'Ajouter Tiramisu','add:tiramisu'),
+          hs(24.0,84.0,14.0,4.7,'Ajouter Mousse','add:mousse'),
+          hs(43.0,84.0,14.0,4.7,'Ajouter Panna cotta','add:panna'),
+          hs(62.0,84.0,14.0,4.7,'Ajouter Crumble froid','add:crumble'),
+          hs(81.0,84.0,14.0,4.7,'Ajouter Dessert du moment','add:dessertMoment'),
+          hs(17.0,77.0,3.5,5.0,'Detail Tiramisu','detail:tiramisu'),
+          hs(36.0,77.0,3.5,5.0,'Detail Mousse chocolat','detail:mousse'),
+          hs(55.0,77.0,3.5,5.0,'Detail Panna cotta','detail:panna'),
+          hs(74.0,77.0,3.5,5.0,'Detail Crumble froid','detail:crumble'),
+          hs(93.0,77.0,3.5,5.0,'Detail Dessert du moment','detail:dessertMoment')
+        ]
+      },
+      boissons:{
+        image:'assets/boissons.png',
+        w:1672,
+        h:941,
+        hotspots:[
+          ...navHotspots,
+          hs(8.8,29.5,15.1,27.5,'Ajouter Coca-Cola','add:coca'),
+          hs(25.7,29.5,15.1,27.5,'Ajouter Sprite','add:sprite'),
+          hs(42.5,29.5,15.1,27.5,'Ajouter Fanta','add:fanta'),
+          hs(59.4,29.5,15.1,27.5,'Ajouter Orangina','add:orangina'),
+          hs(76.2,29.5,15.1,27.5,'Ajouter 7Up','add:seven'),
+          hs(8.8,59.8,15.1,27.5,'Ajouter Ice Tea','add:iceTea'),
+          hs(25.7,59.8,15.1,27.5,'Ajouter Oasis cassis','add:oasisCassis'),
+          hs(42.5,59.8,15.1,27.5,'Ajouter Oasis framboise','add:oasisFramboise'),
+          hs(59.4,59.8,15.1,27.5,'Ajouter Oasis orange','add:oasisOrange'),
+          hs(76.2,59.8,15.1,27.5,'Ajouter Oasis','add:oasis'),
+          hs(63.5,91.9,15.0,5.0,'Voir le menu','go:menu')
+        ]
+      },
+      formules:{
+        image:'assets/formules.png',
+        w:1672,
+        h:941,
+        hotspots:[
+          ...navHotspots,
+          hs(6.3,81.4,15.2,4.5,'Choisir formule solo','formula:formuleSolo'),
+          hs(29.2,81.4,15.2,4.5,'Choisir formule gourmande','formula:formuleGourmande'),
+          hs(52.5,81.4,15.2,4.5,'Choisir formule duo','formula:formuleDuo'),
+          hs(76.1,81.4,15.2,4.5,'Choisir formule famille','formula:formuleFamille')
+        ]
+      },
+      votes:{
+        image:'assets/votes.png',
+        w:1672,
+        h:941,
+        votesOverview:true,
+        hotspots:[
+          ...navHotspots,
+          hs(8.5,79.4,14.0,4.6,'Voir les votes pizzas','go:vote-pizzas'),
+          hs(31.5,79.4,14.0,4.6,'Voir les votes desserts','go:vote-desserts'),
+          hs(53.8,76.8,16.0,8.0,'Voir les votes boissons','go:vote-boissons'),
+          hs(76.3,79.4,15.0,4.6,'Proposer une idee','modal:idea'),
+          hs(63.6,89.4,13.3,4.8,'Se connecter','modal:account')
+        ]
+      },
+      avis:{
+        image:'assets/votes.png',
+        w:1672,
+        h:941,
+        loyaltyPanel:true,
+        hotspots:[...navHotspots]
+      },
+      'vote-pizzas':{
+        image:'assets/votes.png',
+        w:1672,
+        h:941,
+        voteKind:'pizza',
+        hotspots:[...navHotspots]
+      },
+      'vote-desserts':{
+        image:'assets/votes.png',
+        w:1672,
+        h:941,
+        voteKind:'dessert',
+        hotspots:[...navHotspots]
+      },
+      'vote-boissons':{
+        image:'assets/votes.png',
+        w:1672,
+        h:941,
+        voteKind:'boisson',
+        hotspots:[...navHotspots]
+      },
+      evenements:{
+        image:'assets/concept-evenements.png',
+        w:1672,
+        h:941,
+        eventPanel:true,
+        hotspots:[
+          ...navHotspots,
+          hs(25.0,36.2,16.0,5.2,'Reserver evenement','modal:quote'),
+          hs(71.0,91.2,16.0,4.6,'Demander un devis','modal:quote')
+        ]
+      },
+      contact:{
+        image:'assets/trouver-contact-169.jpg',
+        w:1672,
+        h:941,
+        contactPanel:true,
+        hotspots:[
+          ...navHotspots
+        ]
+      },
+      trouver:{
+        image:'assets/trouver-contact-169.jpg',
+        w:1672,
+        locationPanel:true,
+        h:941,
+        hotspots:[
+          ...navHotspots,
+          hs(15.3,68.8,11.0,4.5,'Demander un devis','modal:quote'),
+          hs(32.4,68.8,12.4,4.5,'Scanner QR code','modal:guestOrder'),
+          hs(61.1,68.0,18.0,5.3,'Lancer itineraire','maps:route'),
+          hs(56.0,47.0,18.8,17.0,'Position en direct','toast:Zone : Courniou, Saint-Pons-de-Thomieres et 30 min autour')
+        ]
+      },
+      panier:{
+        image:'assets/panier.png',
+        w:1672,
+        h:941,
+        cartPanel:true,
+        hotspots:[
+          ...navHotspots,
+          hs(6.5,69.3,14.5,4.5,'Continuer mes achats','go:menu'),
+          hs(60.6,50.2,7.5,5.4,'Creneau 18h30','slot:18:30',{x:60.7,y:50.2,w:7.3,h:5.4}),
+          hs(67.9,50.2,7.5,5.4,'Creneau 19h00','slot:19:00',{x:67.9,y:50.2,w:7.3,h:5.4}),
+          hs(75.3,50.2,7.5,5.4,'Creneau 19h30','slot:19:30',{x:75.3,y:50.2,w:7.3,h:5.4}),
+          hs(82.7,50.2,7.5,5.4,'Creneau 20h00','slot:20:00',{x:82.7,y:50.2,w:7.3,h:5.4}),
+          hs(54.0,82.2,18.0,8.0,'Paiement en ligne','payment:online'),
+          hs(54.0,88.2,18.0,7.0,'Paiement sur place','payment:cash'),
+          hs(75.0,84.0,18.0,6.0,'Valider et payer','modal:payment')
+        ]
       }
-      const jump = e.target.closest('[data-menu-tab-jump]');
-      if(jump){ showView('menu'); document.querySelector(`[data-menu-tab="${jump.dataset.menuTabJump}"]`).click(); }
-      const add = e.target.closest('[data-add]');
-      if(add){ const p = products.find(x=>x.id===add.dataset.add); addToCart({name:p.name,price:p.price,note:p.desc}); }
-      const vote = e.target.closest('[data-vote]');
-      if(vote){ const item = voteItems.find(v=>v.id===vote.dataset.vote); item.score = Math.min(99,item.score + 4); renderVotes(); }
-      if(e.target.closest('[data-open-cart]')) openCart();
-      if(e.target.closest('[data-close-cart]')) closeAll();
-      if(e.target.closest('[data-open-account]')) openModal('accountModal');
-      if(e.target.closest('[data-open-planning]')) openModal('planningModal');
-      if(e.target.closest('[data-close-modal]')) closeAll();
-      if(e.target.id==='overlay') closeAll();
-      if(e.target.id==='mobileMenu') document.getElementById('navlinks').classList.toggle('open');
-      const size = e.target.closest('[data-size]');
-      if(size){ custom.size=size.dataset.size; renderChoices(); }
-      const base = e.target.closest('[data-base]');
-      if(base){ custom.base=base.dataset.base; renderChoices(); }
-      const ing = e.target.closest('[data-ing]');
-      if(ing){ custom.ingredients = custom.ingredients.includes(ing.dataset.ing) ? custom.ingredients.filter(x=>x!==ing.dataset.ing) : [...custom.ingredients,ing.dataset.ing]; renderChoices(); }
-      const rem = e.target.closest('[data-remove]');
-      if(rem){ custom.remove = custom.remove.includes(rem.dataset.remove) ? custom.remove.filter(x=>x!==rem.dataset.remove) : [...custom.remove,rem.dataset.remove]; renderChoices(); }
-      const removeLine = e.target.closest('[data-remove-line]');
-      if(removeLine){ cart.splice(Number(removeLine.dataset.removeLine),1); renderCart(); }
-      const scroll = e.target.closest('[data-scroll]');
-      if(scroll){ document.querySelector(scroll.dataset.scroll)?.scrollIntoView({behavior:'smooth'}); }
+    };
+
+    function hs(x,y,w,h,label,action,marker){return {x,y,w,h,label,action,marker}}
+
+    function render(){
+      const page = pageData[state.page] || pageData.accueil;
+      document.title = `Pizza Baladzo - ${titleFor(state.page)}`;
+      history.replaceState(null,'',`#${state.page}`);
+      const app = document.getElementById('app');
+      app.innerHTML = `
+        <section class="mockup" style="--page-width:${page.w}px" aria-label="${titleFor(state.page)}">
+          <img src="${page.image}" alt="${titleFor(state.page)} Pizza Baladzo">
+          ${navOverlayTemplate()}
+          ${quickActionsTemplate()}
+          ${prelaunchBannerTemplate()}
+          ${selectedMarkers(page).map(spot=>`
+            <span class="selection-marker" aria-hidden="true"
+              style="--x:${spot.mx};--y:${spot.my};--w:${spot.mw};--h:${spot.mh}"></span>
+          `).join('')}
+          ${page.voteKind ? voteDetailTemplate(page.voteKind) : ''}
+          ${page.votesOverview ? votesOverviewTemplate() : ''}
+          ${page.loyaltyPanel ? loyaltyPageTemplate() : ''}
+          ${page.eventPanel ? eventDetailTemplate() : ''}
+          ${page.locationPanel ? locationDetailTemplate() : ''}
+          ${page.contactPanel ? contactDetailTemplate() : ''}
+          ${page.planningButton ? `<button class="floating-action" type="button" style="--x:52;--y:91.2;--w:16;--h:4.6" onclick="openModal('planning')">Voir le planning</button>` : ''}
+          ${page.menuVotesFix ? `<div class="menu-votes-fix">Votes de la <span>semaine</span></div>` : ''}
+          ${page.customPanel ? customPanelTemplate() : ''}
+          ${page.cartPanel ? cartPanelTemplate() : ''}
+          ${page.hotspots.map((spot,i)=>`
+            <button class="hotspot" type="button" aria-label="${spot.label}"
+              style="--x:${spot.x};--y:${spot.y};--w:${spot.w};--h:${spot.h}"
+              data-action="${spot.action}">${spot.label}</button>
+          `).join('')}
+        </section>`;
+      app.querySelectorAll('.hotspot').forEach(btn => btn.addEventListener('click', () => handle(btn.dataset.action)));
+    }
+
+    function titleFor(page){
+      return {
+        accueil:'Accueil',
+        apropos:'A propos',
+        menu:'Menu',
+        classiques:'Pizzas classiques',
+        personnalisables:'Pizzas personnalisables',
+        desserts:'Desserts',
+        boissons:'Boissons',
+        formules:'Formules',
+        votes:'Votes de la semaine',
+        avis:'Avis et fidelite',
+        'vote-pizzas':'Votes pizzas',
+        'vote-desserts':'Votes desserts',
+        'vote-boissons':'Votes boissons',
+        evenements:'Evenements prives',
+        contact:'Contact',
+        trouver:'Ou nous trouver',
+        panier:'Panier'
+      }[page] || 'Accueil';
+    }
+
+    function navOverlayTemplate(){
+      const items = [
+        ['accueil','Accueil'],
+        ['apropos','A propos'],
+        ['menu','Menu'],
+        ['evenements','Evenements'],
+        ['contact','Contact'],
+        ['trouver','Ou nous trouver']
+      ];
+      return `
+        <nav class="site-nav-overlay" aria-label="Navigation principale">
+          ${items.map(([page,label]) => `
+            <button class="nav-button ${navActive(page) ? 'active' : ''}" type="button" onclick="go('${page}')">${label}</button>
+          `).join('')}
+        </nav>`;
+    }
+
+    function quickActionsTemplate(){
+      return `
+        <div class="quick-actions-overlay" aria-label="Compte et panier">
+          <button type="button" onclick="openModal('account')">Compte</button>
+          <button class="${state.page === 'panier' ? 'active' : ''}" type="button" onclick="go('panier')">Panier</button>
+        </div>`;
+    }
+
+    function prelaunchBannerTemplate(){
+      if(!PRELAUNCH_MODE) return '';
+      const label = OPENING_DATE ? `Ouverture prevue le ${OPENING_DATE}` : 'Ouverture prochaine';
+      return `<div class="prelaunch-banner"><span>${label}</span> - comptes et votes ouverts, commandes et paiements bloques en preview</div>`;
+    }
+
+    function navActive(page){
+      if(state.page === page) return true;
+      if(page === 'menu' && ['classiques','personnalisables','desserts','boissons','formules','votes','vote-pizzas','vote-desserts','vote-boissons','avis'].includes(state.page)) return true;
+      return false;
+    }
+
+    function votesOverviewTemplate(){
+      const cards = [
+        {title:'Pizza du moment',text:'Votez pour la pizza que vous voulez voir mise en avant cette semaine.',img:'assets/vote-margherita.jpg',action:'vote-pizzas',button:'Voter pizza'},
+        {title:'Dessert du moment',text:'Choisissez la douceur maison qui merite la mise en avant.',img:'assets/vote-tiramisu.jpg',action:'vote-desserts',button:'Voter dessert'},
+        {title:'Boisson de la semaine',text:'Selectionnez la boisson a proposer en vedette.',img:'assets/vote-oasis-orange.jpg',action:'vote-boissons',button:'Voter boisson'},
+        {title:'Idees gourmandes',text:'Proposez une pizza, un dessert, une boisson ou une envie client.',img:'assets/votes.png',action:'idea',button:'Proposer une idee'}
+      ];
+      return `
+        <section class="votes-overview" aria-label="Votes de la semaine">
+          <h1>Votes de la <span>semaine</span></h1>
+          <p>Pizza du moment, dessert du moment, boisson de la semaine et idees gourmandes. Connexion requise plus tard, simulation ouverte en preview.</p>
+          <div class="votes-overview-grid">
+            ${cards.map(card => `
+              <article class="votes-overview-card">
+                <img src="${card.img}" alt="${card.title}">
+                <strong>${card.title}</strong>
+                <small>${card.text}</small>
+                <button class="vote-button" type="button" onclick="${card.action === 'idea' ? "openModal('idea')" : `go('${card.action}')`}">${card.button}</button>
+              </article>
+            `).join('')}
+          </div>
+          <div class="loyalty-actions">
+            <button class="secondary" type="button" onclick="go('avis')">Voir avis & fidelite</button>
+            <button class="secondary" type="button" onclick="openModal('account')">Se connecter</button>
+          </div>
+        </section>`;
+    }
+
+    function voteDetailTemplate(kind){
+      const labels = {
+        pizza:['Votez pour', 'la pizza du moment'],
+        dessert:['Votez pour', 'le dessert du moment'],
+        boisson:['Votez pour', 'la boisson de la semaine']
+      };
+      const items = voteCatalog[kind] || [];
+      return `
+        <section class="vote-detail" aria-label="${labels[kind][1]}">
+          <button class="vote-back" type="button" onclick="go('votes')">Retour aux votes</button>
+          <h1>${labels[kind][0]} <span>${labels[kind][1]}</span></h1>
+          <p>Choisissez le produit que vous voulez voir mis en avant. Le vote est simule pour la preview.</p>
+          <div class="vote-grid">
+            ${items.map(item => `
+              <article class="vote-card">
+                <img src="${item.img}" alt="${item.name}">
+                <div>
+                  <strong>${item.name}</strong>
+                  <small>${item.desc}</small>
+                </div>
+                <button class="vote-button ${state.votes[kind] === item.name ? 'active' : ''}" type="button"
+                  onclick="recordVote('${kind}','${item.name.replace(/'/g, "\\'")}')">
+                  ${state.votes[kind] === item.name ? 'Vote choisi' : 'Voter'}
+                </button>
+              </article>
+            `).join('')}
+          </div>
+        </section>`;
+    }
+
+    function loyaltyPageTemplate(){
+      const publicNote = 'Nouvelle recette - Soyez les premiers a donner votre avis';
+      return `
+        <section class="loyalty-detail" aria-label="Avis clients et fidelite">
+          <button class="vote-back" type="button" onclick="go('menu')">Retour menu</button>
+          <h1>Avis & <span>fidelite</span></h1>
+          <p class="loyalty-lead">Une page pleine, dans le style Vos votes, pour suivre les avis clients, les notes visibles et les avantages fidelite.</p>
+          <div class="loyalty-grid">
+            <div>
+              <div class="loyalty-cards">
+                <article class="loyalty-card">
+                  <strong>Avis clients</strong>
+                  <small>Seuls les clients connectes ayant commande pourront laisser un avis.</small>
+                  <div class="big">0/5</div>
+                  <small>${publicNote}</small>
+                </article>
+                <article class="loyalty-card">
+                  <strong>Notes publiques</strong>
+                  <small>Affichage public uniquement a partir de 5 avis reels.</small>
+                  <div class="big">0 avis</div>
+                  <small>Les notes restent masquees avant ce seuil.</small>
+                </article>
+                <article class="loyalty-card">
+                  <strong>Points fidelite</strong>
+                  <small>Solde preview du compte client.</small>
+                  <div class="big">${state.loyaltyPoints}</div>
+                  <small>Un seul avantage fidelite par commande.</small>
+                </article>
+                <article class="loyalty-card">
+                  <strong>Avantages</strong>
+                  <small>10 points = pizza gratuite non premium taille S.</small>
+                  <small>5 points = dessert non premium.</small>
+                </article>
+              </div>
+              <div class="loyalty-actions">
+                <button class="primary" type="button" onclick="leaveReview()">Laisser un avis</button>
+                <button class="secondary" type="button" onclick="redeemReward(5)">Utiliser 5 points</button>
+                <button class="secondary" type="button" onclick="redeemReward(10)">Utiliser 10 points</button>
+              </div>
+            </div>
+            <div>
+              <div class="loyalty-card">
+                <strong>Derniers avis</strong>
+                <small>${publicNote}</small>
+                <small>Les vrais avis seront visibles apres validation et apres le seuil de 5 avis reels.</small>
+              </div>
+              <div class="loyalty-card" style="margin-top:12px">
+                <strong>Fidelite Pizza Baladzo</strong>
+                <small>Les points seront rattaches au compte client connecte. Les commandes invitees QR ne donnent pas acces a la fidelite, a l'historique, aux avis ni aux promotions personnalisees.</small>
+              </div>
+              <div class="loyalty-actions">
+                <button class="primary" type="button" onclick="openModal('account')">Mon compte</button>
+                <button class="secondary" type="button" onclick="go('votes')">Votes de la semaine</button>
+              </div>
+            </div>
+          </div>
+        </section>`;
+    }
+
+    function handle(action){
+      const [type,...rest] = action.split(':');
+      const value = rest.join(':');
+      if(type === 'go') return go(value);
+      if(type === 'add') return addProduct(value);
+      if(type === 'formula') return startFormula(value);
+      if(type === 'detail') return openProductDetail(value);
+      if(type === 'base') return setBase(value);
+      if(type === 'size') return setSize(value);
+      if(type === 'ingredient') return toggleIngredient(value);
+      if(type === 'custom') return addCustom();
+      if(type === 'vote') return go(`vote-${value}s`);
+      if(type === 'modal') return openModal(value);
+      if(type === 'toast') return toast(value);
+      if(type === 'slot') return setSlot(value);
+      if(type === 'payment') return setPayment(value);
+      if(type === 'maps') return openMapsRoute();
+      if(type === 'waze') return openWazeRoute();
+    }
+
+    function eventDetailTemplate(){
+      return `
+        <section class="event-detail" aria-label="Evenements prives Pizza Baladzo">
+          <h1>Evenements <span>prives</span></h1>
+          <p>Une page dediee aux prestations privees uniquement : mariage, anniversaire, entreprise, fete de village ou soiree familiale. Les horaires de commande classique restent dans le panier.</p>
+          <div class="event-grid">
+            <div class="contact-panel">
+              <span class="status-pill">Devis sous 24 h</span>
+              <div class="list" style="margin-top:14px">
+                <div class="line"><div><strong>Date evenement</strong><small>A choisir dans le formulaire de devis.</small></div><div class="price">Modifiable</div></div>
+                <div class="line"><div><strong>Lieu / adresse</strong><small>Courniou, Saint-Pons-de-Thomieres et environ 30 min autour.</small></div><div class="price">Zone locale</div></div>
+                <div class="line"><div><strong>Nombre de convives</strong><small>Prestation adaptee au volume prevu.</small></div><div class="price">Sur mesure</div></div>
+                <div class="line"><div><strong>Type de prestation</strong><small>Privee, professionnelle, festive ou associative.</small></div><div class="price">Au choix</div></div>
+              </div>
+            </div>
+            <div class="contact-panel">
+              <div class="list">
+                <div class="line"><div><strong>Pizzas prevues</strong><small>Classiques, recettes du moment ou choix personnalises.</small></div><div class="price">A definir</div></div>
+                <div class="line"><div><strong>Desserts prevus</strong><small>Verrines, ramequins, desserts maison ou dessert du moment.</small></div><div class="price">Option</div></div>
+                <div class="line"><div><strong>Boissons prevues</strong><small>Sodas, jus, boissons fraiches selon la prestation.</small></div><div class="price">Option</div></div>
+                <div class="line"><div><strong>Demande particuliere</strong><small>Allergenes, horaires, acces, organisation, nombre de services.</small></div><div class="price">Libre</div></div>
+              </div>
+              <div class="notice">Toutes ces informations seront modifiables plus tard depuis l'administration.</div>
+              <div class="actions">
+                <button class="primary" type="button" onclick="openModal('quote')">Demander un devis</button>
+                <button class="secondary" type="button" onclick="go('contact')">Nous contacter</button>
+              </div>
+            </div>
+          </div>
+        </section>`;
+    }
+
+    function locationDetailTemplate(){
+      return `
+        <section class="location-detail" aria-label="Ou nous trouver Pizza Baladzo">
+          <h1>Ou nous <span>trouver</span></h1>
+          <p>Retrouvez la remorque Pizza Baladzo autour de Courniou, Saint-Pons-de-Thomieres et dans un rayon d'environ 30 minutes autour de Courniou.</p>
+          <div class="location-grid">
+            <div class="contact-panel">
+              <span class="status-pill">Statut du jour : ouverture prochaine</span>
+              <div class="list" style="margin-top:14px">
+                <div class="line"><div><strong>Position prevue</strong><small>Place du Foirail, 34220 Saint-Pons-de-Thomieres.</small></div><div class="price">Preview</div></div>
+                <div class="line"><div><strong>Zone</strong><small>Courniou, Saint-Pons-de-Thomieres, villages et communes a environ 30 min autour de Courniou.</small></div><div class="price">Local</div></div>
+                <div class="line"><div><strong>Planning</strong><small>Mardi Saint-Pons-de-Thomieres, jeudi Courniou, week-end evenements prives.</small></div><div class="price">Simule</div></div>
+              </div>
+              <div class="actions">
+                <button class="primary" type="button" onclick="openModal('planning')">Voir planning</button>
+                <button class="secondary" type="button" onclick="openMapsRoute()">Google Maps</button>
+                <button class="secondary" type="button" onclick="openWazeRoute()">Waze</button>
+                <button class="primary" type="button" onclick="go('menu')">Commander</button>
+              </div>
+            </div>
+            <div>
+              <div class="mini-map">
+                <div>
+                  <strong>Carte interactive prevue</strong><br>
+                  Position actuelle du camion, itineraire et suivi en direct seront connectes plus tard sans cle API dans la preview.
+                </div>
+              </div>
+              <div class="notice">Le bouton Google Maps ouvrira l'itineraire vers l'emplacement prevu. Waze est aussi prevu pour guider les clients jusqu'au camion.</div>
+            </div>
+          </div>
+        </section>`;
+    }
+
+    function contactDetailTemplate(){
+      return `
+        <section class="contact-detail" aria-label="Contact Pizza Baladzo">
+          <div>
+            <h1>Contact <span>client</span></h1>
+            <p>Cette page sert uniquement a prendre contact avec Pizza Baladzo : message interne, demande generale ou rappel telephonique sous 24 heures.</p>
+            <div class="contact-panel">
+              <strong>Rappel telephonique</strong>
+              <p>Vous laissez votre telephone, Pizza Baladzo vous rappelle sous 24 h maximum. Aucune adresse personnelle n'est affichee.</p>
+              <button class="primary" type="button" onclick="openModal('callback')">Demander un rappel</button>
+            </div>
+            <div class="notice alert-red"><strong>Futur admin :</strong> un probleme de paiement declenchera une alerte rouge dans l'administration.</div>
+          </div>
+          <form class="contact-panel" onsubmit="event.preventDefault();toast('Message envoye en simulation');">
+            <div class="grid two">
+              <label class="field">Nom<input placeholder="Votre nom"></label>
+              <label class="field">Prenom<input placeholder="Votre prenom"></label>
+              <label class="field">Email<input type="email" placeholder="vous@email.fr"></label>
+              <label class="field">Telephone<input placeholder="06 00 00 00 00"></label>
+            </div>
+            <label class="field" style="margin-top:12px">Type de demande<select>
+              <option>Demande generale</option>
+              <option>Demande evenement prive</option>
+              <option>Question commande</option>
+              <option>Probleme de paiement</option>
+              <option>Autre demande</option>
+            </select></label>
+            <label class="field" style="margin-top:12px">Message<textarea placeholder="Votre demande"></textarea></label>
+            <div class="actions">
+              <button class="primary" type="submit">Envoyer le message</button>
+              <button class="secondary" type="button" onclick="go('trouver')">Ou nous trouver</button>
+            </div>
+          </form>
+        </section>`;
+    }
+
+    function customPanelTemplate(){
+      const price = customPrice();
+      const ingredients = state.custom.ingredients.length ? state.custom.ingredients.join(', ') : 'Aucun ingredient selectionne';
+      const allergens = customAllergenSummary();
+      return `
+        <section class="custom-live-panel" aria-label="Resume pizza personnalisable">
+          <h3>Votre pizza personnalisee</h3>
+          <p><strong>Taille :</strong> ${state.custom.size} - ${customSizeRatios[state.custom.size]}</p>
+          <p><strong>Base :</strong> ${state.custom.base}</p>
+          <p><strong>Ingredients :</strong> ${ingredients}</p>
+          <div class="custom-chip-row">
+            ${customIngredients.map(name => `
+              <button class="custom-chip ${state.custom.ingredients.includes(name) ? 'active' : ''}" type="button" onclick="toggleIngredient('${name}')">${name}</button>
+            `).join('')}
+          </div>
+          <p><strong>Allergenes indicatifs :</strong> ${allergens}</p>
+          <div class="custom-live-footer">
+            <div class="price">${format(price)}</div>
+            <button class="primary" type="button" onclick="addCustom()">Ajouter au panier</button>
+          </div>
+        </section>`;
+    }
+
+    function cartPanelTemplate(){
+      const rows = state.cart.length ? state.cart.map((item,index) => `
+        <article class="cart-row">
+          <div>
+            <strong>${item.name}</strong>
+            <small>${item.desc || 'Produit Pizza Baladzo'}</small>
+            <small>Allergenes : ${cartItemAllergens(item)}</small>
+          </div>
+          <div class="qty-controls" aria-label="Quantite ${item.name}">
+            <button class="icon-btn" type="button" onclick="updateQty(${index},-1)" aria-label="Retirer un produit">-</button>
+            <strong>${item.qty}</strong>
+            <button class="icon-btn" type="button" onclick="updateQty(${index},1)" aria-label="Ajouter un produit">+</button>
+            <button class="icon-btn" type="button" onclick="removeCartItem(${index})" aria-label="Supprimer le produit">x</button>
+          </div>
+          <div class="cart-price">${format(item.price * item.qty)}</div>
+        </article>`).join('') : `
+        <div class="cart-empty">Votre panier est vide. Choisissez une pizza, une boisson, un dessert ou une formule pour tester la commande.</div>`;
+      return `
+        <section class="cart-live-panel" aria-label="Panier et commande">
+          <div>
+            <h3>Votre panier</h3>
+            <div class="cart-section">${rows}</div>
+            <div class="cart-section">
+              <h3>Demandes particulieres</h3>
+              <textarea class="cart-textarea" maxlength="180" placeholder="Sans oignons, cuisson bien cuite, allergie a preciser..." oninput="setSpecialRequest(this.value)">${state.specialRequest}</textarea>
+            </div>
+            <div class="cart-section">
+              <h3>Allergenes</h3>
+              <p>${cartAllergenSummary()}</p>
+              <label class="allergen-check">
+                <input type="checkbox" ${state.allergensAccepted ? 'checked' : ''} onchange="setAllergensAccepted(this.checked)">
+                <span>J'ai pris connaissance des informations allergenes et j'accepte les risques de contamination croisee. Case obligatoire pour valider la commande.</span>
+              </label>
+            </div>
+          </div>
+          <div>
+            <div class="cart-section">
+              <h3>Recapitulatif</h3>
+              <div class="cart-total-line"><span>Sous-total</span><strong>${format(cartSubtotal())}</strong></div>
+              <div class="cart-total-line"><span>Frais de preparation</span><strong>${format(cartPrepFee())}</strong></div>
+              <div class="cart-total-line"><strong>Total TTC</strong><strong class="cart-price">${format(cartTotal())}</strong></div>
+            </div>
+            <div class="cart-section">
+              <h3>Creneau de retrait</h3>
+              <div class="slot-options">
+                ${['18:30','19:00','19:30','20:00'].map(slot => `
+                  <button class="${state.slot === slot ? 'active' : ''}" type="button" onclick="setSlot('${slot}')">
+                    <span>Aujourd'hui</span><strong>${slot}</strong>
+                  </button>
+                `).join('')}
+              </div>
+            </div>
+            <div class="cart-section">
+              <h3>Mode de paiement</h3>
+              <div class="pay-options">
+                <button class="${state.payment === 'online' ? 'active' : ''}" type="button" onclick="setPayment('online')">CB en ligne Stripe <small>Simulation securisee</small></button>
+                <button class="${state.payment === 'cash' ? 'active' : ''}" type="button" onclick="setPayment('cash')">Especes au retrait <small>Paiement au camion</small></button>
+                <button class="${state.payment === 'terminal' ? 'active' : ''}" type="button" onclick="setPayment('terminal')">CB au camion via Stripe Terminal <small>Simulation terminal</small></button>
+              </div>
+            </div>
+            <div class="actions">
+              <button class="secondary" type="button" onclick="go('menu')">Revenir au menu</button>
+              <button class="primary" type="button" onclick="validateCart()">Valider panier</button>
+            </div>
+          </div>
+        </section>`;
+    }
+
+    function selectedMarkers(page){
+      return page.hotspots.filter(spot => {
+        const [type,...rest] = spot.action.split(':');
+        const value = rest.join(':');
+        if(type === 'base') return state.custom.base === value;
+        if(type === 'size') return state.custom.size === value;
+        if(type === 'ingredient') return state.custom.ingredients.includes(value);
+        if(type === 'slot') return state.slot === value;
+        if(type === 'payment') return state.payment === value || (state.payment === 'cash' && value === 'place');
+        return false;
+      }).map(spot => ({
+        ...spot,
+        mx: spot.marker?.x ?? spot.x,
+        my: spot.marker?.y ?? spot.y,
+        mw: spot.marker?.w ?? spot.w,
+        mh: spot.marker?.h ?? spot.h
+      }));
+    }
+
+    function go(page){
+      state.page = page;
+      closeModal();
+      render();
+      window.scrollTo({top:0,left:0,behavior:'smooth'});
+    }
+
+    function addProduct(key){
+      if(prelaunchBlocked('commande')) return;
+      const product = products[key];
+      if(!product) return;
+      if(state.formulaFlow && productCategories[key]){
+        return addFormulaChoice(key, product);
+      }
+      const found = state.cart.find(item => item.key === key);
+      if(found) found.qty += 1;
+      else state.cart.push({...product,key,qty:1});
+      toast(`${product.name} ajoute au panier`);
+    }
+
+    function openProductDetail(key){
+      state.currentProduct = key;
+      openModal('product');
+    }
+
+    function startFormula(key){
+      if(prelaunchBlocked('commande')) return;
+      const plan = formulaPlans[key];
+      if(!plan) return;
+      state.formulaFlow = {
+        key,
+        label:plan.label,
+        price:plan.price,
+        steps:{...plan.steps},
+        selected:{pizza:[],boisson:[],dessert:[]}
+      };
+      go('classiques');
+      toast(`${plan.label} : choisissez ${plan.steps.pizza} pizza${plan.steps.pizza > 1 ? 's' : ''}`);
+    }
+
+    function addFormulaChoice(key, product){
+      const category = productCategories[key];
+      const flow = state.formulaFlow;
+      const expected = expectedFormulaStep(flow);
+      if(category !== expected){
+        toast(`Pour cette formule, choisissez d'abord ${stepLabel(expected)}.`);
+        go(pageForStep(expected));
+        return;
+      }
+      if(flow.selected[category].length >= flow.steps[category]){
+        return advanceFormula();
+      }
+      flow.selected[category].push(product.name);
+      const remaining = flow.steps[category] - flow.selected[category].length;
+      if(remaining > 0){
+        toast(`${product.name} choisi. Encore ${remaining} ${stepLabel(category)}.`);
+        return;
+      }
+      advanceFormula();
+    }
+
+    function expectedFormulaStep(flow){
+      if(!flow) return null;
+      if(flow.selected.pizza.length < flow.steps.pizza) return 'pizza';
+      if(flow.selected.boisson.length < flow.steps.boisson) return 'boisson';
+      if(flow.selected.dessert.length < flow.steps.dessert) return 'dessert';
+      return 'done';
+    }
+
+    function advanceFormula(){
+      const flow = state.formulaFlow;
+      const next = expectedFormulaStep(flow);
+      if(next === 'done') return completeFormula();
+      go(pageForStep(next));
+      const remaining = flow.steps[next] - flow.selected[next].length;
+      toast(`${flow.label} : choisissez ${remaining} ${stepLabel(next)}.`);
+    }
+
+    function completeFormula(){
+      const flow = state.formulaFlow;
+      const desc = [
+        `${flow.selected.pizza.length} pizza(s) : ${flow.selected.pizza.join(', ')}`,
+        `${flow.selected.boisson.length} boisson(s) : ${flow.selected.boisson.join(', ')}`
+      ];
+      if(flow.steps.dessert > 0) desc.push(`${flow.selected.dessert.length} dessert(s) : ${flow.selected.dessert.join(', ')}`);
+      state.cart.push({key:flow.key,name:flow.label,price:flow.price,desc:desc.join(' | '),qty:1,allergens:'Selon les produits choisis : gluten, lait et autres allergenes possibles.'});
+      state.formulaFlow = null;
+      go('panier');
+      toast(`${flow.label} complete ajoutee au panier`);
+    }
+
+    function pageForStep(step){
+      return step === 'pizza' ? 'classiques' : step === 'boisson' ? 'boissons' : 'desserts';
+    }
+
+    function stepLabel(step){
+      return step === 'pizza' ? 'pizza' : step === 'boisson' ? 'boisson' : 'dessert';
+    }
+
+    function addCustom(){
+      if(prelaunchBlocked('commande')) return;
+      const item = {
+        name:`Pizza personnalisee ${state.custom.size}`,
+        price:customPrice(),
+        desc:`Base ${state.custom.base}. ${customSizeRatios[state.custom.size]}. Ingredients : ${state.custom.ingredients.join(', ') || 'a choisir'}.`,
+        key:'custom',
+        allergens:customAllergenSummary(),
+        qty:1
+      };
+      state.cart.push(item);
+      toast('Pizza personnalisee ajoutee au panier');
+    }
+
+    function customPrice(){
+      const included = 4;
+      const extraCount = Math.max(0, state.custom.ingredients.length - included);
+      const sizeExtra = state.custom.size === 'XL' ? 0.50 : state.custom.size === 'S' ? -0.50 : 0;
+      return customBasePrices[state.custom.size] + extraCount * 0.80 + sizeExtra;
+    }
+
+    function customAllergenSummary(){
+      const allergens = new Set(['gluten']);
+      state.custom.ingredients.forEach(name => {
+        const info = customAllergens[name];
+        if(!info || info.includes('aucun')) return;
+        info.split(',').forEach(item => allergens.add(item.trim()));
+      });
+      return Array.from(allergens).join(', ');
+    }
+
+    function setBase(value){
+      state.custom.base = value;
+      render();
+      toast(`Base choisie : ${value}`);
+    }
+
+    function setSize(value){
+      state.custom.size = value;
+      render();
+      toast(`Taille choisie : ${value}`);
+    }
+
+    function toggleIngredient(value){
+      const list = state.custom.ingredients;
+      const index = list.indexOf(value);
+      if(index >= 0){
+        list.splice(index,1);
+        render();
+        toast(`${value} retire`);
+      }else{
+        list.push(value);
+        render();
+        toast(`${value} ajoute`);
+      }
+    }
+
+    function setSlot(value){
+      state.slot = value;
+      render();
+      toast(`Creneau de retrait choisi : ${value}`);
+    }
+
+    function setPayment(value){
+      if(value === 'place') value = 'cash';
+      state.payment = value;
+      render();
+      toast(`Mode choisi : ${paymentLabel()}`);
+    }
+
+    function updateQty(index, delta){
+      const item = state.cart[index];
+      if(!item) return;
+      item.qty += delta;
+      if(item.qty <= 0) state.cart.splice(index,1);
+      render();
+      toast('Panier mis a jour');
+    }
+
+    function removeCartItem(index){
+      const item = state.cart[index];
+      if(!item) return;
+      state.cart.splice(index,1);
+      render();
+      toast(`${item.name} supprime du panier`);
+    }
+
+    function setSpecialRequest(value){
+      state.specialRequest = value;
+    }
+
+    function setAllergensAccepted(value){
+      state.allergensAccepted = value;
+      render();
+    }
+
+    function validateCart(){
+      if(prelaunchBlocked('paiement')) return;
+      if(!state.cart.length){
+        toast('Ajoutez au moins un produit avant de valider');
+        return;
+      }
+      if(!state.allergensAccepted){
+        toast('Veuillez cocher la prise de connaissance des allergenes');
+        return;
+      }
+      openModal('confirmation');
+    }
+
+    function cartSubtotal(){
+      return state.cart.reduce((sum,item)=>sum + item.price * item.qty,0);
+    }
+
+    function cartPrepFee(){
+      return state.cart.length ? 1.50 : 0;
+    }
+
+    function cartTotal(){
+      return cartSubtotal() + cartPrepFee();
+    }
+
+    function paymentLabel(){
+      return {
+        online:'CB en ligne Stripe',
+        cash:'Especes au retrait',
+        terminal:'CB au camion via Stripe Terminal'
+      }[state.payment] || 'Paiement fictif';
+    }
+
+    function cartItemAllergens(item){
+      if(item.allergens) return item.allergens;
+      const detail = productDetails[item.key] || pizzaDetails[item.key];
+      return detail?.allergens || 'Demandez la liste complete a notre equipe.';
+    }
+
+    function cartAllergenSummary(){
+      if(!state.cart.length) return 'Aucun produit dans le panier pour le moment.';
+      const values = new Set();
+      state.cart.forEach(item => {
+        cartItemAllergens(item).split(',').forEach(value => {
+          const clean = value.trim().replace(/\.$/,'');
+          if(clean) values.add(clean);
+        });
+      });
+      return Array.from(values).join(', ') + '.';
+    }
+
+    function recordVote(kind, productName){
+      state.votes[kind] = productName;
+      render();
+      toast(`Vote enregistre en simulation : ${productName}`);
+    }
+
+    function leaveReview(){
+      if(PRELAUNCH_MODE){
+        toast('Avis bloques pendant le pre-lancement.');
+        return;
+      }
+      if(!state.loggedIn){
+        toast('Connectez-vous pour laisser un avis.');
+        openModal('account');
+        return;
+      }
+      if(!state.hasOrdered){
+        toast('Avis reserve aux clients connectes ayant commande.');
+        return;
+      }
+      toast('Avis enregistre en simulation.');
+    }
+
+    function redeemReward(points){
+      if(!state.loggedIn){
+        toast('Connectez-vous pour utiliser la fidelite.');
+        openModal('account');
+        return;
+      }
+      if(state.loyaltyPoints < points){
+        toast(`Solde insuffisant : ${points} points requis.`);
+        return;
+      }
+      const reward = points === 10 ? 'pizza gratuite non premium taille S' : 'dessert non premium';
+      toast(`Avantage simule : ${reward}. Un seul avantage par commande.`);
+    }
+
+    function prelaunchBlocked(kind){
+      if(!PRELAUNCH_MODE) return false;
+      const label = OPENING_DATE ? `Ouverture prevue le ${OPENING_DATE}` : 'Ouverture prochaine';
+      const messages = {
+        commande:`${label} : les commandes sont bloquees pour le pre-lancement.`,
+        paiement:`${label} : les paiements sont bloques pour le pre-lancement.`,
+        avis:`${label} : les avis clients seront ouverts apres les premieres commandes.`
+      };
+      toast(messages[kind] || `${label} : action bloquee pendant le pre-lancement.`);
+      return true;
+    }
+
+    function toast(message){
+      const box = document.getElementById('toast');
+      box.textContent = message;
+      box.classList.add('show');
+      clearTimeout(window.toastTimer);
+      window.toastTimer = setTimeout(() => box.classList.remove('show'), 2200);
+    }
+
+    function openModal(kind){
+      const backdrop = document.getElementById('modalBackdrop');
+      const body = document.getElementById('modalBody');
+      document.getElementById('modalTitle').innerHTML = modalTitle(kind);
+      body.innerHTML = modalContent(kind);
+      backdrop.classList.add('open');
+      backdrop.querySelector('.close').focus();
+    }
+
+    function closeModal(){
+      document.getElementById('modalBackdrop').classList.remove('open');
+    }
+
+    function modalTitle(kind){
+      return {
+        account:'Mon <span>compte</span>',
+        signup:'Creer un <span>compte</span>',
+        quote:'Demande de <span>devis</span>',
+        contact:'Nous <span>contacter</span>',
+        callback:'Rappel <span>24 h</span>',
+        planning:'Voir le <span>planning</span>',
+        product:'Detail <span>pizza</span>',
+        route:'Ou nous <span>trouver</span>',
+        story:'Notre <span>histoire</span>',
+        idea:'Proposer une <span>idee</span>',
+        guestOrder:'Commande <span>QR invitee</span>',
+        guestOrderConfirm:'Commande <span>invitee</span>',
+        accountOrders:'Historique <span>commandes</span>',
+        accountTracking:'Suivi <span>commande</span>',
+        accountLoyalty:'Points <span>fidelite</span>',
+        accountReviews:'Avis <span>clients</span>',
+        accountVotes:'Mes <span>votes</span>',
+        accountNotifications:'Notifications <span>client</span>',
+        accountInfo:'Informations <span>personnelles</span>',
+        accountDelete:'Suppression <span>compte</span>',
+        accountRgpd:'RGPD <span>client</span>',
+        payment:'Paiement <span>fictif</span>',
+        confirmation:'Commande <span>confirmee</span>'
+      }[kind] || 'Pizza <span>Baladzo</span>';
+    }
+
+    function modalContent(kind){
+      if(kind === 'account') {
+        if(!state.loggedIn) return `
+          <div class="notice">Espace client simule : connexion, commandes, suivi, fidelite, avis, votes, notifications et RGPD seront raccordes plus tard au vrai systeme.</div>
+          <div class="grid two">
+            <label class="field">Email<input type="email" placeholder="client@email.fr"></label>
+            <label class="field">Mot de passe<input type="password" placeholder="********"></label>
+          </div>
+          <div class="actions">
+            <button class="primary" type="button" onclick="loginClient()">Se connecter</button>
+            <button class="secondary" type="button" onclick="openModal('signup')">Creer un compte</button>
+            <button class="secondary" type="button" onclick="openModal('guestOrder')">Commande rapide QR</button>
+          </div>
+          <div class="notice">Pre-lancement : la creation de compte et les votes sont autorises. Les commandes, paiements et avis sont bloques jusqu'a l'ouverture.</div>`;
+        return `
+          <div class="notice">Compte client connecte en simulation. Aucune donnee reelle n'est stockee.</div>
+          <div class="account-tabs">
+            <button type="button" onclick="openModal('accountOrders')">Historique commandes<small>Voir anciennes commandes</small></button>
+            <button type="button" onclick="openModal('accountTracking')">Suivi commande<small>Etat en preparation</small></button>
+            <button type="button" onclick="go('avis');closeModal()">Points fidelite<small>Solde et recompenses</small></button>
+            <button type="button" onclick="go('avis');closeModal()">Avis laisses<small>Page avis & fidelite</small></button>
+            <button type="button" onclick="openModal('accountVotes')">Votes<small>Votes de la semaine</small></button>
+            <button type="button" onclick="openModal('accountNotifications')">Notifications<small>SMS et email prevus</small></button>
+            <button type="button" onclick="openModal('accountInfo')">Infos personnelles<small>Nom, telephone, email</small></button>
+            <button type="button" onclick="openModal('accountRgpd')">RGPD<small>Export et consentements</small></button>
+            <button type="button" onclick="openModal('accountDelete')">Supprimer compte<small>Demande definitive</small></button>
+          </div>
+          <div class="actions">
+            <button class="secondary" type="button" onclick="logoutClient()">Se deconnecter</button>
+          </div>`;
+      }
+      if(kind === 'signup') return `
+        <div class="notice">Creation de compte autorisee en pre-lancement. Preview simulee : aucune donnee n'est envoyee.</div>
+        <div class="grid two">
+          <label class="field">Prenom<input placeholder="Votre prenom"></label>
+          <label class="field">Nom<input placeholder="Votre nom"></label>
+          <label class="field">Email<input type="email" placeholder="vous@email.fr"></label>
+          <label class="field">Telephone<input placeholder="06 00 00 00 00"></label>
+          <label class="field">Mot de passe<input type="password" placeholder="********"></label>
+          <label class="field">Confirmation<input type="password" placeholder="********"></label>
+        </div>
+        <label class="allergen-check"><input type="checkbox"><span>J'accepte la creation de mon compte preview et les informations RGPD. Simulation uniquement.</span></label>
+        <div class="actions">
+          <button class="primary" type="button" onclick="state.loggedIn=true;toast('Compte client cree en simulation');openModal('account')">Valider mon compte</button>
+          <button class="secondary" type="button" onclick="openModal('account')">Retour connexion</button>
+        </div>`;
+      if(kind === 'accountOrders') return accountSection([
+        ['Commande #PB-1024','Margherita, Tiramisu, Sprite - statut simule : prete'],
+        ['Commande #PB-1023','Reine, Coca-Cola - statut simule : retiree']
+      ], 'Historique visible seulement pour les clients connectes. Indisponible pour les commandes invitees QR.');
+      if(kind === 'accountTracking') return accountSection([
+        ['Commande en cours','Aucune commande reelle pour le moment. Le suivi affichera : recue, en preparation, prete, retiree.'],
+        ['SMS automatique','Prevus plus tard pour prevenir quand la commande est prete.']
+      ], 'Le suivi commande est simule dans cette preview.');
+      if(kind === 'accountLoyalty') return accountSection([
+        ['Points fidelite','42 points preview'],
+        ['Avantage prevu','Reduction ou dessert offert selon regles a definir']
+      ], 'La fidelite ne sera pas disponible pour les clients invites sans compte.');
+      if(kind === 'accountReviews') return accountSection([
+        ['Avis laisses','Bloques pendant le pre-lancement.'],
+        ['Regle qualite','Les notes visibles apparaitront seulement apres 5 avis clients reels.']
+      ], 'Les avis clients seront ouverts apres les premieres commandes reelles.');
+      if(kind === 'accountVotes') return accountSection([
+        ['Pizza votee', state.votes.pizza || 'Aucun vote pizza pour le moment'],
+        ['Dessert vote', state.votes.dessert || 'Aucun vote dessert pour le moment'],
+        ['Boisson votee', state.votes.boisson || 'Aucun vote boisson pour le moment']
+      ], 'Les votes sont autorises pendant le pre-lancement.');
+      if(kind === 'accountNotifications') return accountSection([
+        ['SMS commande','Previent quand la commande est prete. Simulation sans envoi.'],
+        ['Email compte','Confirmation et informations importantes. Simulation sans envoi.'],
+        ['Promotions','Desactivables depuis le compte client.']
+      ], 'Aucun vrai SMS ni email n est envoye dans la preview.');
+      if(kind === 'accountInfo') return `
+        <div class="notice">Informations personnelles modifiables en simulation.</div>
+        <div class="grid two">
+          <label class="field">Prenom<input value="Sebastien"></label>
+          <label class="field">Nom<input value="Client preview"></label>
+          <label class="field">Telephone<input value="06 00 00 00 00"></label>
+          <label class="field">Email<input type="email" value="client@email.fr"></label>
+        </div>
+        <div class="actions"><button class="primary" type="button" onclick="toast('Informations mises a jour en simulation')">Enregistrer</button><button class="secondary" type="button" onclick="openModal('account')">Retour compte</button></div>`;
+      if(kind === 'accountDelete') return `
+        <div class="notice">Suppression de compte prevue RGPD. En preview, rien n'est supprime car aucune donnee reelle n'est stockee.</div>
+        <div class="actions"><button class="primary" type="button" onclick="state.loggedIn=false;toast('Demande de suppression simulee');openModal('account')">Demander la suppression</button><button class="secondary" type="button" onclick="openModal('account')">Annuler</button></div>`;
+      if(kind === 'accountRgpd') return accountSection([
+        ['Droit d acces','Voir et exporter les donnees client.'],
+        ['Droit de rectification','Modifier les informations personnelles.'],
+        ['Droit a l oubli','Demander la suppression du compte.'],
+        ['Consentements','SMS, emails et promotions personnalisables.']
+      ], 'RGPD prevu proprement pour la vraie version.');
+      if(kind === 'story') return `
+        <div class="notice">Le texte officiel de presentation de Pizza Baladzo.</div>
+        <p>Tout a commence grace a un ami qui possedait un camion pizza. Apres son service, il rentrait chez lui, installait son camion dans son jardin, et nous nous retrouvions entre amis autour de lui pour partager des soirees conviviales, parfois a dix, quinze ou vingt personnes.</p>
+        <p>C'est dans cette ambiance que j'ai decouvert le monde de la pizza. J'ai appris a travailler la pate, a preparer mes propres pizzas, et surtout a apprecier le plaisir de partager une pizza faite maison avec les autres.</p>
+        <p>Depuis ces soirees, l'idee a muri dans ma tete. Je me suis souvent dit : "Un jour, je monterai mon camion." Aujourd'hui, cette envie est devenue un vrai projet. La passion est toujours la : je fais des pizzas chez moi, avec mes propres fours, un electrique et un a bois, et j'organise a mon tour des soirees entre amis autour du four.</p>
+        <p><strong>Pizza Baladzo</strong> est nee de cette histoire : une passion transmise, des souvenirs conviviaux, et l'envie de proposer des pizzas artisanales au feu de bois, faites avec coeur, a partager avec les clients.</p>
+        <div class="actions"><button class="primary" type="button" onclick="closeModal()">Fermer</button></div>`;
+      if(kind === 'product') {
+        const key = state.currentProduct;
+        const product = products[key];
+        const detail = productDetails[key] || {};
+        if(!product) return '<div class="notice">Produit indisponible.</div>';
+        const reviewText = PRELAUNCH_MODE
+          ? 'Avis clients bloques pendant le pre-lancement. Ils ouvriront apres les premieres commandes reelles.'
+          : detail.reviews >= 5
+          ? `Note clients : ${detail.rating}/5 (${detail.reviews} avis)`
+          : 'Nouvelle recette - Soyez les premiers a donner votre avis';
+        return `
+          <div class="grid two">
+            <div class="contact-panel"><img src="${product.img}" alt="${product.name}" style="width:100%;height:auto;object-fit:contain;border-radius:8px;border:1px solid rgba(218,97,255,.45)"></div>
+            <div>
+              <h3>${product.name}</h3>
+              <p>${product.desc}</p>
+              ${detail.format ? `<div class="notice"><strong>Format :</strong><br>${detail.format}</div>` : ''}
+              <div class="notice"><strong>Ingredients principaux :</strong><br>${detail.ingredients || product.desc}</div>
+              <div class="notice"><strong>Allergenes :</strong><br>${detail.allergens || 'Demandez la liste complete a notre equipe.'}</div>
+              <div class="notice">${reviewText}</div>
+              <div class="price" style="font-size:30px;font-weight:900">${format(product.price)}</div>
+            </div>
+          </div>
+          <div class="actions">
+            <button class="primary" type="button" onclick="addProduct('${key}');closeModal()">Ajouter au panier</button>
+            <button class="secondary" type="button" onclick="closeModal()">Fermer</button>
+          </div>`;
+      }
+      if(kind === 'quote') return `
+        <div class="notice"><strong>Evenements prives uniquement.</strong><br>Les devis sont traites sous 24 heures. Ces informations seront modifiables plus tard depuis l'administration.</div>
+        <div class="grid two">
+          <label class="field">Nom<input placeholder="Votre nom"></label>
+          <label class="field">Telephone<input placeholder="06 00 00 00 00"></label>
+          <label class="field">Email<input type="email" placeholder="vous@email.fr"></label>
+          <label class="field">Date evenement<input type="date"></label>
+          <label class="field">Nombre de convives<input type="number" min="1" placeholder="40"></label>
+          <label class="field">Type de prestation<select>
+            <option>Mariage</option>
+            <option>Anniversaire</option>
+            <option>Entreprise</option>
+            <option>Fete de village</option>
+            <option>Soiree privee</option>
+            <option>Autre evenement</option>
+          </select></label>
+        </div>
+        <label class="field" style="margin-top:12px">Lieu / adresse<textarea placeholder="Courniou, Saint-Pons-de-Thomieres ou environ 30 min autour de Courniou"></textarea></label>
+        <div class="grid two" style="margin-top:12px">
+          <label class="field">Pizzas prevues<textarea placeholder="Nombre souhaite, recettes, preferences..."></textarea></label>
+          <label class="field">Desserts prevus<textarea placeholder="Verrines, ramequins, dessert du moment..."></textarea></label>
+          <label class="field">Boissons prevues<textarea placeholder="Sodas, jus, eaux, quantites..."></textarea></label>
+          <label class="field">Demande particuliere<textarea placeholder="Horaires, allergenes, acces, organisation..."></textarea></label>
+        </div>
+        <div class="actions"><button class="primary" type="button" onclick="toast('Demande de devis evenement envoyee en simulation');closeModal()">Envoyer la demande</button></div>`;
+      if(kind === 'contact') return `
+        <div class="grid two">
+          <label class="field">Nom<input placeholder="Votre nom"></label>
+          <label class="field">Prenom<input placeholder="Votre prenom"></label>
+          <label class="field">Email<input type="email" placeholder="vous@email.fr"></label>
+          <label class="field">Telephone<input placeholder="06 00 00 00 00"></label>
+        </div>
+        <label class="field" style="margin-top:12px">Type de demande<select>
+          <option>Demande generale</option>
+          <option>Demande evenement prive</option>
+          <option>Question commande</option>
+          <option>Probleme de paiement</option>
+          <option>Autre demande</option>
+        </select></label>
+        <label class="field" style="margin-top:12px">Message<textarea placeholder="Votre message"></textarea></label>
+        <div class="notice alert-red">Probleme de paiement : future alerte rouge admin, sans vraie connexion pour l'instant.</div>
+        <div class="actions"><button class="primary" type="button" onclick="toast('Message envoye en simulation');closeModal()">Envoyer</button></div>`;
+      if(kind === 'callback') return `
+        <div class="notice">Demande de rappel simulee. Dans la vraie version, cette demande pourra envoyer une notification SMS/email a Pizza Baladzo.</div>
+        <div class="grid two">
+          <label class="field">Nom<input placeholder="Votre nom"></label>
+          <label class="field">Telephone<input placeholder="06 00 00 00 00"></label>
+        </div>
+        <label class="field" style="margin-top:12px">Moment prefere<textarea placeholder="Matin, apres-midi, soir..."></textarea></label>
+        <div class="actions"><button class="primary" type="button" onclick="toast('Demande de rappel enregistree sous 24 h');closeModal()">Valider le rappel</button></div>`;
+      if(kind === 'planning') return `
+        <div class="notice">Planning simule pour la preview. Plus tard, il pourra etre gere depuis l'administration.</div>
+        <div class="list">
+          <div class="line"><div><strong>Mardi</strong><small>Saint-Pons-de-Thomieres</small></div><div class="price">18:00 - 22:30</div></div>
+          <div class="line"><div><strong>Jeudi</strong><small>Courniou</small></div><div class="price">18:00 - 22:30</div></div>
+          <div class="line"><div><strong>Week-end</strong><small>Evenements prives sur devis</small></div><div class="price">Sur demande</div></div>
+        </div>
+        <div class="actions">
+          <button class="primary" type="button" onclick="openModal('quote')">Demander un devis</button>
+          <button class="secondary" type="button" onclick="go('trouver');closeModal()">Ou nous trouver</button>
+        </div>`;
+      if(kind === 'route') return `
+        <div class="notice"><strong>Zone de service :</strong> Courniou, Saint-Pons-de-Thomieres et environ 30 minutes autour.</div>
+        <div class="notice"><strong>Position simulee :</strong> Place du Foirail, 34220 Saint-Pons-de-Thomieres.</div>
+        <div class="actions">
+          <button class="primary" type="button" onclick="openMapsRoute()">Google Maps</button>
+          <button class="secondary" type="button" onclick="openWazeRoute()">Waze</button>
+          <button class="secondary" type="button" onclick="openModal('contact')">Nous contacter</button>
+        </div>`;
+      if(kind === 'idea') return `
+        <label class="field">Votre idee gourmande<textarea placeholder="Une pizza, un dessert, une boisson..."></textarea></label>
+        <div class="actions"><button class="primary" onclick="toast('Idee gourmande enregistree en simulation');closeModal()">Proposer mon idee</button></div>`;
+      if(kind === 'guestOrder') return `
+        <div class="notice"><strong>Commande rapide sans compte.</strong><br>Vos informations ne seront pas enregistrées comme compte client. Elles servent uniquement à identifier votre commande et à vous prévenir par SMS lorsqu’elle est prête.</div>
+        <div class="grid two">
+          <label class="field">Prenom<input placeholder="Votre prenom"></label>
+          <label class="field">Nom<input placeholder="Votre nom"></label>
+          <label class="field">Telephone<input placeholder="06 00 00 00 00"></label>
+          <label class="field">Email facultatif<input type="email" placeholder="vous@email.fr"></label>
+          <label class="field">Creneau de retrait<select onchange="setSlot(this.value)">
+            <option value="18:30">Aujourd'hui 18:30</option>
+            <option value="19:00" selected>Aujourd'hui 19:00</option>
+            <option value="19:30">Aujourd'hui 19:30</option>
+            <option value="20:00">Aujourd'hui 20:00</option>
+          </select></label>
+          <label class="field">Reference QR<input value="QR-PREVIEW-001"></label>
+        </div>
+        <div class="notice"><strong>Limites client invite :</strong><br>Pas de fidelite, pas d'historique, pas d'avis, pas de promotions personnalisees, pas de votes connectes.</div>
+        <div class="actions">
+          <button class="primary" type="button" onclick="submitGuestOrder()">Continuer sans compte</button>
+          <button class="secondary" type="button" onclick="openModal('signup')">Creer un compte</button>
+        </div>`;
+      if(kind === 'guestOrderConfirm') return `
+        <div class="notice">Commande invitee simulee. En vraie version, le QR code ouvrira directement ce formulaire pour identifier la commande sans creer de compte.</div>
+        <div class="line"><div><strong>Client invite</strong><small>Sans fidelite, sans historique, sans avis et sans promotions personnalisees.</small></div><div class="price">${state.slot}</div></div>
+        <div class="actions"><button class="primary" type="button" onclick="go('menu');closeModal()">Voir le menu</button><button class="secondary" type="button" onclick="openModal('account')">Se connecter</button></div>`;
+      if(kind === 'payment') return paymentContent();
+      if(kind === 'confirmation') return confirmationContent();
+      return '';
+    }
+
+    function accountSection(items, note){
+      const cards = items.map(item => {
+        const title = item[0];
+        const text = item[1];
+        return '<div class="account-card"><strong>' + title + '</strong><small>' + text + '</small></div>';
+      }).join('');
+      return `
+        <div class="notice">${note}</div>
+        <div class="grid">${cards}</div>
+        <div class="actions"><button class="secondary" type="button" onclick="openModal('account')">Retour compte</button></div>`;
+    }
+
+    function loginClient(){
+      state.loggedIn = true;
+      toast('Connexion client simulee');
+      openModal('account');
+    }
+
+    function logoutClient(){
+      state.loggedIn = false;
+      toast('Deconnexion simulee');
+      openModal('account');
+    }
+
+    function submitGuestOrder(){
+      if(prelaunchBlocked('commande')) return;
+      openModal('guestOrderConfirm');
+    }
+
+    function paymentContent(){
+      const lines = state.cart.length ? state.cart.map(item => `
+        <div class="line">
+          <div><strong>${item.name}</strong><small>${item.desc}</small></div>
+          <div class="price">${item.qty} x ${format(item.price)}</div>
+        </div>`).join('') : '<div class="notice">Le panier est vide pour le moment. Ajoutez une pizza depuis le menu.</div>';
+      return `
+        <div class="list">${lines}</div>
+        <div class="notice"><strong>Creneau :</strong> aujourd'hui ${state.slot}<br><strong>Paiement :</strong> ${paymentLabel()}<br><strong>Allergenes :</strong> ${cartAllergenSummary()}</div>
+        <div class="line"><strong>Total TTC</strong><div class="price">${format(cartTotal())}</div></div>
+        <label class="allergen-check">
+          <input type="checkbox" ${state.allergensAccepted ? 'checked' : ''} onchange="setAllergensAccepted(this.checked)">
+          <span>J'ai pris connaissance des informations allergenes. Obligatoire pour valider.</span>
+        </label>
+        <div class="actions">
+          <button class="primary" onclick="validateCart()">Valider le paiement fictif</button>
+          <button class="secondary" onclick="go('menu')">Continuer mes achats</button>
+        </div>`;
+    }
+
+    function confirmationContent(){
+      const lines = state.cart.map(item => `
+        <div class="line">
+          <div><strong>${item.name}</strong><small>${item.qty} article(s)</small></div>
+          <div class="price">${format(item.price * item.qty)}</div>
+        </div>`).join('');
+      return `
+        <div class="notice">Commande validee en simulation. Aucun paiement reel, aucune carte bancaire et aucune donnee client ne sont envoyes.</div>
+        <div class="list">${lines}</div>
+        <div class="notice">
+          <strong>Creneau de retrait :</strong> aujourd'hui ${state.slot}<br>
+          <strong>Mode de paiement :</strong> ${paymentLabel()}<br>
+          <strong>Demandes particulieres :</strong> ${state.specialRequest || 'Aucune demande particuliere.'}<br>
+          <strong>Allergenes vus :</strong> oui
+        </div>
+        <div class="line"><strong>Total TTC</strong><div class="price">${format(cartTotal())}</div></div>
+        <div class="actions">
+          <button class="primary" type="button" onclick="closeModal();toast('Confirmation affichee en simulation')">Fermer</button>
+          <button class="secondary" type="button" onclick="go('menu')">Retour au menu</button>
+        </div>`;
+    }
+
+    function format(value){
+      return value.toLocaleString('fr-FR',{style:'currency',currency:'EUR'});
+    }
+
+    function openMapsRoute(){
+      const url = 'https://www.google.com/maps/dir/?api=1&destination=Place%20du%20Foirail%2C%2034220%20Saint-Pons-de-Thomieres';
+      window.open(url, '_blank', 'noopener,noreferrer');
+      toast('Itineraire Google Maps ouvert en simulation');
+    }
+
+    function openWazeRoute(){
+      const url = 'https://waze.com/ul?q=Place%20du%20Foirail%2C%2034220%20Saint-Pons-de-Thomieres&navigate=yes';
+      window.open(url, '_blank', 'noopener,noreferrer');
+      toast('Itineraire Waze ouvert en simulation');
+    }
+
+    window.addEventListener('keydown', event => {
+      if(event.key === 'Escape') closeModal();
+    });
+    document.getElementById('modalBackdrop').addEventListener('click', event => {
+      if(event.target.id === 'modalBackdrop') closeModal();
     });
 
-    document.getElementById('addCustom').addEventListener('click',()=>{
-      addToCart({name:'Pizza personnalisable ' + custom.size,price:custom.price,note:`Base ${custom.base} - ${custom.ingredients.join(', ')}${custom.remove.length?' - '+custom.remove.join(', '):''}`});
-    });
-    document.getElementById('fakePayment').addEventListener('click',()=>{
-      if(!cart.length){ setResult('paymentResult','Ajoutez au moins un produit avant le paiement fictif.',false); return; }
-      setResult('paymentResult',`Paiement fictif validé. Créneau de retrait simulé : ${document.getElementById('pickupSlot').value}.`);
-    });
-    document.getElementById('contactForm').addEventListener('submit',e=>{e.preventDefault();setResult('contactResult','Message fictif enregistré pour la preview. Aucun email réel envoyé.');});
-    document.getElementById('quoteForm').addEventListener('submit',e=>{e.preventDefault();const guests = Number(new FormData(e.target).get('guests')||0);setResult('quoteResult',`Devis fictif généré : environ ${Math.ceil(guests*.85)} pizzas, ${Math.ceil(guests*.35)} desserts et ${Math.ceil(guests*.65)} boissons.`);});
-    document.getElementById('accountForm').addEventListener('submit',e=>{e.preventDefault();setResult('accountResult','Compte client fictif mis à jour.');});
-    document.getElementById('toggleAdmin').addEventListener('click',()=>document.getElementById('adminPreview').classList.toggle('hide'));
-    document.getElementById('addReview').addEventListener('click',()=>alert('Avis fictif ajouté à la preview client.'));
-
-    renderProducts();
-    renderVotes();
-    renderChoices();
-    renderCart();
-    renderAdmin();
-    const hash = location.hash.replace('#','');
-    if(hash && document.getElementById('view-' + hash)) showView(hash);
+    const start = location.hash.replace('#','');
+    if(pageData[start]) state.page = start;
+    render();
   </script>
 </body>
 </html>
