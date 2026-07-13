@@ -1,0 +1,34 @@
+{
+    "generatedAt":  "2026-07-13T18:34:36.1297858+02:00",
+    "sourceArchive":  {
+                          "expectedSha256":  "530B9BADB9B1C2F587F2F29BF0D8551A1D5EBA9881A8DBC2486E96FD3176FCF6",
+                          "actualSha256":  "530B9BADB9B1C2F587F2F29BF0D8551A1D5EBA9881A8DBC2486E96FD3176FCF6",
+                          "matched":  true,
+                          "entries":  154
+                      },
+    "localBaseline":  {
+                          "branch":  "baseline/archive-20260626-2318",
+                          "commit":  "87b354ea4a95f6849814aaf725a177a7f4e8ba58",
+                          "indexBlobSha1":  "24fcc49c",
+                          "adminPresent":  true
+                      },
+    "remoteMain":  {
+                       "repository":  "baladzo/pizza-baladzo-site",
+                       "headObserved":  "45c488ba06ca4d38f746cdeab29d1eb8b59afeef",
+                       "indexBlobSha1":  "9af019c7b0aadf5fb3e926f56243b171984a492a",
+                       "adminPresent":  false,
+                       "modified":  false
+                   },
+    "comparison":  {
+                       "sameBase":  false,
+                       "conclusion":  "La base locale validée et main distante divergent; aucun merge, push ou remplacement de main nʼest autorisé."
+                   },
+    "remoteTrackerBeforeSync":  {
+                                    "branch":  "suivi-temps-reel",
+                                    "head":  "56b8c6e65f20ce81f25da96853dfa2bb2e31155c",
+                                    "preservedFiles":  [
+                                                           "suivi/data/client.json",
+                                                           "suivi/data/admin.json"
+                                                       ]
+                                }
+}

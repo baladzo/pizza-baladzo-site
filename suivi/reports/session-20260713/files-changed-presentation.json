@@ -1,0 +1,58 @@
+{
+    "generatedAt":  "2026-07-13T18:34:40.6762630+02:00",
+    "branch":  "codex/presentation-autonome-20260713-0822",
+    "baseline":  "baseline/archive-20260626-2318",
+    "files":  [
+                  {
+                      "status":  "M",
+                      "path":  "presentation/assets/script.js",
+                      "gitBlobSha1":  "9128e5f63912f44afa8b451a7b1642b9a468c445"
+                  },
+                  {
+                      "status":  "M",
+                      "path":  "presentation/assets/style.css",
+                      "gitBlobSha1":  "0f90ea0cfa0daac052b2147b37995e899baa943a"
+                  },
+                  {
+                      "status":  "M",
+                      "path":  "presentation/budget-previsionnel.html",
+                      "gitBlobSha1":  "859b2cb9818e373a9079e98a2ed0a0e8b21ecc7f"
+                  },
+                  {
+                      "status":  "M",
+                      "path":  "presentation/business-plan.html",
+                      "gitBlobSha1":  "947e35bc58c9e859b913b49ab372eb527fdd500d"
+                  },
+                  {
+                      "status":  "M",
+                      "path":  "presentation/etude-marche.html",
+                      "gitBlobSha1":  "51797a23ca85e2da6a801eab38330a91061497bf"
+                  },
+                  {
+                      "status":  "M",
+                      "path":  "presentation/index.html",
+                      "gitBlobSha1":  "7e8d17e7954a79b1f65b02f7b3b2023a6e45af51"
+                  },
+                  {
+                      "status":  "A",
+                      "path":  "presentation/parcours-evolution-personnelle.html",
+                      "gitBlobSha1":  "f38df8322f86ea25553c0e72d0a2f343f04d67bb"
+                  },
+                  {
+                      "status":  "M",
+                      "path":  "presentation/parcours.html",
+                      "gitBlobSha1":  "ddd44ef6f8615f49b19805f1c3175f6b9e31142a"
+                  },
+                  {
+                      "status":  "M",
+                      "path":  "presentation/strategie-juridique.html",
+                      "gitBlobSha1":  "c1990e10250eb27f808e2c6151fc4b5b0af61aec"
+                  }
+              ],
+    "fileCount":  9,
+    "expectedFileCount":  9,
+    "countCoherent":  true,
+    "principalFinalSha256":  "4B1A4AD3874878EE0EB5793B73DB4216C6B822F7EA305C3E593C2B85D7F36419",
+    "rawFilesPublished":  false,
+    "evidenceOnly":  true
+}

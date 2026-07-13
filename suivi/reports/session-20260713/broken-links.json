@@ -1,0 +1,31 @@
+{
+    "generatedAt":  "2026-07-13T18:34:40.8502305+02:00",
+    "staticAudit":  {
+                        "baselineKnownIssues":  2,
+                        "integrationKnownIssues":  2,
+                        "newIssuesIntroduced":  0
+                    },
+    "presentation":  {
+                         "htmlFiles":  7,
+                         "localReferences":  115,
+                         "missingOrOutside":  0
+                     },
+    "adminHistoricalDestinations":  [
+                                        {
+                                            "path":  "bastien-ia-voix-test.html",
+                                            "state":  "absent",
+                                            "publicationFixApplied":  false
+                                        },
+                                        {
+                                            "path":  "controle-securite-technique.html",
+                                            "state":  "absent",
+                                            "publicationFixApplied":  false
+                                        },
+                                        {
+                                            "path":  "bastien-ia-mail-test.html",
+                                            "state":  "absent",
+                                            "publicationFixApplied":  false
+                                        }
+                                    ],
+    "conclusion":  "Aucune nouvelle rupture de lien nʼa été introduite; trois destinations admin héritées restent à arbitrer."
+}

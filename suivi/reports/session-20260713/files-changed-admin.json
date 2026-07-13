@@ -1,0 +1,18 @@
+{
+    "generatedAt":  "2026-07-13T18:34:38.0063312+02:00",
+    "branch":  "codex/admin-autonome-20260713-0822",
+    "baseline":  "baseline/archive-20260626-2318",
+    "files":  [
+                  {
+                      "status":  "M",
+                      "path":  "admin.html",
+                      "gitBlobSha1":  "36b2b5c200ce28461f4c1781b087f256ce4c28e1"
+                  }
+              ],
+    "fileCount":  1,
+    "expectedFileCount":  1,
+    "countCoherent":  true,
+    "principalFinalSha256":  "40F08D3DB99B1CC324E04599E9D1ABF160541F6A24E697AC765627BEDC6173D0",
+    "rawFilesPublished":  false,
+    "evidenceOnly":  true
+}

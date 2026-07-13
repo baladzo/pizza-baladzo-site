@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Suivi de construction - Pizza Baladzo</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <p class="brand">Pizza Baladzo</p>
+      <h1>Suivi de construction</h1>
+    </div>
+    <div class="topbar-actions">
+      <div class="connection" aria-live="polite">
+        <span id="connection-dot" class="connection-dot"></span>
+        <span id="connection-text">Chargement</span>
+      </div>
+      <button id="refresh-button" class="refresh-button" type="button" title="Actualiser maintenant">
+        <span aria-hidden="true">↻</span>
+        <span>Actualiser maintenant</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="session-band" aria-labelledby="session-title">
+      <div>
+        <p class="eyebrow">Session autonome</p>
+        <h2 id="session-title">Trois chantiers isolés</h2>
+      </div>
+      <dl class="session-facts">
+        <div><dt>Début</dt><dd id="session-start">-</dd></div>
+        <div><dt>Limite</dt><dd id="session-end">-</dd></div>
+        <div><dt>Dernière actualisation</dt><dd id="last-refresh">-</dd></div>
+        <div><dt>Tâche actuelle</dt><dd id="current-task">-</dd></div>
+      </dl>
+    </section>
+
+    <section class="metrics" aria-label="Synthèse de l'avancement">
+      <article class="metric metric-primary"><span>Progression des tâches de la session autonome du 13 juillet 2026</span><strong id="session-percent">0 %</strong><small id="session-progress-source">-</small></article>
+      <article class="metric"><span>Chantiers de session</span><strong id="session-workstreams">0 / 3</strong><small>Travail local clos, décisions humaines séparées</small></article>
+      <article class="metric"><span>Maturité des sections</span><strong id="section-maturity">-</strong><small>Client / Admin / Présentation</small></article>
+      <article class="metric"><span>Avancement prouvé</span><strong id="proven-progress">0 / 0</strong><small>Modifications reliées à une preuve</small></article>
+      <article class="metric"><span>Validation technique de session</span><strong id="technical-validation">0 / 0</strong><small>Contrôles techniques réussis</small></article>
+      <article class="metric"><span>Validation Sébastien</span><strong id="sebastien-validation">0 / 0</strong><small>Décisions humaines validées</small></article>
+      <article class="metric"><span>Préparation opérationnelle globale</span><strong id="operational-readiness">0 %</strong><small id="operational-source">Production de bout en bout</small></article>
+      <article class="metric"><span>Contrôles réussis</span><strong id="tests-passed">0</strong><small id="tests-summary">0 contrôle</small></article>
+    </section>
+
+    <nav class="section-tabs" aria-label="Accès aux sections">
+      <a href="#client">Client</a>
+      <a href="#admin">Admin</a>
+      <a href="#presentation">Présentation</a>
+      <a href="#global-plan">Plan global</a>
+      <a href="#validations">Validations</a>
+      <a href="#external">Connexions</a>
+    </nav>
+
+    <section id="client" class="workstream" data-stream="client">
+      <div class="section-heading">
+        <div><p class="eyebrow">Chantier 1</p><h2>Site client</h2></div>
+        <div class="progress-block"><span class="progress-label">0 %</span><div class="progress-track"><span></span></div></div>
+      </div>
+      <div class="stream-meta"></div>
+      <div class="table-wrap"><table><thead><tr><th>Tâche</th><th>Statut</th><th>Progression</th><th>Tests</th><th>Prochaine action</th></tr></thead><tbody></tbody></table></div>
+    </section>
+
+    <section id="global-plan" class="plain-section">
+      <div class="section-heading"><div><p class="eyebrow">Historique distant conservé</p><h2>Plan de construction global</h2></div></div>
+      <div class="table-wrap"><table><thead><tr><th>Section</th><th>Progression</th><th>Maturité</th><th>Reste estimé</th><th>Travail déclaré</th></tr></thead><tbody id="global-plan-body"></tbody></table></div>
+    </section>
+
+    <section id="admin" class="workstream" data-stream="admin">
+      <div class="section-heading">
+        <div><p class="eyebrow">Chantier 2</p><h2>Site admin</h2></div>
+        <div class="progress-block"><span class="progress-label">0 %</span><div class="progress-track"><span></span></div></div>
+      </div>
+      <div class="stream-meta"></div>
+      <div class="table-wrap"><table><thead><tr><th>Tâche</th><th>Statut</th><th>Progression</th><th>Tests</th><th>Prochaine action</th></tr></thead><tbody></tbody></table></div>
+    </section>
+
+    <section id="presentation" class="workstream" data-stream="presentation">
+      <div class="section-heading">
+        <div><p class="eyebrow">Chantier 3</p><h2>Site de présentation</h2></div>
+        <div class="progress-block"><span class="progress-label">0 %</span><div class="progress-track"><span></span></div></div>
+      </div>
+      <div class="stream-meta"></div>
+      <div class="table-wrap"><table><thead><tr><th>Tâche</th><th>Statut</th><th>Progression</th><th>Tests</th><th>Prochaine action</th></tr></thead><tbody></tbody></table></div>
+    </section>
+
+    <section id="validations" class="plain-section">
+      <div class="section-heading"><div><p class="eyebrow">Décisions différées</p><h2>Validations Sébastien</h2></div></div>
+      <div class="table-wrap"><table><thead><tr><th>Section</th><th>Décision</th><th>Raison</th><th>Impact</th><th>Recommandation</th></tr></thead><tbody id="validation-body"></tbody></table></div>
+    </section>
+
+    <section id="external" class="plain-section">
+      <div class="section-heading"><div><p class="eyebrow">État réel</p><h2>Connexions externes</h2></div></div>
+      <div class="table-wrap"><table><thead><tr><th>Module</th><th>État</th><th>Preuve</th></tr></thead><tbody id="external-body"></tbody></table></div>
+    </section>
+
+    <section class="plain-section">
+      <div class="section-heading"><div><p class="eyebrow">Traçabilité</p><h2>Historique de session</h2></div></div>
+      <ol id="timeline" class="timeline"></ol>
+    </section>
+  </main>
+
+  <footer>
+    <span>Suivi technique Pizza Baladzo</span>
+    <span id="footer-branch">Branches prévues, aucune modification de main</span>
+  </footer>
+  <script src="app.js" defer></script>
+</body>
+</html>

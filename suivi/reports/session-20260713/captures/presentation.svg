@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">Preuve assainie du chantier présentation</title>
+  <desc id="desc">Résumé technique sans contenu personnel.</desc>
+  <rect width="1280" height="720" fill="#11131a"/>
+  <rect x="72" y="72" width="1136" height="576" rx="8" fill="#f7f7f4"/>
+  <rect x="72" y="72" width="18" height="576" fill="#d7263d"/>
+  <text x="130" y="165" font-family="Arial, sans-serif" font-size="26" font-weight="700" fill="#343843">PIZZA BALADZO — PREUVE ASSAINIE</text>
+  <text x="130" y="245" font-family="Arial, sans-serif" font-size="52" font-weight="700" fill="#11131a">CHANTIER PRÉSENTATION</text>
+  <text x="130" y="335" font-family="Arial, sans-serif" font-size="31" fill="#343843">7 pages contrôlées</text>
+  <text x="130" y="390" font-family="Arial, sans-serif" font-size="31" fill="#343843">115 références locales — 0 manquante</text>
+  <text x="130" y="445" font-family="Arial, sans-serif" font-size="31" fill="#343843">Responsive desktop et mobile validé localement</text>
+  <text x="130" y="535" font-family="Arial, sans-serif" font-size="24" fill="#8a2130">La capture fonctionnelle reste privée jusquʼà validation humaine.</text>
+  <text x="130" y="585" font-family="Arial, sans-serif" font-size="20" fill="#61656f">Aucune coordonnée, adresse ou donnée personnelle nʼest publiée ici.</text>
+</svg>

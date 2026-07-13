@@ -1,0 +1,47 @@
+{
+    "generatedAt":  "2026-07-13T18:34:52.1146355+02:00",
+    "sourceArchiveSha256":  "530B9BADB9B1C2F587F2F29BF0D8551A1D5EBA9881A8DBC2486E96FD3176FCF6",
+    "sourceArchiveMatched":  true,
+    "localRepository":  "git-session/repository",
+    "remoteRepository":  "https://github.com/baladzo/pizza-baladzo-site",
+    "remoteMainUntouched":  true,
+    "forcePushUsed":  false,
+    "rawBranchesPublished":  false,
+    "publicationPolicy":  "Preuves assainies uniquement à cause de données privées héritées.",
+    "requestedAuditBranches":  [
+                                   "audit/codex-client-20260713",
+                                   "audit/codex-admin-20260713",
+                                   "audit/codex-presentation-20260713",
+                                   "audit/codex-integration-20260713",
+                                   "audit/codex-suivi-local-20260713"
+                               ],
+    "remoteTracker":  {
+                          "branch":  "suivi-temps-reel",
+                          "existingHistoryPreserved":  true,
+                          "existingFilesPreserved":  [
+                                                         "suivi/data/client.json",
+                                                         "suivi/data/admin.json"
+                                                     ]
+                      },
+    "testSummary":  {
+                        "total":  66,
+                        "succeeded":  63,
+                        "historicalAnomalies":  3,
+                        "coherent":  true
+                    },
+    "trackerUrl":  "",
+    "deploymentUrl":  "",
+    "publicationComplete":  false,
+    "prohibitedActions":  {
+                              "hostinger":  false,
+                              "ftp":  false,
+                              "publicHtml":  false,
+                              "dns":  false,
+                              "stripe":  false,
+                              "payment":  false,
+                              "email":  false,
+                              "sms":  false,
+                              "socialPublication":  false,
+                              "realOrder":  false
+                          }
+}

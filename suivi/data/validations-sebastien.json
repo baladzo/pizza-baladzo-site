@@ -1,0 +1,52 @@
+{
+  "validations": [
+    {
+      "id": "VAL-001",
+      "section": "Git / base de travail",
+      "decision": "Choisir plus tard la stratégie d’alignement entre l’archive validée et GitHub main",
+      "raison": "Le blob index.html de l’archive est 24fcc49c..., celui de main est 9af019c7... et admin.html est absent de main.",
+      "impact": "Les commits locaux sont désormais traçables, mais aucun push, merge ou remplacement de la branche distante ne doit être fait sans arbitrage de la base.",
+      "recommandation": "Contrôler les branches locales créées, puis décider séparément si et comment les publier sans toucher main."
+    },
+    {
+      "id": "VAL-002",
+      "section": "Présentation",
+      "decision": "Décider ultérieurement du traitement des données privées déjà présentes dans les pages existantes",
+      "raison": "Le contrôle en lecture seule a détecté des coordonnées privées dans l’existant; elles ne sont pas reproduites dans la nouvelle page.",
+      "impact": "Leur contenu et leurs coordonnées restent inchangés; seule la navigation partagée a été complétée.",
+      "recommandation": "Préparer un commit séparé de correction après validation explicite."
+    },
+    {
+      "id": "VAL-003",
+      "section": "Présentation",
+      "decision": "Valider visuellement la nouvelle page de parcours avant toute publication",
+      "raison": "La page nécessite une validation humaine de ton, de fidélité au parcours et de lisibilité.",
+      "impact": "La tâche pourra atteindre 90 % techniquement, mais pas 100 % définitivement.",
+      "recommandation": "Consulter la prévisualisation locale d’intégration à la fin de la session."
+    },
+    {
+      "id": "VAL-004",
+      "section": "Administration",
+      "decision": "Choisir le traitement de trois destinations admin absentes",
+      "raison": "bastien-ia-voix-test.html, controle-securite-technique.html et bastien-ia-mail-test.html sont référencés mais absents.",
+      "impact": "Deux liens statiques et une URL dynamique peuvent mener à une page inexistante.",
+      "recommandation": "Décider entre créer trois outils dédiés ou relier ces actions à des modules admin existants."
+    },
+    {
+      "id": "VAL-005",
+      "section": "Administration",
+      "decision": "Autoriser ou différer une reprise d’encodage dédiée",
+      "raison": "L’audit a relevé 143 lignes comportant des séquences d’encodage historiques dans admin.html.",
+      "impact": "Certains libellés peuvent afficher des caractères incorrects sans bloquer les fonctions testées.",
+      "recommandation": "Traiter l’encodage dans une intervention isolée avec comparaison visuelle et fonctionnelle complète."
+    },
+    {
+      "id": "VAL-006",
+      "section": "Publication technique",
+      "decision": "Choisir un périmètre de publication distant isolé",
+      "raison": "Git fonctionne désormais localement, mais gh reste absent, aucun remote n’est configuré et aucun projet Vercel n’existe; publier depuis la racine exposerait un périmètre trop large.",
+      "impact": "Les commits restent strictement locaux; aucun push, pull request ou déploiement Vercel n’a été effectué.",
+      "recommandation": "Après arbitrage, publier uniquement les branches et dossiers de preview validés; conserver main et le site officiel intacts."
+    }
+  ]
+}

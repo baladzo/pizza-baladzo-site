@@ -1,0 +1,63 @@
+{
+    "statut":  "TERMINÉE LOCALEMENT — HISTORIQUES GIT CRÉÉS — CONTRÔLE SÉBASTIEN DISPONIBLE",
+    "heureDebut":  "2026-07-13 08:22:43 Europe/Paris",
+    "heureFin":  "2026-07-13 12:07:01 Europe/Paris",
+    "dureeReelle":  "3 h 44 min",
+    "dureeMaximale":  "7 heures",
+    "heureLimite":  "2026-07-13 15:22:43 Europe/Paris",
+    "dossierTravail":  "workspace local privé — chemin volontairement non publié",
+    "depotDetecte":  "Dépôt Git local reconstruit depuis l’archive validée dans git-session/repository; aucun remote configuré",
+    "brancheDepart":  "baseline/archive-20260626-2318 — commit 87b354ea4a95f6849814aaf725a177a7f4e8ba58",
+    "github":  "SYNCHRONISATION ASSAINIE EN PRÉPARATION — main intacte",
+    "vercel":  "DÉPLOIEMENT INDÉPENDANT EN PRÉPARATION",
+    "gitLocal":  "DISPONIBLE LOCALEMENT — MinGit 2.55.0.windows.2 vérifié dans tools/local-git",
+    "ghCli":  "INDISPONIBLE",
+    "vercelCli":  "INDISPONIBLE",
+    "agentsParalleles":  "UTILISÉS — quatre agents lancés",
+    "tacheActuelle":  "Aucune — session locale clôturée",
+    "derniereTacheTerminee":  "Preuves Git, intégration locale et tableau de suivi réconciliés puis audités",
+    "resumeBranches":  "main absente du dépôt local · client 2 commits · admin 3 commits · présentation 6 commits · intégration 11 cherry-picks · suivi 11 commits avant scellement final",
+    "git":  {
+                "repository":  "git-session/repository",
+                "baseline":  {
+                                 "branch":  "baseline/archive-20260626-2318",
+                                 "commit":  "87b354ea4a95f6849814aaf725a177a7f4e8ba58"
+                             },
+                "client":  {
+                               "branch":  "codex/client-autonome-20260713-0822",
+                               "head":  "525f9cb981eb4f2b5d9cd7fcd2bd667a93e4fdba",
+                               "commits":  2
+                           },
+                "admin":  {
+                              "branch":  "codex/admin-autonome-20260713-0822",
+                              "head":  "36891b4548f18d4d0f76e2fc41e9f019fb0b644f",
+                              "commits":  3
+                          },
+                "presentation":  {
+                                     "branch":  "codex/presentation-autonome-20260713-0822",
+                                     "head":  "7d77f2c48a8d8fde2b2e119b639f75e57bae45b5",
+                                     "commits":  6
+                                 },
+                "integration":  {
+                                    "branch":  "codex/integration-preview-20260713-0822",
+                                    "head":  "7d3457205203f025330056d9476c5164548f6489",
+                                    "cherryPicks":  11
+                                },
+                "tracker":  {
+                                "branch":  "suivi-temps-reel",
+                                "evidenceHeadBeforeClosure":  "21d1cc2fd0f9033c851a988ed244b356292bfa99",
+                                "commitsBeforeClosure":  11,
+                                "currentHeadSource":  "git rev-parse suivi-temps-reel"
+                            },
+                "mainExists":  false,
+                "remoteConfigured":  true,
+                "remoteWrites":  0
+            },
+    "previewUrls":  {
+                        "client":  "Serveur temporaire de recette fermé en fin de session",
+                        "admin":  "Serveur temporaire de recette fermé en fin de session",
+                        "presentation":  "Serveur temporaire de recette fermé en fin de session",
+                        "integration":  "Relancer tools/audit/serve-static.ps1 sur git-session/worktrees/integration",
+                        "suivi":  "Relancer tools/audit/serve-static.ps1 sur suivi"
+                    }
+}

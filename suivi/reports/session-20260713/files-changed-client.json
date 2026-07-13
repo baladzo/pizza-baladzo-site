@@ -1,0 +1,18 @@
+{
+    "generatedAt":  "2026-07-13T18:34:37.1781891+02:00",
+    "branch":  "codex/client-autonome-20260713-0822",
+    "baseline":  "baseline/archive-20260626-2318",
+    "files":  [
+                  {
+                      "status":  "M",
+                      "path":  "index.html",
+                      "gitBlobSha1":  "c0d0cdbf56b4b05c7299b08e4801e47f98e85ab5"
+                  }
+              ],
+    "fileCount":  1,
+    "expectedFileCount":  1,
+    "countCoherent":  true,
+    "principalFinalSha256":  "8BBD8281B129C71DB70879499BE5E8E213737AFA108DAFBEAB4C6C0B6007EE92",
+    "rawFilesPublished":  false,
+    "evidenceOnly":  true
+}

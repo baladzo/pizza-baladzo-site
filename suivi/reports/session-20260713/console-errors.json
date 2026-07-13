@@ -1,0 +1,19 @@
+{
+    "generatedAt":  "2026-07-13T18:34:40.8502305+02:00",
+    "client":  {
+                   "confirmedSiteErrors":  0,
+                   "blockingErrors":  0
+               },
+    "presentation":  {
+                         "confirmedSiteErrors":  0,
+                         "blockingErrors":  0
+                     },
+    "admin":  {
+                  "confirmedSiteErrors":  0,
+                  "blockingErrors":  0,
+                  "toolObservation":  "Une erreur MutationObserver sans URL source a parfois été journalisée par lʼoutil de recette.",
+                  "sourceContainsMutationObserver":  false,
+                  "attributedToSite":  false
+              },
+    "conclusion":  "Aucune erreur de console attribuée au site nʼa bloqué les scénarios exécutés."
+}

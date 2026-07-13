@@ -1,0 +1,325 @@
+{
+    "generatedAt":  "2026-07-13T18:34:36.1048536+02:00",
+    "baselineCommit":  "87b354ea4a95f6849814aaf725a177a7f4e8ba58",
+    "branchHistories":  [
+                            {
+                                "branch":  "baseline/archive-20260626-2318",
+                                "head":  "87b354ea4a95f6849814aaf725a177a7f4e8ba58",
+                                "commits":  [
+
+                                            ]
+                            },
+                            {
+                                "branch":  "codex/client-autonome-20260713-0822",
+                                "head":  "525f9cb981eb4f2b5d9cd7fcd2bd667a93e4fdba",
+                                "commits":  [
+                                                {
+                                                    "sha":  "364ce90c5edd9026669fdb10abcf911f4dca7912",
+                                                    "parents":  [
+                                                                    "87b354ea4a95f6849814aaf725a177a7f4e8ba58"
+                                                                ],
+                                                    "committedAt":  "2026-07-13T11:01:56+02:00",
+                                                    "message":  "client(a11y): nommer les champs dynamiques"
+                                                },
+                                                {
+                                                    "sha":  "525f9cb981eb4f2b5d9cd7fcd2bd667a93e4fdba",
+                                                    "parents":  [
+                                                                    "364ce90c5edd9026669fdb10abcf911f4dca7912"
+                                                                ],
+                                                    "committedAt":  "2026-07-13T11:02:29+02:00",
+                                                    "message":  "client(a11y): renforcer le focus des champs"
+                                                }
+                                            ]
+                            },
+                            {
+                                "branch":  "codex/admin-autonome-20260713-0822",
+                                "head":  "36891b4548f18d4d0f76e2fc41e9f019fb0b644f",
+                                "commits":  [
+                                                {
+                                                    "sha":  "ff87525c3b838f441cca3276a4b4c0a347820e51",
+                                                    "parents":  [
+                                                                    "87b354ea4a95f6849814aaf725a177a7f4e8ba58"
+                                                                ],
+                                                    "committedAt":  "2026-07-13T11:02:49+02:00",
+                                                    "message":  "admin(fix): corriger les attributs autocomplete"
+                                                },
+                                                {
+                                                    "sha":  "2d328e4853772173af7df01a41a905b26d375828",
+                                                    "parents":  [
+                                                                    "ff87525c3b838f441cca3276a4b4c0a347820e51"
+                                                                ],
+                                                    "committedAt":  "2026-07-13T11:03:08+02:00",
+                                                    "message":  "admin(fix): revenir en haut après connexion preview"
+                                                },
+                                                {
+                                                    "sha":  "36891b4548f18d4d0f76e2fc41e9f019fb0b644f",
+                                                    "parents":  [
+                                                                    "2d328e4853772173af7df01a41a905b26d375828"
+                                                                ],
+                                                    "committedAt":  "2026-07-13T11:03:39+02:00",
+                                                    "message":  "admin(a11y): renforcer le focus des champs"
+                                                }
+                                            ]
+                            },
+                            {
+                                "branch":  "codex/presentation-autonome-20260713-0822",
+                                "head":  "7d77f2c48a8d8fde2b2e119b639f75e57bae45b5",
+                                "commits":  [
+                                                {
+                                                    "sha":  "c9345addfdf4a7bd422b605278da5df6c50ac9f9",
+                                                    "parents":  [
+                                                                    "87b354ea4a95f6849814aaf725a177a7f4e8ba58"
+                                                                ],
+                                                    "committedAt":  "2026-07-13T11:04:57+02:00",
+                                                    "message":  "presentation(feat): ajouter le parcours personnel"
+                                                },
+                                                {
+                                                    "sha":  "5fa12cbe7760e546ea5808401c1b42c1ee0f689c",
+                                                    "parents":  [
+                                                                    "c9345addfdf4a7bd422b605278da5df6c50ac9f9"
+                                                                ],
+                                                    "committedAt":  "2026-07-13T11:05:13+02:00",
+                                                    "message":  "presentation(nav): relier trois pages au parcours"
+                                                },
+                                                {
+                                                    "sha":  "d4c96f7ccc67116e4f68160d3c77897ff1334f7e",
+                                                    "parents":  [
+                                                                    "5fa12cbe7760e546ea5808401c1b42c1ee0f689c"
+                                                                ],
+                                                    "committedAt":  "2026-07-13T11:05:28+02:00",
+                                                    "message":  "presentation(nav): relier les pages parcours et juridique"
+                                                },
+                                                {
+                                                    "sha":  "5d41a87aa323bc37380e82c9e96ef1d7cb3a4314",
+                                                    "parents":  [
+                                                                    "d4c96f7ccc67116e4f68160d3c77897ff1334f7e"
+                                                                ],
+                                                    "committedAt":  "2026-07-13T11:06:23+02:00",
+                                                    "message":  "presentation(feat): intégrer le parcours dans accueil"
+                                                },
+                                                {
+                                                    "sha":  "66af65999ace9e0af9aa2af5783ae2679139c640",
+                                                    "parents":  [
+                                                                    "5d41a87aa323bc37380e82c9e96ef1d7cb3a4314"
+                                                                ],
+                                                    "committedAt":  "2026-07-13T11:06:44+02:00",
+                                                    "message":  "presentation(style): adapter la grille des dossiers"
+                                                },
+                                                {
+                                                    "sha":  "7d77f2c48a8d8fde2b2e119b639f75e57bae45b5",
+                                                    "parents":  [
+                                                                    "66af65999ace9e0af9aa2af5783ae2679139c640"
+                                                                ],
+                                                    "committedAt":  "2026-07-13T11:07:27+02:00",
+                                                    "message":  "presentation(help): référencer le parcours personnel"
+                                                }
+                                            ]
+                            },
+                            {
+                                "branch":  "codex/integration-preview-20260713-0822",
+                                "head":  "7d3457205203f025330056d9476c5164548f6489",
+                                "commits":  [
+                                                {
+                                                    "sha":  "0b67b8cb558ebbbe6a801c6730a40dc56a98f2b0",
+                                                    "parents":  [
+                                                                    "87b354ea4a95f6849814aaf725a177a7f4e8ba58"
+                                                                ],
+                                                    "committedAt":  "2026-07-13T11:08:20+02:00",
+                                                    "message":  "client(a11y): nommer les champs dynamiques"
+                                                },
+                                                {
+                                                    "sha":  "8963994134bb80ae8c3981d1222f40c528f8dbf9",
+                                                    "parents":  [
+                                                                    "0b67b8cb558ebbbe6a801c6730a40dc56a98f2b0"
+                                                                ],
+                                                    "committedAt":  "2026-07-13T11:08:21+02:00",
+                                                    "message":  "client(a11y): renforcer le focus des champs"
+                                                },
+                                                {
+                                                    "sha":  "05240a0ffa3cf1ee44d68bf1d1b8abd64a60e866",
+                                                    "parents":  [
+                                                                    "8963994134bb80ae8c3981d1222f40c528f8dbf9"
+                                                                ],
+                                                    "committedAt":  "2026-07-13T11:08:21+02:00",
+                                                    "message":  "admin(fix): corriger les attributs autocomplete"
+                                                },
+                                                {
+                                                    "sha":  "0ff633aa4df29ba0a8b36eb1a9d645cf929ae8b4",
+                                                    "parents":  [
+                                                                    "05240a0ffa3cf1ee44d68bf1d1b8abd64a60e866"
+                                                                ],
+                                                    "committedAt":  "2026-07-13T11:08:22+02:00",
+                                                    "message":  "admin(fix): revenir en haut après connexion preview"
+                                                },
+                                                {
+                                                    "sha":  "e8cde7c7a75600a5a2a106ce2d90041af0c327cb",
+                                                    "parents":  [
+                                                                    "0ff633aa4df29ba0a8b36eb1a9d645cf929ae8b4"
+                                                                ],
+                                                    "committedAt":  "2026-07-13T11:08:23+02:00",
+                                                    "message":  "admin(a11y): renforcer le focus des champs"
+                                                },
+                                                {
+                                                    "sha":  "cded160ca433bb0157a217f22c6389ffa039e517",
+                                                    "parents":  [
+                                                                    "e8cde7c7a75600a5a2a106ce2d90041af0c327cb"
+                                                                ],
+                                                    "committedAt":  "2026-07-13T11:08:24+02:00",
+                                                    "message":  "presentation(feat): ajouter le parcours personnel"
+                                                },
+                                                {
+                                                    "sha":  "617ed36160e957584cfc62457361054115cea47b",
+                                                    "parents":  [
+                                                                    "cded160ca433bb0157a217f22c6389ffa039e517"
+                                                                ],
+                                                    "committedAt":  "2026-07-13T11:08:25+02:00",
+                                                    "message":  "presentation(nav): relier trois pages au parcours"
+                                                },
+                                                {
+                                                    "sha":  "b17b2444142379da5190e6e35fb058ed4283acaa",
+                                                    "parents":  [
+                                                                    "617ed36160e957584cfc62457361054115cea47b"
+                                                                ],
+                                                    "committedAt":  "2026-07-13T11:08:26+02:00",
+                                                    "message":  "presentation(nav): relier les pages parcours et juridique"
+                                                },
+                                                {
+                                                    "sha":  "48cfb176d0909bc6eb72395efb2ee385cd4583bc",
+                                                    "parents":  [
+                                                                    "b17b2444142379da5190e6e35fb058ed4283acaa"
+                                                                ],
+                                                    "committedAt":  "2026-07-13T11:08:26+02:00",
+                                                    "message":  "presentation(feat): intégrer le parcours dans accueil"
+                                                },
+                                                {
+                                                    "sha":  "d9e3384e370bf0f467ff5efcba4a6057c15fea1e",
+                                                    "parents":  [
+                                                                    "48cfb176d0909bc6eb72395efb2ee385cd4583bc"
+                                                                ],
+                                                    "committedAt":  "2026-07-13T11:08:27+02:00",
+                                                    "message":  "presentation(style): adapter la grille des dossiers"
+                                                },
+                                                {
+                                                    "sha":  "7d3457205203f025330056d9476c5164548f6489",
+                                                    "parents":  [
+                                                                    "d9e3384e370bf0f467ff5efcba4a6057c15fea1e"
+                                                                ],
+                                                    "committedAt":  "2026-07-13T11:08:28+02:00",
+                                                    "message":  "presentation(help): référencer le parcours personnel"
+                                                }
+                                            ]
+                            },
+                            {
+                                "branch":  "suivi-temps-reel",
+                                "head":  "19485fc9ffc246c260be8b6883f3068a914733d4",
+                                "commits":  [
+                                                {
+                                                    "sha":  "cba571d36564a399aab207e01e3245e5b888ee88",
+                                                    "parents":  [
+                                                                    "87b354ea4a95f6849814aaf725a177a7f4e8ba58"
+                                                                ],
+                                                    "committedAt":  "2026-07-13T11:16:29+02:00",
+                                                    "message":  "tracker(feat): ajouter le tableau de suivi"
+                                                },
+                                                {
+                                                    "sha":  "ed0af293b40c6cee7e6dc5cb7f4dbf6a0e2a8fe9",
+                                                    "parents":  [
+                                                                    "cba571d36564a399aab207e01e3245e5b888ee88"
+                                                                ],
+                                                    "committedAt":  "2026-07-13T11:16:43+02:00",
+                                                    "message":  "tracker(data): enregistrer état des chantiers"
+                                                },
+                                                {
+                                                    "sha":  "f8adf09082c84596f5966a08b51bfa96133ed8be",
+                                                    "parents":  [
+                                                                    "ed0af293b40c6cee7e6dc5cb7f4dbf6a0e2a8fe9"
+                                                                ],
+                                                    "committedAt":  "2026-07-13T11:17:27+02:00",
+                                                    "message":  "tracker(docs): documenter les historiques locaux"
+                                                },
+                                                {
+                                                    "sha":  "b39ce2198d1718728fd8865fc63c4ee7f4cd2940",
+                                                    "parents":  [
+                                                                    "f8adf09082c84596f5966a08b51bfa96133ed8be"
+                                                                ],
+                                                    "committedAt":  "2026-07-13T11:18:16+02:00",
+                                                    "message":  "tracker(proof): ajouter les preuves client"
+                                                },
+                                                {
+                                                    "sha":  "3758d1bc3f9ff10001967713e512f364c16e662d",
+                                                    "parents":  [
+                                                                    "b39ce2198d1718728fd8865fc63c4ee7f4cd2940"
+                                                                ],
+                                                    "committedAt":  "2026-07-13T11:18:36+02:00",
+                                                    "message":  "tracker(proof): ajouter les preuves admin"
+                                                },
+                                                {
+                                                    "sha":  "1dc1c12bcc9a569676ddf4b96bff73effa0c4f88",
+                                                    "parents":  [
+                                                                    "3758d1bc3f9ff10001967713e512f364c16e662d"
+                                                                ],
+                                                    "committedAt":  "2026-07-13T11:18:37+02:00",
+                                                    "message":  "tracker(proof): ajouter les preuves présentation"
+                                                },
+                                                {
+                                                    "sha":  "f1751fadd6d35db5ccdf322dbbab588ec1fda233",
+                                                    "parents":  [
+                                                                    "1dc1c12bcc9a569676ddf4b96bff73effa0c4f88"
+                                                                ],
+                                                    "committedAt":  "2026-07-13T11:18:38+02:00",
+                                                    "message":  "tracker(proof): ajouter la recette intégrée"
+                                                },
+                                                {
+                                                    "sha":  "38d2feada30f6d6aff8cfac947052e112f747824",
+                                                    "parents":  [
+                                                                    "f1751fadd6d35db5ccdf322dbbab588ec1fda233"
+                                                                ],
+                                                    "committedAt":  "2026-07-13T11:18:39+02:00",
+                                                    "message":  "tracker(proof): ajouter audit et captures du suivi"
+                                                },
+                                                {
+                                                    "sha":  "fa43c11be0a0731de6753bc78e787cbfdfe4f58c",
+                                                    "parents":  [
+                                                                    "38d2feada30f6d6aff8cfac947052e112f747824"
+                                                                ],
+                                                    "committedAt":  "2026-07-13T11:25:35+02:00",
+                                                    "message":  "tracker(final): clore les preuves Git locales"
+                                                },
+                                                {
+                                                    "sha":  "75a58c20a9e4560f813b4a6fcd67e060f2e8cd97",
+                                                    "parents":  [
+                                                                    "fa43c11be0a0731de6753bc78e787cbfdfe4f58c"
+                                                                ],
+                                                    "committedAt":  "2026-07-13T11:40:47+02:00",
+                                                    "message":  "tracker(docs): completer les preuves initiales admin"
+                                                },
+                                                {
+                                                    "sha":  "21d1cc2fd0f9033c851a988ed244b356292bfa99",
+                                                    "parents":  [
+                                                                    "75a58c20a9e4560f813b4a6fcd67e060f2e8cd97"
+                                                                ],
+                                                    "committedAt":  "2026-07-13T11:46:46+02:00",
+                                                    "message":  "tracker(final): sceller le controle exhaustif"
+                                                },
+                                                {
+                                                    "sha":  "ba831dcc14d55da91547b4b11abf4f669db519e8",
+                                                    "parents":  [
+                                                                    "21d1cc2fd0f9033c851a988ed244b356292bfa99"
+                                                                ],
+                                                    "committedAt":  "2026-07-13T12:08:38+02:00",
+                                                    "message":  "tracker(final): enregistrer la cloture reelle"
+                                                },
+                                                {
+                                                    "sha":  "19485fc9ffc246c260be8b6883f3068a914733d4",
+                                                    "parents":  [
+                                                                    "ba831dcc14d55da91547b4b11abf4f669db519e8"
+                                                                ],
+                                                    "committedAt":  "2026-07-13T16:47:56+02:00",
+                                                    "message":  "tracker(sync): préparer les preuves publiques assainies"
+                                                }
+                                            ]
+                            }
+                        ],
+    "rawHistoriesPublished":  false,
+    "reason":  "Le dépôt distant est public et les arbres locaux héritent de coordonnées privées et dʼune valeur de connexion de démonstration."
+}
