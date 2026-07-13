@@ -8,8 +8,8 @@
     "dossierTravail":  "workspace local privé — chemin volontairement non publié",
     "depotDetecte":  "Dépôt Git local reconstruit depuis l’archive validée dans git-session/repository; aucun remote configuré",
     "brancheDepart":  "baseline/archive-20260626-2318 — commit 87b354ea4a95f6849814aaf725a177a7f4e8ba58",
-    "github":  "SYNCHRONISATION ASSAINIE EN PRÉPARATION — main intacte",
-    "vercel":  "DÉPLOIEMENT INDÉPENDANT EN PRÉPARATION",
+    "github":  "PREUVES ASSAINIES PUBLIÉES — main intacte",
+    "vercel":  "TABLEAU INDÉPENDANT PUBLIÉ — https://pizza-baladzo-suivi.vercel.app",
     "gitLocal":  "DISPONIBLE LOCALEMENT — MinGit 2.55.0.windows.2 vérifié dans tools/local-git",
     "ghCli":  "INDISPONIBLE",
     "vercelCli":  "INDISPONIBLE",
@@ -51,7 +51,7 @@
                             },
                 "mainExists":  false,
                 "remoteConfigured":  true,
-                "remoteWrites":  0
+                "remoteWrites":  6
             },
     "previewUrls":  {
                         "client":  "Serveur temporaire de recette fermé en fin de session",
