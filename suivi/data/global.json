@@ -42,6 +42,14 @@
     "source": "Aucun parcours de production complet n'est encore validé de bout en bout",
     "excludes": "Les préparations locales et le backend Stripe en mode test ne valent pas validation de production"
   },
+  "remainingEstimate": {
+    "quantifiedHours": 429,
+    "quantifiedWorkdays": 53.6,
+    "workdayHours": 8,
+    "basis": "100 h client + 329 h admin",
+    "scope": "Estimation historique quantifiée des sections client et admin",
+    "notQuantified": "Validation humaine de la présentation et connexions externes réelles"
+  },
   "historicalEstimate": {
     "value": 56.2,
     "displayedAsCurrentReadiness": false,

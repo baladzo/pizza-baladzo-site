@@ -94,6 +94,8 @@ function renderGlobal(data) {
   document.querySelector("#operational-source").textContent = operational.source;
   document.querySelector("#tests-passed").textContent = tests.succeeded;
   document.querySelector("#tests-summary").textContent = `${tests.total} contrôles, ${tests.historicalAnomalies} anomalies historiques`;
+  document.querySelector("#remaining-hours").textContent = `${data.remainingEstimate.quantifiedHours} h`;
+  document.querySelector("#remaining-days").textContent = `${Number(data.remainingEstimate.quantifiedWorkdays).toLocaleString("fr-FR", { maximumFractionDigits: 1 })} j à ${data.remainingEstimate.workdayHours} h/j`;
 
   document.querySelector("#external-body").innerHTML = (data.connexionsExternes || []).map(item => `<tr>
     <td>${escapeHtml(item.module)}</td>

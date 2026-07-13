@@ -9,6 +9,8 @@
 - Validation technique de la session : **100 % des tâches locales terminées ont une preuve**.
 - Validation Sébastien : **0 %**, car les arbitrages humains restent différés.
 - Préparation opérationnelle globale en production : **0 % validé de bout en bout**; les services externes ne sont pas déclarés terminés.
+- Heures restantes chiffrées : **429 h** pour les sections client et admin.
+- Jours de travail restants chiffrés : **53,6 jours à 8 h/j**; validation humaine de la présentation et connexions externes non chiffrées.
 
 ## Publication distante
 

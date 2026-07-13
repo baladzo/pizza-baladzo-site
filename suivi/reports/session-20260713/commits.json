@@ -1,5 +1,5 @@
 {
-    "generatedAt":  "2026-07-13T18:58:12.9810755+02:00",
+    "generatedAt":  "2026-07-13T19:01:23.3026564+02:00",
     "baselineCommit":  "87b354ea4a95f6849814aaf725a177a7f4e8ba58",
     "branchHistories":  [
                             {
@@ -211,7 +211,7 @@
                             },
                             {
                                 "branch":  "suivi-temps-reel",
-                                "head":  "dc0813ddaca6be6263693e8f60d39ac9245fe5f7",
+                                "head":  "b1621aaef4f86c43884460b9f6e7f32ef31506df",
                                 "commits":  [
                                                 {
                                                     "sha":  "cba571d36564a399aab207e01e3245e5b888ee88",
@@ -332,6 +332,14 @@
                                                                 ],
                                                     "committedAt":  "2026-07-13T18:46:12+02:00",
                                                     "message":  "tracker(sync): enregistrer les URL publiques validées"
+                                                },
+                                                {
+                                                    "sha":  "b1621aaef4f86c43884460b9f6e7f32ef31506df",
+                                                    "parents":  [
+                                                                    "dc0813ddaca6be6263693e8f60d39ac9245fe5f7"
+                                                                ],
+                                                    "committedAt":  "2026-07-13T18:58:52+02:00",
+                                                    "message":  "tracker(docs): aligner le suivi sur la publication réelle"
                                                 }
                                             ]
                             }

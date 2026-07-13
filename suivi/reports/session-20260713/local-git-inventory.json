@@ -1,6 +1,6 @@
 {
     "generatedAt":  "2026-07-13T12:07:01+02:00",
-    "refreshedForSyncAt":  "2026-07-13T18:58:12.1934316+02:00",
+    "refreshedForSyncAt":  "2026-07-13T19:01:21.6779979+02:00",
     "inventoryHeadCapturedBeforeThisEvidenceCommit":  true,
     "repository":  "git-session/repository",
     "gitVersion":  "2.55.0.windows.2",
@@ -47,8 +47,8 @@
                      },
                      {
                          "name":  "suivi-temps-reel",
-                         "head":  "dc0813ddaca6be6263693e8f60d39ac9245fe5f7",
-                         "commitsSinceBaseline":  15,
+                         "head":  "b1621aaef4f86c43884460b9f6e7f32ef31506df",
+                         "commitsSinceBaseline":  16,
                          "rawPublicationAllowed":  false,
                          "publicationMode":  "preuve assainie uniquement"
                      }
@@ -86,7 +86,7 @@
                       },
                       {
                           "path":  "git-session/worktrees/suivi",
-                          "head":  "dc0813ddaca6be6263693e8f60d39ac9245fe5f7",
+                          "head":  "b1621aaef4f86c43884460b9f6e7f32ef31506df",
                           "branch":  "suivi-temps-reel",
                           "clean":  true
                       }

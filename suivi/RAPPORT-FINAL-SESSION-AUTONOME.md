@@ -6,6 +6,8 @@
 - Progression des tâches de la session autonome du 13 juillet 2026 : 88,3 %
 - Projet global historique : 56,2 %, conservé comme valeur à réconcilier
 - Validation Sébastien : différée
+- Heures restantes chiffrées : 429 h pour les sections client et admin
+- Jours de travail restants chiffrés : 53,6 jours à 8 h/j; validation humaine de la présentation et connexions externes non chiffrées
 - Site officiel : non modifié
 
 ## Base et isolation
