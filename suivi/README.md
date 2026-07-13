@@ -32,9 +32,11 @@ Puis ouvrir `http://127.0.0.1:8769/`, `http://127.0.0.1:8769/admin.html` ou `htt
 ## Limites actives
 
 - Git local disponible via MinGit 2.55.0.windows.2 vérifié dans `tools/local-git`.
-- Dépôt local : `git-session/repository`; aucune branche `main` et aucun remote configuré.
+- Dépôt local : `git-session/repository`; aucune branche `main` locale et dépôt GitHub distant configuré.
 - Worktrees liés : `git-session/worktrees/client`, `admin`, `presentation`, `integration` et `suivi`.
-- `gh` reste indisponible; aucun push, pull request ou déploiement distant n’a été effectué.
+- `gh` reste indisponible; la synchronisation a été effectuée par le connecteur GitHub, sans pull request vers `main`.
+- Cinq branches d’audit assainies et la branche `suivi-temps-reel` sont publiées sur GitHub.
+- Le tableau indépendant est publié sur `https://pizza-baladzo-suivi.vercel.app`.
 - La branche `main` distante diverge de l’archive principale validée.
 - Aucune modification de `main`, Hostinger, `public_html`, FTP, DNS ou site officiel.
 - Aucun secret ni donnée personnelle privée ne doit entrer dans ce dossier public.

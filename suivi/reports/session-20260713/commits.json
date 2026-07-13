@@ -1,5 +1,5 @@
 {
-    "generatedAt":  "2026-07-13T18:44:28.0204367+02:00",
+    "generatedAt":  "2026-07-13T18:58:12.9810755+02:00",
     "baselineCommit":  "87b354ea4a95f6849814aaf725a177a7f4e8ba58",
     "branchHistories":  [
                             {
@@ -211,7 +211,7 @@
                             },
                             {
                                 "branch":  "suivi-temps-reel",
-                                "head":  "e111bc2c3eff2f0094e2e86d611ebbf30c9cbce2",
+                                "head":  "dc0813ddaca6be6263693e8f60d39ac9245fe5f7",
                                 "commits":  [
                                                 {
                                                     "sha":  "cba571d36564a399aab207e01e3245e5b888ee88",
@@ -324,6 +324,14 @@
                                                                 ],
                                                     "committedAt":  "2026-07-13T18:35:18+02:00",
                                                     "message":  "tracker(proof): actualiser le manifeste et les captures"
+                                                },
+                                                {
+                                                    "sha":  "dc0813ddaca6be6263693e8f60d39ac9245fe5f7",
+                                                    "parents":  [
+                                                                    "e111bc2c3eff2f0094e2e86d611ebbf30c9cbce2"
+                                                                ],
+                                                    "committedAt":  "2026-07-13T18:46:12+02:00",
+                                                    "message":  "tracker(sync): enregistrer les URL publiques validées"
                                                 }
                                             ]
                             }

@@ -6,7 +6,7 @@
     "dureeMaximale":  "7 heures",
     "heureLimite":  "2026-07-13 15:22:43 Europe/Paris",
     "dossierTravail":  "workspace local privé — chemin volontairement non publié",
-    "depotDetecte":  "Dépôt Git local reconstruit depuis l’archive validée dans git-session/repository; aucun remote configuré",
+    "depotDetecte":  "Dépôt Git local reconstruit depuis l\u0027archive validée dans git-session/repository; dépôt GitHub distant configuré; aucune branche main locale",
     "brancheDepart":  "baseline/archive-20260626-2318 — commit 87b354ea4a95f6849814aaf725a177a7f4e8ba58",
     "github":  "PREUVES ASSAINIES PUBLIÉES — main intacte",
     "vercel":  "TABLEAU INDÉPENDANT PUBLIÉ — https://pizza-baladzo-suivi.vercel.app",
@@ -15,8 +15,8 @@
     "vercelCli":  "INDISPONIBLE",
     "agentsParalleles":  "UTILISÉS — quatre agents lancés",
     "tacheActuelle":  "Aucune — session locale clôturée",
-    "derniereTacheTerminee":  "Preuves Git, intégration locale et tableau de suivi réconciliés puis audités",
-    "resumeBranches":  "main absente du dépôt local · client 2 commits · admin 3 commits · présentation 6 commits · intégration 11 cherry-picks · suivi 11 commits avant scellement final",
+    "derniereTacheTerminee":  "Preuves assainies synchronisées sur GitHub et tableau indépendant validé sur Vercel",
+    "resumeBranches":  "main distante intacte · cinq branches d\u0027audit assainies · suivi-temps-reel complétée · previews fonctionnelles brutes non publiées",
     "git":  {
                 "repository":  "git-session/repository",
                 "baseline":  {
@@ -51,13 +51,13 @@
                             },
                 "mainExists":  false,
                 "remoteConfigured":  true,
-                "remoteWrites":  6
+                "remoteWrites":  8
             },
     "previewUrls":  {
-                        "client":  "Serveur temporaire de recette fermé en fin de session",
-                        "admin":  "Serveur temporaire de recette fermé en fin de session",
-                        "presentation":  "Serveur temporaire de recette fermé en fin de session",
-                        "integration":  "Relancer tools/audit/serve-static.ps1 sur git-session/worktrees/integration",
-                        "suivi":  "Relancer tools/audit/serve-static.ps1 sur suivi"
+                        "client":  "NON PUBLIÉE — branche brute retenue après scan de confidentialité",
+                        "admin":  "NON PUBLIÉE — branche brute retenue après scan de confidentialité",
+                        "presentation":  "NON PUBLIÉE — branche brute retenue après scan de confidentialité",
+                        "integration":  "NON PUBLIÉE — branche brute retenue après scan de confidentialité",
+                        "suivi":  "https://pizza-baladzo-suivi.vercel.app"
                     }
 }

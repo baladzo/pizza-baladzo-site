@@ -5,8 +5,8 @@
       "section": "Git / base de travail",
       "decision": "Choisir plus tard la stratégie d’alignement entre l’archive validée et GitHub main",
       "raison": "Le blob index.html de l’archive est 24fcc49c..., celui de main est 9af019c7... et admin.html est absent de main.",
-      "impact": "Les commits locaux sont désormais traçables, mais aucun push, merge ou remplacement de la branche distante ne doit être fait sans arbitrage de la base.",
-      "recommandation": "Contrôler les branches locales créées, puis décider séparément si et comment les publier sans toucher main."
+      "impact": "Les preuves assainies sont publiées dans des branches d’audit, mais aucun merge ou remplacement de la branche main ne doit être fait sans arbitrage de la base.",
+      "recommandation": "Décider séparément de toute stratégie future d’alignement; les branches d’audit ne doivent pas être fusionnées automatiquement."
     },
     {
       "id": "VAL-002",
@@ -43,10 +43,10 @@
     {
       "id": "VAL-006",
       "section": "Publication technique",
-      "decision": "Choisir un périmètre de publication distant isolé",
-      "raison": "Git fonctionne désormais localement, mais gh reste absent, aucun remote n’est configuré et aucun projet Vercel n’existe; publier depuis la racine exposerait un périmètre trop large.",
-      "impact": "Les commits restent strictement locaux; aucun push, pull request ou déploiement Vercel n’a été effectué.",
-      "recommandation": "Après arbitrage, publier uniquement les branches et dossiers de preview validés; conserver main et le site officiel intacts."
+      "decision": "Décider du traitement futur des previews fonctionnelles brutes",
+      "raison": "Le scan a détecté des données privées héritées dans les arbres fonctionnels locaux; seules des preuves assainies peuvent être publiques actuellement.",
+      "impact": "Les quatre previews fonctionnelles restent privées; le tableau indépendant et les preuves assainies sont publiés sans exposer ces données.",
+      "recommandation": "Préparer plus tard une correction de confidentialité séparée, puis refaire le scan avant toute preview publique."
     }
   ]
 }
