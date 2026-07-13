@@ -1,83 +1,146 @@
 {
-  "schemaVersion": 2,
-  "updatedAt": "2026-07-13T12:07:01+02:00",
-  "sessionTaskProgress": {
-    "label": "Progression des tâches de la session autonome du 13 juillet 2026",
-    "value": 88.3,
-    "source": "Moyenne documentée des chantiers client 90, admin 85 et présentation 90",
-    "formula": "(90 + 85 + 90) / 3 = 88,3"
-  },
-  "sessionWorkstreams": {
-    "completed": 3,
-    "total": 3,
-    "scope": "Travail local de la session; validations humaines exclues"
-  },
-  "sectionMaturity": {
-    "client": 90,
-    "admin": 85,
-    "presentation": 90,
-    "unit": "pourcentage technique par section"
-  },
-  "provenProgress": {
-    "evidencedChanges": 11,
-    "totalChanges": 11,
-    "percent": 100,
-    "scope": "Micro-commits fonctionnels de la session uniquement"
-  },
-  "technicalValidation": {
-    "succeededControls": 63,
-    "expectedSuccessfulControls": 63,
-    "percent": 100,
-    "historicalAnomaliesExcluded": 3
-  },
-  "sebastienValidation": {
-    "completed": 0,
-    "total": 6,
-    "pending": 6,
-    "percent": 0
-  },
-  "globalOperationalReadiness": {
-    "percent": 0,
-    "productionFlowsValidatedEndToEnd": 0,
-    "source": "Aucun parcours de production complet n'est encore validé de bout en bout",
-    "excludes": "Les préparations locales et le backend Stripe en mode test ne valent pas validation de production"
-  },
-  "remainingEstimate": {
-    "quantifiedHours": 429,
-    "quantifiedWorkdays": 53.6,
-    "workdayHours": 8,
-    "basis": "100 h client + 329 h admin",
-    "scope": "Estimation historique quantifiée des sections client et admin",
-    "notQuantified": "Validation humaine de la présentation et connexions externes réelles"
-  },
-  "historicalEstimate": {
-    "value": 56.2,
-    "displayedAsCurrentReadiness": false,
-    "reason": "Valeur historique conservée pour traçabilité, non réconciliée avec une recette opérationnelle globale"
-  },
-  "tests": {
-    "total": 66,
-    "succeeded": 63,
-    "historicalAnomalies": 3,
-    "newFailures": 0,
-    "details": "reports/session-20260713/tests.json"
-  },
-  "connexionsExternes": [
-    {"module": "Backend Stripe Terminal test", "statut": "TEST CONNECTÉ", "preuve": "API HTTPS /health confirmée; mode test, paiements live désactivés"},
-    {"module": "Stripe live et banque", "statut": "NON VALIDÉ", "preuve": "Aucun mode live autorisé ni testé"},
-    {"module": "Paiement et TPE réels", "statut": "À CONNECTER", "preuve": "Aucun paiement réel et aucun matériel commandé"},
-    {"module": "E-mail réel", "statut": "À CONNECTER", "preuve": "Aucun envoi réel exécuté"},
-    {"module": "SMS réel", "statut": "À CONNECTER", "preuve": "Aucun envoi réel exécuté"},
-    {"module": "Réseaux sociaux réels", "statut": "À CONNECTER", "preuve": "Aucune publication exécutée"},
-    {"module": "Matériel, stocks et commandes réels", "statut": "À CONNECTER", "preuve": "Aucun achat, commande ou test matériel réel"},
-    {"module": "Site officiel Hostinger", "statut": "HORS PÉRIMÈTRE", "preuve": "Aucune modification de Hostinger, public_html, FTP ou DNS"}
-  ],
-  "historique": [
-    {"date": "2026-07-13 08:22", "titre": "Session autonome lancée", "detail": "Périmètre local et protections enregistrés."},
-    {"date": "2026-07-13 08:31", "titre": "Archive principale validée", "detail": "SHA256 exact et 154 entrées contrôlées."},
-    {"date": "2026-07-13 10:51", "titre": "MinGit local vérifié", "detail": "Version 2.55.0.windows.2 et archive outil conformes."},
-    {"date": "2026-07-13 11:10", "titre": "Branches et intégration créées", "detail": "Onze micro-commits et onze cherry-picks, sans branche main locale."},
-    {"date": "2026-07-13 12:07", "titre": "Audit local clôturé", "detail": "63 contrôles réussis, 3 anomalies historiques, aucun nouvel échec."},
-    {"date": "2026-07-13 16:00", "titre": "Synchronisation assainie préparée", "detail": "Données distantes client/admin préservées; branches brutes retenues pour confidentialité."}
-  ]
+    "schemaVersion":  2,
+    "updatedAt":  "2026-07-13T19:08:00+02:00",
+    "sessionTaskProgress":  {
+                                "label":  "Progression des tâches de la session autonome du 13 juillet 2026",
+                                "value":  88.3,
+                                "source":  "Moyenne documentée des chantiers client 90, admin 85 et présentation 90",
+                                "formula":  "(90 + 85 + 90) / 3 = 88,3"
+                            },
+    "sessionWorkstreams":  {
+                               "completed":  3,
+                               "total":  3,
+                               "scope":  "Travail local de la session; validations humaines exclues"
+                           },
+    "sectionMaturity":  {
+                            "client":  90,
+                            "admin":  85,
+                            "presentation":  90,
+                            "unit":  "pourcentage technique par section"
+                        },
+    "provenProgress":  {
+                           "evidencedChanges":  11,
+                           "totalChanges":  11,
+                           "percent":  100,
+                           "scope":  "Micro-commits fonctionnels de la session uniquement"
+                       },
+    "technicalValidation":  {
+                                "succeededControls":  63,
+                                "expectedSuccessfulControls":  67,
+                                "percent":  94,
+                                "historicalAnomaliesExcluded":  3,
+                                "blockedControls":  4
+                            },
+    "sebastienValidation":  {
+                                "completed":  0,
+                                "total":  6,
+                                "pending":  6,
+                                "percent":  0
+                            },
+    "globalOperationalReadiness":  {
+                                       "percent":  0,
+                                       "productionFlowsValidatedEndToEnd":  0,
+                                       "source":  "Aucun parcours de production complet n\u0027est encore validé de bout en bout",
+                                       "excludes":  "Les préparations locales et le backend Stripe en mode test ne valent pas validation de production"
+                                   },
+    "remainingEstimate":  {
+                              "quantifiedHours":  429,
+                              "quantifiedWorkdays":  53.6,
+                              "workdayHours":  8,
+                              "basis":  "100 h client + 329 h admin",
+                              "scope":  "Estimation historique quantifiée des sections client et admin",
+                              "notQuantified":  "Validation humaine de la présentation et connexions externes réelles"
+                          },
+    "historicalEstimate":  {
+                               "value":  56.2,
+                               "displayedAsCurrentReadiness":  false,
+                               "reason":  "Valeur historique conservée pour traçabilité, non réconciliée avec une recette opérationnelle globale"
+                           },
+    "tests":  {
+                  "total":  70,
+                  "succeeded":  63,
+                  "historicalAnomalies":  3,
+                  "newFailures":  0,
+                  "details":  "reports/session-20260713/tests.json",
+                  "blocked":  4
+              },
+    "connexionsExternes":  [
+                               {
+                                   "module":  "Backend Stripe Terminal test",
+                                   "statut":  "TEST CONNECTÉ",
+                                   "preuve":  "API HTTPS /health confirmée; mode test, paiements live désactivés"
+                               },
+                               {
+                                   "module":  "Stripe live et banque",
+                                   "statut":  "NON VALIDÉ",
+                                   "preuve":  "Aucun mode live autorisé ni testé"
+                               },
+                               {
+                                   "module":  "Paiement et TPE réels",
+                                   "statut":  "À CONNECTER",
+                                   "preuve":  "Aucun paiement réel et aucun matériel commandé"
+                               },
+                               {
+                                   "module":  "E-mail réel",
+                                   "statut":  "À CONNECTER",
+                                   "preuve":  "Aucun envoi réel exécuté"
+                               },
+                               {
+                                   "module":  "SMS réel",
+                                   "statut":  "À CONNECTER",
+                                   "preuve":  "Aucun envoi réel exécuté"
+                               },
+                               {
+                                   "module":  "Réseaux sociaux réels",
+                                   "statut":  "À CONNECTER",
+                                   "preuve":  "Aucune publication exécutée"
+                               },
+                               {
+                                   "module":  "Matériel, stocks et commandes réels",
+                                   "statut":  "À CONNECTER",
+                                   "preuve":  "Aucun achat, commande ou test matériel réel"
+                               },
+                               {
+                                   "module":  "Site officiel Hostinger",
+                                   "statut":  "HORS PÉRIMÈTRE",
+                                   "preuve":  "Aucune modification de Hostinger, public_html, FTP ou DNS"
+                               }
+                           ],
+    "historique":  [
+                       {
+                           "date":  "2026-07-13 08:22",
+                           "titre":  "Session autonome lancée",
+                           "detail":  "Périmètre local et protections enregistrés."
+                       },
+                       {
+                           "date":  "2026-07-13 08:31",
+                           "titre":  "Archive principale validée",
+                           "detail":  "SHA256 exact et 154 entrées contrôlées."
+                       },
+                       {
+                           "date":  "2026-07-13 10:51",
+                           "titre":  "MinGit local vérifié",
+                           "detail":  "Version 2.55.0.windows.2 et archive outil conformes."
+                       },
+                       {
+                           "date":  "2026-07-13 11:10",
+                           "titre":  "Branches et intégration créées",
+                           "detail":  "Onze micro-commits et onze cherry-picks, sans branche main locale."
+                       },
+                       {
+                           "date":  "2026-07-13 12:07",
+                           "titre":  "Audit local clôturé",
+                           "detail":  "63 contrôles réussis, 3 anomalies historiques, aucun nouvel échec."
+                       },
+                       {
+                           "date":  "2026-07-13 16:00",
+                           "titre":  "Synchronisation assainie préparée",
+                           "detail":  "Données distantes client/admin préservées; branches brutes retenues pour confidentialité."
+                       },
+                       {
+                           "date":  "2026-07-13 19:08",
+                           "titre":  "Contrôles complémentaires réconciliés",
+                           "detail":  "Quatre limites publiées comme bloquées : mobile partiel, clavier complet, impression et comparaison à la source."
+                       }
+                   ]
 }

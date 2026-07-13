@@ -1,0 +1,32 @@
+{
+  "source": "NUIT-001-CONTROLE-002",
+  "generatedAt": "2026-07-13T17:03:00+02:00",
+  "valuesSanitized": true,
+  "controls": [
+    {
+      "id": "PRESENTATION-RUNTIME-002",
+      "scenario": "PC, tablette et mobile",
+      "result": "BLOQUÉ",
+      "obtained": "Captures runtime réelles disponibles; navigation horizontale interne observée sur mobile.",
+      "proofs": ["captures/presentation-pc.jpg", "captures/presentation-tablette.jpg", "captures/presentation-mobile.jpg"]
+    },
+    {
+      "id": "PRESENTATION-RUNTIME-003",
+      "scenario": "Navigation clavier",
+      "result": "BLOQUÉ",
+      "obtained": "Lien d'évitement focusable avec contour; parcours clavier complet non prouvé."
+    },
+    {
+      "id": "PRESENTATION-RUNTIME-004",
+      "scenario": "Impression",
+      "result": "BLOQUÉ",
+      "obtained": "Émulation du média print indisponible; aucune fausse capture créée."
+    },
+    {
+      "id": "PRESENTATION-RUNTIME-005",
+      "scenario": "Fidélité au document source",
+      "result": "BLOQUÉ",
+      "obtained": "Document source prioritaire non retrouvé dans le contrôle disponible."
+    }
+  ]
+}

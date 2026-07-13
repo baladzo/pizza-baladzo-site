@@ -1,5 +1,5 @@
 {
-    "generatedAt":  "2026-07-13T19:01:32.1878133+02:00",
+    "generatedAt":  "2026-07-13T19:08:00+02:00",
     "sourceArchiveSha256":  "530B9BADB9B1C2F587F2F29BF0D8551A1D5EBA9881A8DBC2486E96FD3176FCF6",
     "sourceArchiveMatched":  true,
     "localRepository":  "git-session/repository",
@@ -24,10 +24,11 @@
                                                      ]
                       },
     "testSummary":  {
-                        "total":  66,
+                        "total":  70,
                         "succeeded":  63,
                         "historicalAnomalies":  3,
-                        "coherent":  true
+                        "coherent":  true,
+                        "blocked":  4
                     },
     "trackerUrl":  "https://github.com/baladzo/pizza-baladzo-site/tree/suivi-temps-reel/suivi",
     "deploymentUrl":  "https://pizza-baladzo-suivi.vercel.app",

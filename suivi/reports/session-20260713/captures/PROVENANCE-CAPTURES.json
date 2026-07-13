@@ -1,0 +1,70 @@
+{
+  "generatedAt": "2026-07-13T17:03:00+02:00",
+  "purpose": "Copies JPEG de diffusion des captures runtime originales, sans reconstruction du contenu.",
+  "originalsRemainLocal": true,
+  "captures": [
+    {
+      "published": "client.jpg",
+      "source": "capture runtime client desktop",
+      "sourceSha256": "A62CE26D6082DC6450699048000435DD815AECE5FE0F89DC77F6C8D59624CA45",
+      "publishedSha256": "6EB0A14F1CDAADA1D1D028FC3513273954E776DBE3E287424E0D96ABBA883F31",
+      "publishedDimensions": "800x450"
+    },
+    {
+      "published": "client-mobile.jpg",
+      "source": "capture runtime client mobile",
+      "sourceSha256": "D39C205C43FCBEBDA9417FC37920C7D7C0AB0F980AED0B5B6F8708B4B5454B17",
+      "publishedSha256": "C0B3F7CF46B856F24F2A1218F5DBD2B24C5C66FC0BE7658A9A2C4421E14A56E0",
+      "publishedDimensions": "375x812"
+    },
+    {
+      "published": "client-focus.jpg",
+      "source": "capture runtime client focus visible",
+      "sourceSha256": "94DB08FAE31DADD030D8CBD935D950B9A2D91D263F8C38D26B1FC38D09FFCCCC",
+      "publishedSha256": "5EFD9B9ED1F1E69A15A4A9DC38FC288A6EA2F3A01254041A80D25D7653F6CD3F",
+      "publishedDimensions": "1280x720"
+    },
+    {
+      "published": "admin.jpg",
+      "source": "capture runtime admin desktop",
+      "sourceSha256": "60ECB1210C291BF2A40E9EECFFCD85B63343AABED947232BFB2D5117B38119F1",
+      "publishedSha256": "F8C8952CDD50A983EC718B13CA2FBB7F46E0D6E6031A09694E46899B7E9D9143",
+      "publishedDimensions": "800x500"
+    },
+    {
+      "published": "admin-mobile.jpg",
+      "source": "capture runtime admin mobile",
+      "sourceSha256": "AFCD6A7D37E80C9EDAF4092F480D055795FE03324603407C47461B6555A6CE17",
+      "publishedSha256": "53C92B735CF39CDC1698E57DAFAA8C6028CB08A7DF5334C7488D24567CABA9D6",
+      "publishedDimensions": "375x812"
+    },
+    {
+      "published": "admin-focus.jpg",
+      "source": "capture runtime admin focus visible",
+      "sourceSha256": "8C6CA9DB509F1EB2D401CF061FF310913E10A6DBC601DD191903AF84B4738618",
+      "publishedSha256": "A68CDF5F2B7F19186CE86B3536A397F273A49622F7612B88276A4FF7E15974CD",
+      "publishedDimensions": "1000x563"
+    },
+    {
+      "published": "presentation-pc.jpg",
+      "source": "capture runtime présentation PC",
+      "sourceSha256": "14AD0266986A0E39B7948CE552628240ECE0FDDC59A109746255731599060B42",
+      "publishedSha256": "4A3BDFE81C575A673E93F22CFE3F4966FC612BF24DFF3C040DDC375074FB7F4E",
+      "publishedDimensions": "800x500"
+    },
+    {
+      "published": "presentation-tablette.jpg",
+      "source": "capture runtime présentation tablette",
+      "sourceSha256": "A1DB40F064CC092834EC4C56A23622BED0C07B2C3D15F508B87555FA3727108B",
+      "publishedSha256": "C904B9F864F5A87ACDD977991FCE8D214E47F6545E8C7672D5F42E49FA2C4FBA",
+      "publishedDimensions": "600x742"
+    },
+    {
+      "published": "presentation-mobile.jpg",
+      "source": "capture runtime présentation mobile",
+      "sourceSha256": "F20B960BAC530F76424E66FC855BED617DF1203CF52504EE21FD1D857E6C8B5A",
+      "publishedSha256": "ED4198DA81093A60B7586DB4814EADB35486DB3E2088333C9063052DE6C8A449",
+      "publishedDimensions": "375x812"
+    }
+  ]
+}
