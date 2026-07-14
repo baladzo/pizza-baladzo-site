@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "modeId": "AUTONOMIE-3-SITES-24-48H",
+  "status": "ACTIVE",
+  "startedAt": "2026-07-14T16:28:32+02:00",
+  "timezone": "Europe/Paris",
+  "activatedBy": "Sébastien",
+  "scope": [
+    "site-client",
+    "site-admin",
+    "site-presentation",
+    "pitch",
+    "demonstrations",
+    "previews",
+    "tests",
+    "documentation"
+  ],
+  "sebastienFocus": [
+    "appareils",
+    "reseaux-sociaux",
+    "email",
+    "sms",
+    "comptes-externes",
+    "materiel",
+    "connexions-reelles"
+  ],
+  "doNotDisturb": true,
+  "stopPhrase": "FIN DU MODE AUTONOMIE — JE SUIS DISPONIBLE POUR LES VALIDATIONS",
+  "checkpointMinutes": 30,
+  "maxTaskProgressWithoutSebastien": 90,
+  "allowedActivationStates": [
+    "OFF",
+    "PREVIEW",
+    "TEST"
+  ],
+  "forbiddenActivationState": "LIVE",
+  "allowedInterruptions": [
+    "secret-ou-donnee-privee",
+    "risque-de-perte-de-donnees",
+    "production-ou-main-touchee",
+    "corruption-git-non-restaurable",
+    "blocage-absolu-de-tous-les-chantiers",
+    "incident-de-securite-critique"
+  ],
+  "deferredQuestionsFile": "suivi/data/validations-sebastien.json",
+  "resumeFile": "suivi/AUTONOMY_STATE.md",
+  "masterPrompt": "suivi/prompts/MODE-AUTONOMIE-3-SITES-24-48H.md",
+  "productionProtected": true,
+  "hostingerProtected": true,
+  "mainProtected": true
+}
