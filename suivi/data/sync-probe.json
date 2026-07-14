@@ -1,18 +1,21 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "trackerId": "TRACKER-001",
-  "probeId": "tracker-001-20260714-044820",
-  "requestedAt": "2026-07-14T04:48:20+02:00",
+  "probeId": "tracker-001-20260714-054319",
+  "requestedAt": "2026-07-14T05:43:19+02:00",
   "timezone": "Europe/Paris",
+  "previousRemoteHead": "8d41830d6ac4ca5444e95942c9ad8c083de3626a",
   "expectedSource": {
     "repository": "baladzo/pizza-baladzo-site",
     "branch": "suivi-temps-reel",
-    "rootDirectory": "suivi"
+    "rootDirectory": "suivi",
+    "trigger": "github-push"
   },
   "expectedTarget": {
     "platform": "Vercel",
     "project": "pizza-baladzo-suivi",
-    "productionUrl": "https://pizza-baladzo-suivi.vercel.app"
+    "productionUrl": "https://pizza-baladzo-suivi.vercel.app",
+    "productionBranch": "suivi-temps-reel"
   },
   "purpose": "Prouver qu'un push GitHub declenche automatiquement le deploiement Vercel, sans commande manuelle apres le commit.",
   "containsSensitiveData": false
