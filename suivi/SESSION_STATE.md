@@ -1,5 +1,24 @@
 # État de reprise — session autonome Pizza Baladzo
 
+## TRACKER-001 — terminé
+
+- Fin : 14/07/2026 05:50:58 Europe/Paris
+- Dépôt : `baladzo/pizza-baladzo-site`
+- Branche Vercel de production : `suivi-temps-reel`
+- Répertoire racine Vercel : `suivi`
+- Déclencheur validé : push GitHub, sans commande manuelle après le commit de sonde
+- Commit GitHub : `b9653364c00c5de76146ce924c8e040dc731736e`
+- Commit déployé par Vercel : `b9653364c00c5de76146ce924c8e040dc731736e`
+- Correspondance SHA : oui
+- Déploiement Vercel : `dpl_GFJJVj7JMxjWm6sy6SUoomrXwzPu`
+- État : `READY`, cible `production`, source `git`
+- URL : https://pizza-baladzo-suivi.vercel.app
+- Endpoints HTTP : 11 réussis sur 11
+- Preuve : `reports/session-20260713/tracker-001.json`
+- Branche `main` inchangée : `45c488ba06ca4d38f746cdeab29d1eb8b59afeef`
+
+## État antérieur
+
 - Dernier point : 2026-07-13 12:07:01 Europe/Paris
 - Statut : session locale terminée; preuves assainies synchronisées et tableau indépendant publié
 - Durée réelle : 3 h 44 min

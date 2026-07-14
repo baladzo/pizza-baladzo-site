@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-07-13T20:14:15+02:00",
+  "updatedAt": "2026-07-14T05:50:58+02:00",
   "sessionTaskProgress": {
     "label": "Progression des tâches de la session autonome du 13 juillet 2026",
     "value": 88.3,
@@ -146,6 +146,32 @@
       "date": "2026-07-13 20:14",
       "titre": "Reprise générale autorisée par Sébastien",
       "detail": "Les chantiers peuvent reprendre leur dernière tâche sûre en cours. Aucun merge, aucune production et aucune action sensible ne sont autorisés sans GO distinct."
+    },
+    {
+      "date": "2026-07-14 05:50",
+      "titre": "TRACKER-001 terminé",
+      "detail": "Un push sur suivi-temps-reel a déclenché automatiquement un déploiement Vercel de production. SHA GitHub et SHA déployé identiques; 11 endpoints HTTP sur 11 répondent 200."
     }
-  ]
+  ],
+  "tracker001": {
+    "id": "TRACKER-001",
+    "statut": "TERMINÉ",
+    "termineLe": "2026-07-14T05:50:58+02:00",
+    "fuseauHoraire": "Europe/Paris",
+    "depot": "baladzo/pizza-baladzo-site",
+    "brancheProduction": "suivi-temps-reel",
+    "repertoireRacine": "suivi",
+    "declencheur": "push GitHub",
+    "deploiementManuelApresSonde": false,
+    "commitSonde": "b9653364c00c5de76146ce924c8e040dc731736e",
+    "commitDeploye": "b9653364c00c5de76146ce924c8e040dc731736e",
+    "correspondanceSha": true,
+    "deploiementVercel": "dpl_GFJJVj7JMxjWm6sy6SUoomrXwzPu",
+    "deploiementCreeLe": "2026-07-14T05:49:20.338+02:00",
+    "deploiementPretLe": "2026-07-14T05:49:23.369+02:00",
+    "urlProduction": "https://pizza-baladzo-suivi.vercel.app",
+    "endpointsReussis": 11,
+    "endpointsAttendus": 11,
+    "preuve": "reports/session-20260713/tracker-001.json"
+  }
 }

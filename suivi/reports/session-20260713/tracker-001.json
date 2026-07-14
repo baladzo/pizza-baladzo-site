@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "trackerId": "TRACKER-001",
+  "statut": "TERMINÉ",
+  "termineLe": "2026-07-14T05:50:58+02:00",
+  "fuseauHoraire": "Europe/Paris",
+  "configuration": {
+    "projetVercel": "pizza-baladzo-suivi",
+    "depotGitHub": "baladzo/pizza-baladzo-site",
+    "brancheProduction": "suivi-temps-reel",
+    "repertoireRacine": "suivi",
+    "urlProduction": "https://pizza-baladzo-suivi.vercel.app"
+  },
+  "sonde": {
+    "probeId": "tracker-001-20260714-054319",
+    "commitGitHub": "b9653364c00c5de76146ce924c8e040dc731736e",
+    "messageCommit": "tracker(sync): sonde automatique GitHub vers Vercel",
+    "deploiementVercel": "dpl_GFJJVj7JMxjWm6sy6SUoomrXwzPu",
+    "source": "git",
+    "cible": "production",
+    "etat": "READY",
+    "commitDeploye": "b9653364c00c5de76146ce924c8e040dc731736e",
+    "correspondanceSha": true,
+    "deploiementManuelApresCommit": false
+  },
+  "controleHttp": {
+    "reussis": 11,
+    "attendus": 11,
+    "tousReussis": true,
+    "endpoints": [
+      {
+        "path": "/",
+        "status": 200,
+        "bytes": 6752,
+        "sha256": "4012e69e006f2b7c772b3c23d37ac0d0b80c925de798985740f26e7d794c62c8"
+      },
+      {
+        "path": "/index.html",
+        "status": 200,
+        "bytes": 6752,
+        "sha256": "4012e69e006f2b7c772b3c23d37ac0d0b80c925de798985740f26e7d794c62c8"
+      },
+      {
+        "path": "/styles.css",
+        "status": 200,
+        "bytes": 6735,
+        "sha256": "ac1c08148359c2a1814f473fdaf52691c5b7958f05f4a667499b1145257f12e5"
+      },
+      {
+        "path": "/app.js",
+        "status": 200,
+        "bytes": 8054,
+        "sha256": "6153b42e4d9051b0909c59459fd2343bed1ed34b989a8f912891f8a46d2108b6"
+      },
+      {
+        "path": "/data/client.json",
+        "status": 200,
+        "bytes": 3243,
+        "sha256": "3d2c4bc5465b621d70286ed9c77a43fdc12868abcbf0485f151b951ad5202efa"
+      },
+      {
+        "path": "/data/admin.json",
+        "status": 200,
+        "bytes": 4399,
+        "sha256": "bc85b805a55329dc10ce4c8601664a6458928c9949c9e7330fab9916d68d60cc"
+      },
+      {
+        "path": "/data/presentation.json",
+        "status": 200,
+        "bytes": 5556,
+        "sha256": "a955d5468298624ca795ea247ccf9f49fbe80420479c2e098797b9c1ccd58670"
+      },
+      {
+        "path": "/data/global.json",
+        "status": 200,
+        "bytes": 4907,
+        "sha256": "d8595abc63bd5d51b05c5d43a79704484db25ddc76dfa2dc006b54dcad42a17d"
+      },
+      {
+        "path": "/data/session.json",
+        "status": 200,
+        "bytes": 4018,
+        "sha256": "5c11926905803141a2e9192131263f2c5e65854e38bb054a97d625aaee94426b"
+      },
+      {
+        "path": "/data/validations-sebastien.json",
+        "status": 200,
+        "bytes": 3433,
+        "sha256": "31ce8674c1232010d8d37e74606636ac56f79508f79dd9cf3b94755ccad8e34b"
+      },
+      {
+        "path": "/data/sync-probe.json",
+        "status": 200,
+        "bytes": 773,
+        "sha256": "95d7440e231ca2ed7ba224c9fcd2056cbd6bb34ba2f168564e173ddddc6eb691"
+      }
+    ]
+  },
+  "protections": {
+    "mainInchangee": true,
+    "mainSha": "45c488ba06ca4d38f746cdeab29d1eb8b59afeef",
+    "hostingerModifie": false,
+    "publicHtmlModifie": false,
+    "ftpUtilise": false,
+    "dnsModifie": false,
+    "siteOfficielModifie": false,
+    "secretPublie": false
+  }
+}
