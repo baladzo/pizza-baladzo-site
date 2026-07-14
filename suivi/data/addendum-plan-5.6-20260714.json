@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "addendumId": "PIZZA-BALADZO-5-6-ADDENDUM-20260714",
+  "generatedAt": "2026-07-14T06:34:44+02:00",
+  "timezone": "Europe/Paris",
+  "precedence": "OVERRIDES_CONFLICTING_PREVIOUS_INSTRUCTIONS",
+  "canonicalRoadmap": "roadmap-5.6.json",
+  "overrides": [
+    {
+      "target": "CLIENT-BASTIEN-001",
+      "rule": "Le guide de démonstration utilise une sortie vocale ou écrite sans microphone. Toute saisie micro devient un lot distinct BASTIEN-CLIENT-MIC-001 avec consentement et sécurité dédiés."
+    },
+    {
+      "target": "DEMO-SUITE-001",
+      "rule": "Un seul moteur doit couvrir client, banque, investisseurs, comptable, collectivités, commercial, fournisseurs, administration, dirigeant et supervision complète renommable."
+    },
+    {
+      "target": "PREVIEW-INTERACTIVE-001",
+      "rule": "La preview doit être cliquable dans Chrome et ne peut pas se limiter à des captures."
+    },
+    {
+      "target": "PRESENTATION-JOUR-001",
+      "rule": "Le thème doit reprendre le mode Jour du client, avec fond lumineux, panneaux violet-rose semi-transparents et décor visible sur toutes les pages."
+    },
+    {
+      "target": "DATA-001",
+      "rule": "Toute donnée chiffrée visible dans une démo provient d’un identifiant commun. Source absente = A_VALIDER ; divergence = CONTRADICTION avec valeur finale nulle."
+    }
+  ],
+  "newTasks": [
+    {
+      "id": "BASTIEN-DEMO-GUIDE-001",
+      "phase": "P5",
+      "site": "all",
+      "title": "Guide Bastien IA vocal ou écrit sans microphone",
+      "priority": "HIGH",
+      "reasoning": "very-high",
+      "status": "READY_AFTER_DEMO_ENGINE",
+      "estimatedHours": 24,
+      "safeNow": true,
+      "needsSebastien": true,
+      "dependencies": ["DEMO-SUITE-001"]
+    },
+    {
+      "id": "BASTIEN-CLIENT-MIC-001",
+      "phase": "P6",
+      "site": "client-api",
+      "title": "Saisie vocale client avec consentement, indicateur et confidentialité",
+      "priority": "MEDIUM",
+      "reasoning": "very-high",
+      "status": "SEPARATE_GO_REQUIRED",
+      "estimatedHours": 28,
+      "safeNow": false,
+      "needsSebastien": true,
+      "dependencies": ["AUTH-001", "LEGAL-001"]
+    },
+    {
+      "id": "COMPTA-PRIVATE-SPEC-001",
+      "phase": "P3",
+      "site": "admin-api",
+      "title": "Prototype comptable local et spécification de l’accès privé réel",
+      "priority": "HIGH",
+      "reasoning": "very-high",
+      "status": "READY_AFTER_DATA",
+      "estimatedHours": 24,
+      "safeNow": true,
+      "needsSebastien": true,
+      "dependencies": ["DATA-001"]
+    },
+    {
+      "id": "FRANCHISE-VISION-001",
+      "phase": "P4",
+      "site": "presentation",
+      "title": "Structurer la vision plusieurs unités puis franchise sans surpromesse",
+      "priority": "MEDIUM",
+      "reasoning": "high",
+      "status": "READY_FOR_EDITORIAL_SPEC",
+      "estimatedHours": 8,
+      "safeNow": true,
+      "needsSebastien": true,
+      "dependencies": []
+    },
+    {
+      "id": "BANK-PITCH-001",
+      "phase": "P4",
+      "site": "presentation",
+      "title": "Préparer les pitchs et simulations de rendez-vous bancaire",
+      "priority": "HIGH",
+      "reasoning": "very-high",
+      "status": "BLOCKED_BY_VALIDATED_FIGURES",
+      "estimatedHours": 20,
+      "safeNow": true,
+      "needsSebastien": true,
+      "dependencies": ["FINANCE-001", "PRESENTATION-DATA-001"]
+    }
+  ],
+  "demoProfiles": [
+    "DEMO_CLIENT",
+    "DEMO_BANQUE",
+    "DEMO_INVESTISSEURS",
+    "DEMO_COMPTABLE",
+    "DEMO_EMPLACEMENTS_COLLECTIVITES",
+    "DEMO_DEMARCHAGE_COMMERCIAL",
+    "DEMO_FOURNISSEURS_PARTENAIRES",
+    "DEMO_ADMINISTRATION_EXPLOITATION",
+    "DEMO_DIRIGEANT",
+    "DEMO_SUPERVISION_COMPLETE",
+    "DEMO_PERSONNALISEE_FUTURE"
+  ],
+  "weeklyTarget": {
+    "mondayToFriday": "midi_et_soir",
+    "saturdayLunch": "approvisionnement_preparation_stock_entretien",
+    "saturdayEvening": "service",
+    "sunday": "sans_service_cible",
+    "commercialServicesPerWeek": 11,
+    "status": "TARGET_TO_VALIDATE_WITH_REAL_TRIALS"
+  },
+  "requiredClosureFields": [
+    "startedAt",
+    "updatedAt",
+    "completedAt",
+    "timezone",
+    "durationMinutes",
+    "branch",
+    "commit",
+    "tests",
+    "evidence",
+    "codexDecision",
+    "chatgptDecision",
+    "sebastienDecision"
+  ]
+}
