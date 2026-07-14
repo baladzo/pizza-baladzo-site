@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "sprintId": "SPRINT-ACCELERATION-IMMERSIVE-20260714",
+  "createdAt": "2026-07-14T10:51:25+02:00",
+  "timezone": "Europe/Paris",
+  "priority": "P0",
+  "currentTourDecision": "REJECTED_BY_SEBASTIEN",
+  "reason": [
+    "voice_robotic",
+    "missing_or_weak_bubbles_arrows_spotlight",
+    "insufficient_interaction",
+    "cold_flat_austere_visuals",
+    "pace_too_slow_for_outreach_deadline"
+  ],
+  "objective": "Replace the visible guided-tour experience with an immersive shared engine across presentation, client and simulated administration while preparing the bank pitch in parallel.",
+  "fastTrack": {
+    "estimatedEffectiveHoursMin": 32,
+    "estimatedEffectiveHoursMax": 48,
+    "estimatedFocusedWorkdaysMin": 3,
+    "estimatedFocusedWorkdaysMax": 5,
+    "excludes": [
+      "external_voice_provider_wait",
+      "financial_figures_validation",
+      "production_backend",
+      "real_authentication",
+      "live_payments",
+      "hardware",
+      "hostinger"
+    ]
+  },
+  "voicePolicy": {
+    "defaultUntilApproved": "TEXT_IMMERSIVE",
+    "providersPriority": ["PRE_RECORDED_APPROVED", "SERVER_TTS_FEATURE_FLAG", "BROWSER_TTS_FALLBACK"],
+    "browserVoiceFinalAllowed": false,
+    "humanApprovalRequired": true,
+    "microphoneEnabled": false,
+    "transcriptAlwaysVisible": true
+  },
+  "waves": [
+    {"id":"W1","title":"Audit storyboard and experience design","estimatedHours":4,"status":"READY"},
+    {"id":"W2","title":"Shared immersive guide engine","estimatedHours":8,"status":"BLOCKED_BY_W1"},
+    {"id":"W3","title":"Presentation day theme and bank-investor journeys","estimatedHours":8,"status":"BLOCKED_BY_W2"},
+    {"id":"W4","title":"Client and simulated administration cross-site journey","estimatedHours":8,"status":"BLOCKED_BY_W2"},
+    {"id":"W5","title":"Bank pitch and first role-play preparation","estimatedHours":6,"status":"READY_PARALLEL"},
+    {"id":"W6","title":"Chrome QA accessibility evidence and fixes","estimatedHours":6,"status":"BLOCKED_BY_W3_W4"}
+  ],
+  "acceptance": {
+    "bubblePresentEveryStep": true,
+    "arrowAnchoredToTarget": true,
+    "spotlightPresent": true,
+    "interactionRequired": true,
+    "textModeComplete": true,
+    "voiceNotRobotic": true,
+    "voiceNeedsSebastienApproval": true,
+    "noDeadEnd": true,
+    "statePersistedAcrossPages": true,
+    "realActionsBlocked": true,
+    "privateDataAbsent": true,
+    "unsourcedFiguresNotFinal": true,
+    "chromeResponsiveTested": true,
+    "criticalConsoleErrors": 0
+  },
+  "globalProtections": {
+    "mainProtected": true,
+    "hostingerForbidden": true,
+    "productionForbidden": true,
+    "livePaymentsForbidden": true,
+    "liveEmailSmsForbidden": true,
+    "privateDataForbidden": true,
+    "everyTaskTimestamped": true
+  },
+  "validation": {
+    "codex": "PENDING",
+    "chatgpt": "PENDING",
+    "sebastien": "PENDING"
+  }
+}
