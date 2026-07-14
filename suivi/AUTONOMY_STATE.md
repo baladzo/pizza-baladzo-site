@@ -23,6 +23,19 @@ Toutes les questions non urgentes sont différées dans `suivi/data/validations-
 
 Seuls un incident critique, un secret, un risque de perte de données, une corruption non restaurable ou une atteinte à `main`/production peuvent interrompre Sébastien.
 
+## Nouvelles demandes prioritaires reçues pendant l’autonomie
+
+### CLIENT-CATEGORY-CARDS-COLOR-001
+
+- Reçue : 14/07/2026 à 17:08:08 Europe/Paris
+- Source : retour direct de Sébastien
+- Décision : les encarts gris des catégories du site client et leur texte gris foncé sont refusés pour manque de lisibilité et incohérence avec l’identité Jour.
+- Spécification : `suivi/requests/CLIENT-CATEGORY-CARDS-COLOR-001.md`
+- Traitement autorisé : worktree/copie client, états `PREVIEW` ou `TEST` uniquement.
+- Résultat attendu : trois variantes réversibles lilas clair, rose poudré et blanc chaud violet, avec contraste mesuré et candidate recommandée.
+- Validation maximale sans Sébastien : `90 % — TERMINÉE TECHNIQUEMENT, VALIDATION VISUELLE SÉBASTIEN NÉCESSAIRE`.
+- Interruption de Sébastien : interdite ; conserver les captures et propositions pour le rapport consolidé final.
+
 ## Checkpoints
 
 Ajouter ici un checkpoint toutes les 30 minutes avec :
@@ -49,3 +62,16 @@ Ajouter ici un checkpoint toutes les 30 minutes avec :
 - `main` : protégée
 - Hostinger/production : protégés
 - Prochaine action : exécuter le prompt maître dans Codex et répartir les agents/worktrees
+
+## Checkpoint demande client
+
+- Date : 14/07/2026 à 17:08:08 Europe/Paris
+- Agent : ChatGPT — pilotage du suivi
+- Branche : `suivi-temps-reel`
+- Tâche enregistrée : `CLIENT-CATEGORY-CARDS-COLOR-001`
+- Commit de spécification : `578743128e2b78a577bc72594e59afb9df62afba`
+- Fichiers fonctionnels modifiés : aucun
+- Tests exécutés : sans objet, spécification uniquement
+- Blocage différé : choix visuel final de Sébastien entre les variantes
+- Prochaine action Codex : auditer les sélecteurs gris réels, produire trois variantes en preview et poursuivre sans interrompre Sébastien
+- État du suivi : propre après commit
