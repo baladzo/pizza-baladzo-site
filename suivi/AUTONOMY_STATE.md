@@ -36,6 +36,39 @@ Seuls un incident critique, un secret, un risque de perte de données, une corru
 - Validation maximale sans Sébastien : `90 % — TERMINÉE TECHNIQUEMENT, VALIDATION VISUELLE SÉBASTIEN NÉCESSAIRE`.
 - Interruption de Sébastien : interdite ; conserver les captures et propositions pour le rapport consolidé final.
 
+### CLIENT-MOBILE-HERO-TEXT-001
+
+- Reçue : 15/07/2026 à 21:49:07 Europe/Paris
+- Source : retour direct de Sébastien sur téléphone
+- Décision : conserver l’image d’accueil mobile appréciée, mais rendre 100 % du texte visible sans tronquage ni chevauchement.
+- Spécification : `suivi/requests/CLIENT-MOBILE-HERO-TEXT-001.md`
+- Traitement autorisé : worktree/copie client, styles responsive uniquement après diagnostic de la cause.
+- Résultat attendu : texte entièrement visible sur 320, 360, 375, 390 et 412 px, bouton non superposé, aucun débordement, ordinateur non régressé.
+- Validation maximale sans Sébastien : `90 % — TERMINÉE TECHNIQUEMENT, VALIDATION VISUELLE SÉBASTIEN NÉCESSAIRE`.
+- Interruption de Sébastien : interdite sauf incident critique.
+
+### CLIENT-DAYMODE-MOBILE-CLARITY-001
+
+- Reçue : 15/07/2026 à 21:49:07 Europe/Paris
+- Source : retour direct de Sébastien sur téléphone
+- Décision : le mode Jour mobile est trop sombre ; les menus, images, panneaux et textes doivent retrouver la clarté et la luminosité de la version ordinateur.
+- Spécification : `suivi/requests/CLIENT-DAYMODE-MOBILE-CLARITY-001.md`
+- Traitement autorisé : worktree/copie client, variables et styles du mode Jour mobile, sans modifier les fonctions.
+- Résultat attendu : audit des overlays et media queries, mode Jour clair sur toutes les catégories, contraste mesuré, Nuit et Auto inchangés.
+- Validation maximale sans Sébastien : `90 % — TERMINÉE TECHNIQUEMENT, VALIDATION VISUELLE SÉBASTIEN NÉCESSAIRE`.
+- Interruption de Sébastien : interdite ; conserver les captures pour le rapport consolidé.
+
+### CLIENT-PARTNERSHIP-REQUEST-BASTIEN-001
+
+- Reçue : 15/07/2026 à 21:49:07 Europe/Paris
+- Source : demande directe de Sébastien
+- Décision : créer un encart et un formulaire permettant aux mairies, organisateurs d’événements, gestionnaires d’emplacements, fournisseurs, producteurs et partenaires commerciaux de demander à être recontactés rapidement.
+- Spécification : `suivi/requests/CLIENT-PARTNERSHIP-REQUEST-BASTIEN-001.md`
+- Traitement autorisé : `PREVIEW` et `TEST` uniquement ; aucun e-mail, SMS, push ou stockage de production sans connexion et GO distincts.
+- Résultat attendu : formulaire dynamique, contrat de données, file admin, badge et résumé Bastien, niveaux de priorité, rappels des demandes non traitées et adaptateurs OFF/PREVIEW/TEST/LIVE.
+- Validation maximale sans Sébastien : `90 % — TERMINÉE TECHNIQUEMENT, CONNEXIONS ET VALIDATION SÉBASTIEN NÉCESSAIRES`.
+- Interruption de Sébastien : interdite ; les éléments restant à connecter doivent être listés pour la conversation « Connexions ».
+
 ## Checkpoints
 
 Ajouter ici un checkpoint toutes les 30 minutes avec :
@@ -75,3 +108,16 @@ Ajouter ici un checkpoint toutes les 30 minutes avec :
 - Blocage différé : choix visuel final de Sébastien entre les variantes
 - Prochaine action Codex : auditer les sélecteurs gris réels, produire trois variantes en preview et poursuivre sans interrompre Sébastien
 - État du suivi : propre après commit
+
+## Checkpoint nouvelles priorités mobile et partenaires
+
+- Date : 15/07/2026 à 21:49:07 Europe/Paris
+- Agent : ChatGPT — pilotage du suivi
+- Branche : `suivi-temps-reel`
+- Tâches enregistrées : `CLIENT-MOBILE-HERO-TEXT-001`, `CLIENT-DAYMODE-MOBILE-CLARITY-001`, `CLIENT-PARTNERSHIP-REQUEST-BASTIEN-001`
+- Commits de spécification : `ced32225c0d57716cd030cfda9c5ac2f9c525d26`, `310f20a249fb42dbcaf3507d92cdc5871badc389`, `e175135bc2284c75b7d75628ed1a6694d22da2c4`
+- Fichiers fonctionnels modifiés : aucun
+- Tests exécutés : sans objet, spécifications uniquement
+- Blocages différés : validation visuelle du hero et de la clarté ; connexion ultérieure du backend, des e-mails, SMS ou notifications pour les demandes professionnelles
+- Prochaine action Codex : traiter le hero mobile et la clarté Jour en worktree client ; construire le parcours partenaires en PREVIEW avec file admin et résumé Bastien ; ne pas interrompre Sébastien
+- État du suivi : propre après commits de spécification
